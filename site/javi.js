@@ -1,14 +1,14 @@
 /* ==========================================
    JAVI — MEJAVI AI CUSTOMER SERVICE
    Widget ini berjalan di semua halaman dan
-   mengirim pertanyaan ke Netlify Function.
+   mengirim pertanyaan ke Supabase Edge Function.
 ========================================== */
 
 (function initJaviCustomerService() {
   "use strict";
 
-  const API_ENDPOINT = "/api/javi";
-  const CLIENT_VERSION = "2026.09.27-security";
+  const API_ENDPOINT = "https://yqutzzhkuuehvmuqzjvb.supabase.co/functions/v1/javi";
+  const CLIENT_VERSION = "2026.09.27-github-supabase";
   const DEFAULT_WHATSAPP_URL =
     "https://wa.me/628214570677?text=Halo%20Mejavi%20Skin%2C%20saya%20ingin%20dibantu%20oleh%20customer%20service.";
   const STORAGE_KEY = "mejavi_javi_conversation_v1";
@@ -24,9 +24,9 @@
   const copy = {
     id: {
       launcher: "Tanya Javi",
-      launcherSub: "Customer Service AI",
+      launcherSub: "Customer Service",
       panelTitle: "Javi",
-      panelStatus: "Customer Service AI • Online",
+      panelStatus: "Customer Service • Online",
       panelConfigured: "AI sudah dikonfigurasi • Siap diuji",
       panelChecking: "Memeriksa layanan AI…",
       panelOffline: "AI belum aktif • WhatsApp tersedia",
@@ -48,7 +48,7 @@
       send: "Kirim pesan",
       typing: "Javi sedang mengetik",
       notice:
-        "Pesan diproses oleh AI OpenAI. Javi dapat keliru—jangan kirim data pribadi, OTP, atau informasi pembayaran.",
+        "Javi memberikan jawaban otomatis berdasarkan informasi resmi Mejavi. Jawaban dapat keliru—jangan kirim data pribadi, OTP, atau informasi pembayaran.",
       humanLabel: "Butuh bantuan langsung? Chat WhatsApp",
       empty: "Tulis pertanyaan terlebih dahulu.",
       genericError:
@@ -58,17 +58,17 @@
       safetyError:
         "Pesan tidak dapat diproses dengan aman. Jangan kirim password, OTP, PIN, NIK, nomor kartu, atau data pribadi sensitif. Silakan tulis ulang pertanyaan tanpa data tersebut.",
       authError:
-        "Koneksi OpenAI Javi belum valid. Pemilik website perlu mengganti OPENAI_API_KEY di Netlify lalu melakukan deploy ulang. Untuk bantuan sekarang, hubungi WhatsApp Mejavi.",
+        "Layanan AI lanjutan Javi belum tersedia. Javi tetap dapat membantu dengan informasi resmi Mejavi; untuk bantuan langsung, hubungi WhatsApp Mejavi.",
       creditError:
         "Saldo atau billing OpenAI API untuk Javi belum aktif, atau batas pemakaian telah tercapai. Aktifkan billing API lalu coba kembali. Sementara itu, tim Mejavi siap membantu melalui WhatsApp.",
       modelError:
-        "Model AI Javi belum tersedia untuk akun ini. Periksa OPENAI_MODEL di Netlify atau hapus variabel tersebut agar Javi memakai model bawaan.",
+        "Model AI lanjutan Javi sedang tidak tersedia. Javi tetap dapat membantu dengan informasi resmi Mejavi.",
       requestError:
         "Konfigurasi permintaan AI Javi perlu diperbarui. Silakan deploy file Javi terbaru atau hubungi tim Mejavi melalui WhatsApp.",
       incompleteError:
         "Jawaban Javi terhenti sebelum selesai. Silakan kirim ulang pertanyaanmu dengan kalimat yang lebih singkat.",
       localError:
-        "Antarmuka Javi sudah siap. Respons AI akan aktif setelah proyek dijalankan melalui Netlify dan kunci API dikonfigurasi.",
+        "Javi siap digunakan melalui backend Supabase. Jika layanan AI lanjutan belum aktif, Javi tetap memberi jawaban otomatis dari informasi resmi Mejavi.",
       unavailable:
         "Javi sedang belum tersedia. Untuk bantuan sekarang, silakan hubungi tim Mejavi melalui WhatsApp.",
       timeout:
@@ -78,9 +78,9 @@
     },
     en: {
       launcher: "Ask Javi",
-      launcherSub: "AI Customer Service",
+      launcherSub: "Customer Service",
       panelTitle: "Javi",
-      panelStatus: "AI Customer Service • Online",
+      panelStatus: "Customer Service • Online",
       panelConfigured: "AI configured • Ready to test",
       panelChecking: "Checking AI service…",
       panelOffline: "AI unavailable • WhatsApp is available",
@@ -102,7 +102,7 @@
       send: "Send message",
       typing: "Javi is typing",
       notice:
-        "Messages are processed using OpenAI’s AI service. Javi may make mistakes—do not share personal data, OTPs, or payment information.",
+        "Javi provides automated answers based on official Mejavi information. Answers may be imperfect—do not share personal data, OTPs, or payment information.",
       humanLabel: "Need direct help? Chat on WhatsApp",
       empty: "Please type a question first.",
       genericError:
@@ -112,17 +112,17 @@
       safetyError:
         "This message cannot be processed safely. Do not send passwords, OTPs, PINs, identity numbers, card details, or sensitive personal data. Please rewrite it without that information.",
       authError:
-        "Javi’s OpenAI connection is not valid yet. The site owner needs to replace OPENAI_API_KEY in Netlify and redeploy. For help now, contact Mejavi on WhatsApp.",
+        "Javi’s advanced AI service is not available. Javi can still help with official Mejavi information; for direct help, contact Mejavi on WhatsApp.",
       creditError:
         "OpenAI API credit or billing for Javi is inactive, or its usage limit has been reached. Enable API billing and try again. Meanwhile, the Mejavi team can help on WhatsApp.",
       modelError:
-        "Javi’s AI model is not available for this account. Check OPENAI_MODEL in Netlify or remove that variable to use Javi’s default model.",
+        "Javi’s advanced AI model is currently unavailable. Javi can still help with official Mejavi information.",
       requestError:
         "Javi’s AI request configuration needs to be updated. Deploy the latest Javi files or contact the Mejavi team on WhatsApp.",
       incompleteError:
         "Javi’s answer stopped before it was complete. Please resend your question using a shorter sentence.",
       localError:
-        "Javi’s interface is ready. AI responses will work after the project is run through Netlify and the API key is configured.",
+        "Javi is ready through the Supabase backend. If advanced AI is not enabled, Javi still provides automated answers from official Mejavi information.",
       unavailable:
         "Javi is currently unavailable. For help now, please contact the Mejavi team on WhatsApp.",
       timeout:
