@@ -443,8 +443,9 @@
 
   async function syncCatalog() {
     try {
-      const response = await fetch(API_URL, {
-        headers: { "Accept-Language": language() }
+      const response = await fetch(`${API_URL}?refresh=${Date.now()}`, {
+        cache: "no-store",
+        headers: { "Accept-Language": language(), "Cache-Control": "no-cache" }
       });
       if (!response.ok) return;
       const payload = await response.json();
@@ -519,7 +520,7 @@
     syncCatalog();
 
     // Keep storefront availability aligned with the warehouse without a page refresh.
-    window.setInterval(syncCatalog, 60_000);
+    window.setInterval(syncCatalog, 15_000);
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "visible") syncCatalog();
     });
