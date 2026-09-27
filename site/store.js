@@ -455,6 +455,14 @@
           const current = catalog.get(variant.sku);
           if (!current) return;
           variant.price = Number(current.price);
+          variant.originalPrice = current.discount_active
+            ? Number(current.original_price)
+            : 0;
+          variant.discountType = current.discount_type || "none";
+          variant.discountValue = Number(current.discount_value || 0);
+          variant.discountStartsAt = current.discount_starts_at || null;
+          variant.discountEndsAt = current.discount_ends_at || null;
+          variant.discountActive = Boolean(current.discount_active);
           variant.stock = Number(current.stock);
           variant.available = Boolean(current.available);
           if (current.image_url) {
