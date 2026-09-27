@@ -1,0 +1,127 @@
+name: Deploy Mejavi Skin to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Import current production site once
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f site/index.html ]; then
+            echo "Site source already exists in GitHub; skipping migration."
+            exit 0
+          fi
+
+          BASE="https://mejaviskinc.netlify.app"
+          mkdir -p site
+
+          cat > /tmp/mejavi-files.txt <<'EOF'
+          PETUNJUK-ACODE.txt
+          PETUNJUK-JAVI-AI.txt
+          about.html
+          admin.css
+          admin.html
+          admin.js
+          collaboration.html
+          content-default.json
+          documents/keunggulan-kolagen-sapi.pdf
+          faq.html
+          hero_bg.mp4
+          images/bodyserum.jpg
+          images/bpom/body-serum.jpg
+          images/bpom/fresh-hydra-cream.jpg
+          images/bpom/gentle-cleanser.jpg
+          images/bpom/herbal-relaxing-cream.jpg
+          images/bpom/lumiere-hydra-cream.jpg
+          images/bpom/serumizer.jpg
+          images/cleaner.jpg
+          images/cream.jpg
+          images/herbal.jpg
+          images/moisturizer.jpg
+          images/paket-lengkap/Screenshot_20260911-223724.jpg
+          images/paket-lengkap/Screenshot_20260911-223738.jpg
+          images/paket-lengkap/Screenshot_20260911-223903.jpg
+          images/paket-lengkap/Screenshot_20260911-224125(1).jpg
+          images/paket-lengkap/Screenshot_20260912-022414(1).jpg
+          images/references/kolagen-sapi-mejavi.webp
+          images/serum.jpg
+          index.html
+          ingredients.html
+          javi.js
+          logo-mejavi.png
+          mejavi-hero.mp4
+          products.html
+          produk.png
+          reviews.html
+          script.js
+          site-content.js
+          store.js
+          style.css
+          track.html
+          tracking.js
+          video.html
+          EOF
+
+          while IFS= read -r path; do
+            [ -z "$path" ] && continue
+            mkdir -p "site/$(dirname "$path")"
+            echo "Downloading $path"
+            curl --fail --location --retry 4 --retry-delay 2 \
+              "$BASE/$path" \
+              --output "site/$path"
+          done < /tmp/mejavi-files.txt
+
+          touch site/.nojekyll
+
+          test -s site/index.html
+          test -s site/style.css
+          test -s site/script.js
+          test -s site/logo-mejavi.png
+
+      - name: Save migrated source in GitHub
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git status --porcelain site | grep -q .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add site
+            git commit -m "Import Mejavi Skin production site"
+            git push origin HEAD:main
+          else
+            echo "No migration changes to commit."
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
