@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=412f1382-fcb2-4353-9270-c725007db00c
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f2e9">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://yqutzzhkuuehvmuqzjvb.supabase.co; img-src 'self' data: https:; style-src 'self'; script-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <title>Backend Website | Mejavi Skin+</title>
+  <link rel="icon" type="image/png" href="logo-mejavi.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="admin">
+  <div class="admin-no-script">
+    <noscript>Aktifkan JavaScript untuk membuka Backend Website Mejavi.</noscript>
+  </div>
+
+  <main class="auth-shell" id="authView">
+    <section class="auth-card" aria-labelledby="loginTitle">
+      <div class="auth-brand">
+        <span class="auth-logo-wrap">
+          <img src="logo-mejavi.png" alt="Logo Mejavi Skin+">
+        </span>
+        <div>
+          <strong>MEJAVI SKIN+</strong>
+          <small>WEBSITE BACKEND</small>
+        </div>
+      </div>
+
+      <div class="auth-copy">
+        <span class="eyebrow">Panel Admin</span>
+        <h1 id="loginTitle">Perbarui website dari satu tempat.</h1>
+        <p>Masuk menggunakan akun Kepala Gudang Mejavi untuk mengubah konten, menyimpan draft, dan mempublikasikan pembaruan.</p>
+      </div>
+
+      <form class="auth-form" id="loginForm" novalidate>
+        <label>
+          <span>Email</span>
+          <input id="loginEmail" name="email" type="email" autocomplete="username" placeholder="email@mejavi.com" required>
+        </label>
+        <label>
+          <span>Password</span>
+          <span class="password-field">
+            <input id="loginPassword" name="password" type="password" minlength="6" autocomplete="current-password" placeholder="Masukkan password" required>
+            <button type="button" id="togglePassword" aria-label="Tampilkan password">Lihat</button>
+          </span>
+        </label>
+        <p class="form-error" id="loginError" role="alert"></p>
+        <button class="primary-button auth-submit" id="loginButton" type="submit">Masuk ke Backend</button>
+      </form>
+
+      <p class="auth-note">Akses dibatasi untuk akun aktif dengan peran Kepala Gudang.</p>
+      <a class='back-link' href='/'>← Kembali ke website</a>
+    </section>
+  </main>
+
+  <div class="admin-app" id="adminApp" hidden>
+    <aside class="admin-sidebar" aria-label="Navigasi backend">
+      <a class='sidebar-brand' href='/' rel='noopener noreferrer' target='_blank'>
+        <img src="logo-mejavi.png" alt="">
+        <span><strong>MEJAVI</strong><small>WEBSITE BACKEND</small></span>
+      </a>
+
+      <nav class="side-nav" id="sideNav">
+        <button class="active" type="button" data-section-target="dashboard"><span>01</span>Ringkasan</button>
+        <button type="button" data-section-target="homepage"><span>02</span>Beranda</button>
+        <button type="button" data-section-target="products"><span>03</span>Produk</button>
+        <button type="button" data-section-target="ingredients"><span>04</span>Ingredients</button>
+        <button type="button" data-section-target="contact"><span>05</span>Kontak</button>
+        <button type="button" data-section-target="all-text"><span>06</span>Semua Teks</button>
+        <button type="button" data-section-target="publish"><span>07</span>Publikasi</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-chip">
+          <span id="userInitial">M</span>
+          <div><strong id="sidebarUserName">Admin Mejavi</strong><small>Kepala Gudang</small></div>
+        </div>
+        <button class="text-button" id="logoutButton" type="button">Keluar</button>
+      </div>
+    </aside>
+
+    <div class="admin-workspace">
+      <header class="admin-topbar">
+        <div>
+          <button class="menu-toggle" id="adminMenuToggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
+          <span class="topbar-kicker">Backend Website</span>
+          <strong id="activeSectionTitle">Ringkasan</strong>
+        </div>
+        <div class="topbar-actions">
+          <span class="save-state" id="saveState"><i></i>Tersimpan</span>
+          <a class='preview-button' href='/' rel='noopener noreferrer' target='_blank'>Lihat Website ↗</a>
+          <button class="secondary-button" id="saveDraftButton" type="button">Simpan Draft</button>
+          <button class="primary-button" id="publishButton" type="button">Publikasikan</button>
+        </div>
+      </header>
+
+      <div class="mobile-actionbar">
+        <button class="secondary-button" data-mobile-save type="button">Simpan Draft</button>
+        <button class="primary-button" data-mobile-publish type="button">Publikasikan</button>
+      </div>
+
+      <main class="admin-content" id="adminContent">
+        <section class="admin-section active" data-section="dashboard" aria-labelledby="dashboardTitle">
+          <div class="section-heading">
+            <span class="eyebrow">Kontrol Website</span>
+            <h1 id="dashboardTitle">Selamat datang, <span id="welcomeName">Admin</span>.</h1>
+            <p>Kelola isi website Mejavi Skin+ tanpa perlu mengubah kode. Simpan pekerjaan sebagai draft, lalu publikasikan saat sudah siap.</p>
+          </div>
+
+          <div class="summary-grid">
+            <article class="summary-card accent-card">
+              <span>Status Website</span>
+              <strong id="dashboardStatus">Aktif</strong>
+              <small id="dashboardPublishedAt">Belum pernah dipublikasikan dari backend</small>
+            </article>
+            <article class="summary-card">
+              <span>Versi Terbit</span>
+              <strong id="dashboardVersion">0</strong>
+              <small>Naik setiap kali konten dipublikasikan</small>
+            </article>
+            <article class="summary-card">
+              <span>Produk</span>
+              <strong id="dashboardProducts">0</strong>
+              <small>Termasuk paket produk</small>
+            </article>
+            <article class="summary-card">
+              <span>Ingredients</span>
+              <strong id="dashboardIngredients">0</strong>
+              <small>Bahan aktif pada halaman Ingredients</small>
+            </article>
+          </div>
+
+          <div class="dashboard-columns">
+            <article class="panel quick-panel">
+              <div class="panel-heading">
+                <div><span class="eyebrow">Akses Cepat</span><h2>Apa yang ingin diperbarui?</h2></div>
+              </div>
+              <div class="quick-grid">
+                <button type="button" data-section-jump="homepage"><span>Beranda</span><small>Judul, deskripsi, BPOM, dan section utama</small><b>→</b></button>
+                <button type="button" data-section-jump="products"><span>Produk</span><small>Deskripsi, ingredients, foto, dan link Lynk.id</small><b>→</b></button>
+                <button type="button" data-section-jump="ingredients"><span>Ingredients</span><small>Manfaat, catatan, dan referensi ilmiah</small><b>→</b></button>
+                <button type="button" data-section-jump="contact"><span>Kontak</span><small>WhatsApp, email, Instagram, dan TikTok</small><b>→</b></button>
+              </div>
+            </article>
+
+            <article class="panel warehouse-panel">
+              <span class="eyebrow">Terhubung</span>
+              <h2>Mejavi Warehouse</h2>
+              <p>Harga dan stok produk tetap mengikuti data Warehouse. Perubahan konten website tidak mengganggu transaksi gudang.</p>
+              <a href="https://mejavi-warehouse.bisabikinw3b.chatgpt.site" target="_blank" rel="noopener noreferrer">Buka Warehouse ↗</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="admin-section" data-section="homepage" aria-labelledby="homepageTitle">
+          <div class="section-heading row-heading">
+            <div><span class="eyebrow">Halaman Utama</span><h1 id="homepageTitle">Konten Beranda</h1><p>Atur pesan utama, keunggulan, BPOM, dan referensi kolagen dalam Bahasa Indonesia maupun Inggris.</p></div>
+            <div class="language-switch" data-language-switch>
+              <button class="active" type="button" data-editor-language="id">Indonesia</button>
+              <button type="button" data-editor-language="en">English</button>
+            </div>
+          </div>
+          <div class="editor-card" id="homepageEditor"></div>
+        </section>
+
+        <section class="admin-section" data-section="products" aria-labelledby="productsTitle">
+          <div class="section-heading row-heading">
+            <div><span class="eyebrow">Katalog</span><h1 id="productsTitle">Kelola Produk</h1><p>Perbarui informasi produk dan tautan pembelian. Harga serta stok aktif disinkronkan dari Warehouse berdasarkan SKU.</p></div>
+            <button class="secondary-button" id="addProductButton" type="button">+ Tambah Produk</button>
+          </div>
+          <div class="split-editor">
+            <aside class="record-list" id="productList" aria-label="Daftar produk"></aside>
+            <div class="editor-card" id="productEditor"></div>
+          </div>
+        </section>
+
+        <section class="admin-section" data-section="ingredients" aria-labelledby="ingredientsTitle">
+          <div class="section-heading row-heading">
+            <div><span class="eyebrow">Edukasi</span><h1 id="ingredientsTitle">Kelola Ingredients</h1><p>Atur penjelasan bahan aktif, manfaat, kecocokan kulit, catatan pemakaian, dan referensi.</p></div>
+            <button class="secondary-button" id="addIngredientButton" type="button">+ Tambah Ingredient</button>
+          </div>
+          <div class="split-editor">
+            <aside class="record-list" id="ingredientList" aria-label="Daftar ingredients"></aside>
+            <div class="editor-card" id="ingredientEditor"></div>
+          </div>
+        </section>
+
+        <section class="admin-section" data-section="contact" aria-labelledby="contactTitle">
+          <div class="section-heading">
+            <span class="eyebrow">Identitas & Kontak</span>
+            <h1 id="contactTitle">Informasi Brand</h1>
+            <p>Perubahan berikut diterapkan pada tautan kontak di seluruh halaman website.</p>
+          </div>
+          <div class="editor-card compact-editor" id="contactEditor"></div>
+        </section>
+
+        <section class="admin-section" data-section="all-text" aria-labelledby="allTextTitle">
+          <div class="section-heading row-heading">
+            <div><span class="eyebrow">Editor Lengkap</span><h1 id="allTextTitle">Semua Teks Website</h1><p>Cari dan ubah teks lain yang belum tersedia pada editor Beranda.</p></div>
+            <label class="search-field"><span class="sr-only">Cari teks</span><input id="textSearch" type="search" placeholder="Cari nama bagian atau isi teks…"></label>
+          </div>
+          <div class="language-switch text-language-switch" data-language-switch>
+            <button class="active" type="button" data-editor-language="id">Indonesia</button>
+            <button type="button" data-editor-language="en">English</button>
+          </div>
+          <div class="all-text-list" id="allTextEditor"></div>
+        </section>
+
+        <section class="admin-section" data-section="publish" aria-labelledby="publishTitle">
+          <div class="section-heading">
+            <span class="eyebrow">Publikasi</span>
+            <h1 id="publishTitle">Terbitkan Pembaruan</h1>
+            <p>Draft hanya terlihat di backend. Tekan Publikasikan agar pembaruan tampil bagi pengunjung website.</p>
+          </div>
+          <div class="publish-layout">
+            <article class="panel publish-card">
+              <span class="publish-icon">✓</span>
+              <h2>Konten siap dikelola</h2>
+              <dl>
+                <div><dt>Versi saat ini</dt><dd id="publishVersion">0</dd></div>
+                <div><dt>Terakhir diperbarui</dt><dd id="publishUpdatedAt">—</dd></div>
+                <div><dt>Terakhir dipublikasikan</dt><dd id="publishPublishedAt">—</dd></div>
+              </dl>
+              <div class="publish-actions">
+                <button class="secondary-button" type="button" data-publish-save>Simpan Draft</button>
+                <button class="primary-button" type="button" data-publish-now>Publikasikan Sekarang</button>
+              </div>
+            </article>
+            <article class="panel safety-card">
+              <span class="eyebrow">Cara Kerja</span>
+              <ol>
+                <li><b>Ubah konten</b><span>Edit teks, produk, ingredients, atau kontak.</span></li>
+                <li><b>Simpan draft</b><span>Perubahan tersimpan tetapi belum dilihat pengunjung.</span></li>
+                <li><b>Publikasikan</b><span>Versi terbaru langsung digunakan oleh website.</span></li>
+              </ol>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  </div>
+
+  <dialog class="confirm-dialog" id="publishDialog">
+    <form method="dialog">
+      <span class="confirm-mark">↑</span>
+      <h2>Publikasikan perubahan?</h2>
+      <p>Konten draft terbaru akan langsung tampil pada website Mejavi Skin+.</p>
+      <div>
+        <button class="secondary-button" value="cancel">Batal</button>
+        <button class="primary-button" id="confirmPublishButton" value="default">Ya, Publikasikan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="adminToast" role="status" aria-live="polite"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="412f1382-fcb2-4353-9270-c725007db00c" data-app-host="app.netlify.com"></script>

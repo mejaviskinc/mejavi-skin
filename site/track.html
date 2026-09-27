@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=412f1382-fcb2-4353-9270-c725007db00c
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Lacak Pesanan | Mejavi Skin</title>
+  <meta name="description" content="Lacak status pesanan dan pengiriman Mejavi Skin dengan nomor pesanan serta nomor WhatsApp.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="track">
+  <div id="loader">
+    <div class="loader-wrap">
+      <img class="loader-logo" src="logo-mejavi.png" alt="Mejavi Skin">
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container navbar">
+      <a class='brand' href='/'>
+        <img src="logo-mejavi.png" alt="Mejavi Skin Logo">
+        <div class="brand-text">
+          <strong>MEJAVI SKIN+</strong>
+          <small>SKIN & BODY CARE</small>
+        </div>
+      </a>
+
+      <nav class="desktop-nav">
+        <a data-track-copy='home' href='/'>Home</a>
+        <a data-track-copy='about' href='/about'>Tentang</a>
+        <a data-track-copy='products' href='/products'>Produk</a>
+        <a href='/ingredients'>Ingredients</a>
+        <a data-track-copy='reviews' href='/reviews'>Review</a>
+        <a href='/faq'>FAQ</a>
+        <a class='active' data-track-copy='track' href='/track'>Lacak Pesanan</a>
+      </nav>
+
+      <div class="nav-tools">
+        <button class="lang-btn" id="langBtn" type="button">ID / EN</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <div class="mobile-head">
+      <img src="logo-mejavi.png" alt="Mejavi">
+      <button class="close-menu" id="closeMenu" type="button">×</button>
+    </div>
+    <nav class="mobile-links">
+      <a data-track-copy='home' href='/'>Home</a>
+      <a data-track-copy='about' href='/about'>Tentang</a>
+      <a data-track-copy='products' href='/products'>Produk</a>
+      <a href='/ingredients'>Ingredients</a>
+      <a data-track-copy='reviews' href='/reviews'>Review</a>
+      <a href='/faq'>FAQ</a>
+      <a data-track-copy='track' href='/track'>Lacak Pesanan</a>
+    </nav>
+  </aside>
+
+  <main class="tracking-main">
+    <div class="container tracking-shell">
+      <section class="tracking-intro">
+        <span class="section-tag" data-track-copy="eyebrow">Status Pesanan</span>
+        <h1 data-track-copy="title">Lacak perjalanan pesananmu.</h1>
+        <p data-track-copy="intro">Masukkan nomor pesanan dan nomor WhatsApp yang digunakan saat checkout.</p>
+
+        <div class="tracking-help">
+          <div>
+            <span>1</span>
+            <p><strong data-track-copy="stepOneTitle">Temukan nomor pesanan</strong><small data-track-copy="stepOneText">Contoh: WEB-XXXXXXXX.</small></p>
+          </div>
+          <div>
+            <span>2</span>
+            <p><strong data-track-copy="stepTwoTitle">Gunakan nomor WhatsApp yang sama</strong><small data-track-copy="stepTwoText">Ini membantu menjaga data pesananmu tetap privat.</small></p>
+          </div>
+          <div>
+            <span>3</span>
+            <p><strong data-track-copy="stepThreeTitle">Lihat pembaruan terkini</strong><small data-track-copy="stepThreeText">Status gudang dan pengiriman akan muncul di sini.</small></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tracking-card">
+        <h2 data-track-copy="formTitle">Cek pesanan</h2>
+        <p data-track-copy="formText">Data ini hanya digunakan untuk menemukan pesananmu.</p>
+        <form class="tracking-form" id="trackingForm" novalidate>
+          <div class="order-field">
+            <label for="trackingOrder" data-track-copy="orderLabel">Nomor pesanan</label>
+            <input id="trackingOrder" name="order_number" type="text" placeholder="WEB-..." maxlength="60" autocomplete="off" required>
+          </div>
+          <div class="order-field">
+            <label for="trackingPhone" data-track-copy="phoneLabel">Nomor WhatsApp</label>
+            <input id="trackingPhone" name="phone" type="tel" inputmode="tel" placeholder="08xxxxxxxxxx" maxlength="20" autocomplete="tel" required>
+          </div>
+          <div class="order-error" id="trackingError" role="alert"></div>
+          <button class="order-submit" id="trackingSubmit" type="submit" data-track-copy="submit">Lacak Pesanan</button>
+        </form>
+      </section>
+
+      <section class="tracking-result" id="trackingResult" aria-live="polite"></section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="logo-mejavi.png" class="footer-logo" alt="Mejavi">
+          <p class="footer-about" data-track-copy="footer">Perawatan kulit dan tubuh dengan informasi yang jelas dan pelayanan yang hangat.</p>
+        </div>
+        <div>
+          <div class="footer-title" data-track-copy="menu">Menu</div>
+          <div class="footer-links">
+            <a data-track-copy='products' href='/products'>Produk</a>
+            <a href='/faq'>FAQ</a>
+            <a data-track-copy='track' href='/track'>Lacak Pesanan</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Customer Care</div>
+          <div class="footer-links">
+            <a href="https://wa.me/628214570677" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+            <a href="mailto:mejaviskinc@gmail.com">mejaviskinc@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Mejavi Skin+. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/628214570677" target="_blank" rel="noopener noreferrer" aria-label="Chat dengan Mejavi Skin melalui WhatsApp">
+    <span class="wa-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img">
+        <path d="M20.5 11.5a8.5 8.5 0 0 1-12.65 7.42L3.5 20.5l1.43-4.2A8.5 8.5 0 1 1 20.5 11.5Z"></path>
+        <path d="M8.25 7.75c.55 4.2 3.8 7.45 8 8l1.1-2.05-2.65-1.15-.85 1c-1.65-.65-2.75-1.75-3.4-3.4l1-.85-1.15-2.65-2.05 1.1Z"></path>
+      </svg>
+    </span>
+    <span class="wa-text">Chat WhatsApp</span>
+  </a>
+
+  <script src="site-content.js"></script>
+  <script src="tracking.js"></script>
+  <script src="javi.js?v=20260921"></script>
+</body>
+</html>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="412f1382-fcb2-4353-9270-c725007db00c" data-app-host="app.netlify.com"></script>

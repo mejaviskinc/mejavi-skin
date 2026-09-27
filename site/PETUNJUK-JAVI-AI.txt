@@ -1,0 +1,116 @@
+PETUNJUK MENGAKTIFKAN JAVI — CUSTOMER SERVICE AI MEJAVI
+
+VERSI PRODUKSI JAVI: 2026.09.21
+
+Javi adalah widget customer service AI di seluruh halaman website Mejavi Skin.
+Javi menggunakan OpenAI Responses API melalui Netlify Function. Kunci API tidak
+ditaruh di HTML atau JavaScript browser sehingga tidak terlihat oleh pengunjung.
+
+FITUR YANG SUDAH TERSEDIA
+
+- Tampilan chat responsif untuk desktop dan ponsel.
+- Bahasa Indonesia dan English mengikuti tombol ID / EN pada website.
+- Pertanyaan cepat: pilih produk, BPOM, urutan pemakaian, dan hubungi tim.
+- Pengetahuan dasar tentang enam produk, harga website, nomor BPOM, ingredients,
+  rutinitas, pembelian, kontak, dan open collaboration.
+- Riwayat percakapan tersimpan hanya selama tab browser masih dibuka.
+- Jalur bantuan manusia melalui WhatsApp.
+- Pembatasan panjang pesan, pembatasan permintaan dasar, timeout, dan pesan error.
+- Instruksi keselamatan agar AI tidak mendiagnosis, menjanjikan kesembuhan,
+  meminta OTP, atau mengarang stok/pengiriman.
+
+FILE JAVI
+
+- Website Baru/javi.js              : tampilan dan interaksi widget di browser
+- netlify/functions/javi.mjs        : backend aman yang memanggil OpenAI API
+- netlify.toml                      : konfigurasi publish dan Netlify Functions
+- Website Baru/style.css            : desain widget Javi
+
+CARA MENGAKTIFKAN DI NETLIFY
+
+1. Ekstrak ZIP, lalu gunakan folder paling luar sebagai root proyek. Folder root
+   tersebut berisi netlify.toml, folder netlify, dan folder Website Baru.
+
+2. Deploy folder root proyek melalui repository Git yang terhubung ke Netlify
+   atau menggunakan Netlify CLI. Jangan hanya mengunggah isi folder Website Baru,
+   karena backend Javi berada di luar folder publik agar lebih aman.
+
+3. Buka dashboard Netlify untuk website Mejavi, lalu masuk ke pengaturan
+   Environment variables.
+
+4. Tambahkan variable berikut:
+
+   Nama  : OPENAI_API_KEY
+   Nilai : kunci API milik akun OpenAI Anda yang diawali sk-
+
+   Isi kolom Value hanya dengan key. Jangan menulis OPENAI_API_KEY=, jangan
+   memakai tanda kutip, dan jangan menaruh key di kolom nama variable.
+
+   Pilih "All scopes" dan "Same value for all deploy contexts". Opsi "Contains
+   secret values" disarankan agar nilai tidak dapat dibaca kembali dari UI,
+   tetapi opsi itu tidak mengubah cara function membaca key.
+
+   Jika sebelumnya pernah membuat variable OPENAI_RESPONSES_URL, hapus variable
+   tersebut. Alamat Responses API sudah dikunci aman di backend dan tidak perlu
+   dibuat sebagai environment variable.
+
+5. Opsional, tambahkan model yang ingin digunakan:
+
+   Nama  : OPENAI_MODEL
+   Nilai : gpt-5.6-luna
+
+   Gunakan scope "Functions" atau semua scope untuk variable ini juga.
+
+   Jika OPENAI_MODEL tidak dibuat, sistem memakai gpt-5.6-luna sebagai default.
+
+6. Pastikan akun OpenAI API memiliki billing/kredit aktif dan akses ke model.
+   Langganan ChatGPT dan billing OpenAI API adalah dua layanan terpisah.
+
+7. Jalankan Deploy ulang setelah menyimpan atau mengubah environment variable.
+   Setelah selesai, buka website dan tekan tombol
+   "Tanya Javi" di pojok kanan bawah.
+
+8. Buka https://DOMAIN-ANDA/api/javi. Versi terbaru harus menampilkan JSON yang
+   berisi service "javi", version "2026.09.21", dan configured true. Endpoint
+   ini tidak menampilkan API key.
+
+9. Kirim satu pesan uji melalui widget. Status baru berubah menjadi "Online"
+   setelah OpenAI berhasil mengirim jawaban. Jika hanya tertulis "Siap diuji",
+   key sudah terbaca tetapi jawaban OpenAI belum berhasil.
+
+STATUS DAN PESAN DIAGNOSIS
+
+- "AI sudah dikonfigurasi • Siap diuji" berarti OPENAI_API_KEY sudah terbaca
+  oleh Netlify Function, tetapi belum membuktikan bahwa key/billing/model valid.
+- Status berubah menjadi "Online" setelah Javi berhasil menerima jawaban dari
+  OpenAI.
+- Jika key, billing, atau model bermasalah, chat sekarang menampilkan penyebab
+  yang lebih spesifik tanpa memperlihatkan rahasia API.
+
+PENTING UNTUK KEAMANAN DAN BIAYA
+
+- Jangan pernah menulis OPENAI_API_KEY ke index.html, javi.js, script.js,
+  netlify.toml, atau mengirimkannya melalui chat pelanggan.
+- Langganan ChatGPT dan penggunaan OpenAI API adalah layanan terpisah. Permintaan
+  Javi menggunakan saldo/billing API pada akun pemilik kunci.
+- Pembatasan permintaan di fungsi ini adalah perlindungan dasar. Untuk trafik
+  besar, tambahkan rate limiting permanen, bot protection, dan pemantauan biaya.
+- Javi bukan dokter dan bukan pengganti konsultasi tenaga kesehatan.
+- Perbarui pengetahuan produk di ../netlify/functions/javi.mjs jika harga, ukuran,
+  ingredients, kontak, atau data BPOM berubah.
+
+PREVIEW LOKAL
+
+Jika Website Baru/index.html dibuka langsung dari Acode atau file manager, tampilan widget
+tetap muncul tetapi respons OpenAI tidak dapat berjalan karena Netlify Function
+belum aktif. Untuk menguji fungsi secara lokal, gunakan Netlify CLI dan jalankan:
+
+netlify dev
+
+Kemudian buka alamat lokal yang ditampilkan oleh Netlify CLI.
+
+JAVI DAN CODEX
+
+Javi tidak tersambung ke isi percakapan Codex ini. Javi terintegrasi dengan model
+OpenAI melalui API khusus milik website. Kepribadian, pengetahuan Mejavi, batasan,
+dan instruksi layanan Javi sudah ditanamkan pada fungsi backend.

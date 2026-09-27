@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=412f1382-fcb2-4353-9270-c725007db00c
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Mejavi Skin | Skincare & Body Care</title>
+
+  <meta name="description" content="Mejavi Skin menghadirkan skincare dan body care untuk melengkapi ritual perawatan harian.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="home">
+
+
+  <!-- ===============================
+       LOADER
+  ================================ -->
+
+  <div id="loader">
+    <div class="loader-wrap">
+      <img
+        class="loader-logo"
+        src="logo-mejavi.png"
+        alt="Mejavi Skin"
+      >
+
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===============================
+       HEADER
+  ================================ -->
+
+  <header>
+    <div class="container navbar">
+
+      <a class='brand' data-page-link='home' href='/'>
+        <img src="logo-mejavi.png" alt="Mejavi Skin Logo">
+
+        <div class="brand-text">
+          <strong>MEJAVI SKIN+</strong>
+          <small>SKIN & BODY CARE</small>
+        </div>
+      </a>
+
+      <nav class="desktop-nav">
+        <a data-id='navHome' data-page-link='home' href='/'>Home</a>
+        <a data-id='navAbout' data-page-link='about' href='/about'>Tentang</a>
+        <a data-id='navProducts' data-page-link='products' href='/products'>Produk</a>
+        <a data-id='navIngredients' data-page-link='ingredients' href='/ingredients'>Ingredients</a>
+        <a data-id='navVideo' data-page-link='video' href='/video'>Video</a>
+        <a data-id='navReviews' data-page-link='reviews' href='/reviews'>Review</a>
+        <a data-id='navCollaboration' data-page-link='collaboration' href='/collaboration'>Kolaborasi</a>
+        <a data-page-link='faq' href='/faq'>FAQ</a>
+      </nav>
+
+      <div class="nav-tools">
+        <button class="lang-btn" id="langBtn">
+          ID / EN
+        </button>
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Menu"
+        >
+          ☰
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ===============================
+       MOBILE MENU
+  ================================ -->
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-head">
+      <img src="logo-mejavi.png" alt="Mejavi">
+
+      <button class="close-menu" id="closeMenu">
+        ×
+      </button>
+    </div>
+
+    <nav class="mobile-links">
+      <a data-id='navHome' data-page-link='home' href='/'>Home</a>
+      <a data-id='navAbout' data-page-link='about' href='/about'>Tentang</a>
+      <a data-id='navProducts' data-page-link='products' href='/products'>Produk</a>
+      <a data-id='navIngredients' data-page-link='ingredients' href='/ingredients'>
+        Ingredients
+      </a>
+      <a data-id='navVideo' data-page-link='video' href='/video'>Video</a>
+      <a data-id='navReviews' data-page-link='reviews' href='/reviews'>Review</a>
+      <a data-id='navCollaboration' data-page-link='collaboration' href='/collaboration'>
+        Kolaborasi
+      </a>
+      <a data-page-link='faq' href='/faq'>FAQ</a>
+    </nav>
+
+  </aside>
+
+  <main class="page-main page-home">
+
+<section class="hero" id="home">
+      <div class="hero-background" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="produk.png" tabindex="-1">
+          <source src="mejavi-hero.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero-background-shade" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+
+        <div class="hero-copy reveal">
+
+          <span class="eyebrow" data-id="heroTag">
+            ✦ Everyday Skin Ritual
+          </span>
+
+          <h1 data-id="heroTitle">
+            <span class="hero-title-lead">Rawat kulitmu.</span>
+            <span class="hero-title-main">Temukan glow-mu.</span>
+          </h1>
+
+          <p data-id="heroDesc">
+            Mejavi Skin menghadirkan rangkaian skincare dan body care
+            yang dirancang untuk membantu merawat kulit agar tampak
+            sehat, lembap, cerah dan terawat setiap hari.
+          </p>
+
+          <div class="hero-actions">
+
+            <a class='btn btn-dark' data-id='shopNow' data-page-link='products' href='/products'>
+              Belanja Sekarang
+            </a>
+
+            <a class='btn btn-light' data-id='watchVideo' data-page-link='video' href='/video'>
+              ▶ Lihat Video
+            </a>
+
+          </div>
+
+          <div class="hero-trust">
+
+            <div class="trust">
+              <span class="check">✓</span>
+              <span data-id="trust1">Pilihan skincare harian</span>
+            </div>
+
+            <div class="trust">
+              <span class="check">✓</span>
+              <span data-id="trust2">Checkout mudah</span>
+            </div>
+
+            <div class="trust">
+              <span class="check">✓</span>
+              <span data-id="trust3">Made with care</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-image reveal">
+
+          <div class="hero-image-main">
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="produk.png"
+              aria-label="Video rangkaian produk Mejavi Skin"
+            >
+              <source src="hero_bg.mp4" type="video/mp4">
+              Browser Anda tidak mendukung video.
+            </video>
+          </div>
+
+          <div class="float-card">
+            <strong data-id="heroCard">
+              Your daily skin ritual
+            </strong>
+
+            <span data-id="heroCardSub">
+              Skincare • Body Care • Self Care
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+<section class="benefits">
+
+      <div class="container">
+
+        <div class="benefits-grid">
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">✦</div>
+            <h3 data-id="benefit1Title">
+              Daily Skincare
+            </h3>
+            <p data-id="benefit1Desc">
+              Mejavi Skin adalah brand perawatan kulit harian yang diformulasikan dengan bahan aktif pilihan dan teruji klinis.
+
+              Misi kami sederhana: membuat rutinitas skincare jadi mudah, efektif, dan menyenangkan.
+
+              Semua produk Mejavi Skin telah melalui pengujian dermatologi, terdaftar BPOM, dan diformulasikan khusus untuk iklim tropis.
+
+              Mulai rutinitasmu hari ini untuk hasil yang terlihat nyata.
+            </p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">◌</div>
+            <h3 data-id="benefit2Title">
+              Skin Comfort
+            </h3>
+            <p data-id="benefit2Desc">
+              Kami meyakini bahwa kulit sehat dimulai dari rasa nyaman.
+
+              Kami menciptakan produk skincare dengan formula lembut, tanpa alkohol dan pewangi berlebih, khusus untuk menenangkan serta menguatkan skin barrier kamu.
+
+              No more burning, no more tightness. Just pure comfort, every day.
+            </p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">♧</div>
+            <h3 data-id="benefit3Title">
+              Selected Ingredients
+            </h3>
+            <p data-id="benefit3Desc">
+              Di balik setiap kemasan Mejavi Skin, terdapat bahan-bahan pilihan yang sudah teruji.
+
+              Kami memilih setiap ingredient bukan karena tren, tetapi karena manfaatnya nyata untuk kulit Indonesia.
+
+              No filler. Just what your skin needs.
+            </p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">♡</div>
+            <h3 data-id="benefit4Title">
+              Self Care
+            </h3>
+            <p data-id="benefit4Desc">
+              Self care adalah komitmen terhadap kesehatan jangka panjang.
+
+              Di Mejavi Skin, kami percaya bahwa perawatan diri dimulai dari rutinitas yang konsisten, efektif, dan berbasis riset.
+
+              Setiap produk diformulasikan dengan selected ingredients yang teruji secara dermatologi untuk mendukung fungsi skin barrier dan kesehatan kulit secara menyeluruh.
+
+              Karena kulit yang sehat adalah fondasi dari rasa percaya diri.
+            </p>
+          </article>
+
+        </div>
+
+        <aside class="bpom-verification reveal" aria-label="Informasi registrasi BPOM">
+          <div class="bpom-badge" aria-hidden="true">
+            <span class="bpom-shield">
+              <svg viewBox="0 0 48 54" role="img">
+                <path d="M24 3 43 10v14c0 12.3-7.6 22.3-19 27C12.6 46.3 5 36.3 5 24V10L24 3Z"></path>
+                <path d="m15.5 26.5 5.5 5.5 12-13"></path>
+              </svg>
+            </span>
+            <span class="bpom-wordmark">
+              <strong>BPOM</strong>
+              <small>TERDAFTAR</small>
+            </span>
+          </div>
+
+          <div class="bpom-copy">
+            <span class="bpom-kicker" data-id="bpomKicker">Keamanan Produk</span>
+            <h2 data-id="bpomTitle">Terdaftar BPOM</h2>
+            <p data-id="bpomDesc">
+              Nomor notifikasi BPOM setiap produk dapat diperiksa pada kemasan dan melalui situs resmi Cek BPOM.
+            </p>
+          </div>
+
+          <a
+            class="bpom-link"
+            href="https://cekbpom.pom.go.id/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-id="bpomCheck"
+          >
+            Cek registrasi resmi ↗
+          </a>
+        </aside>
+
+        <section class="collagen-reference reveal" aria-labelledby="collagen-reference-title">
+          <div class="collagen-reference-media">
+            <img
+              src="images/references/kolagen-sapi-mejavi.webp"
+              alt="Produk Mejavi Skin+ dengan kandungan kolagen sapi"
+              loading="lazy"
+            >
+
+            <span class="collagen-document-label" data-id="collagenDocumentLabel">
+              Dokumen edukasi · 13 halaman
+            </span>
+          </div>
+
+          <div class="collagen-reference-copy">
+            <span class="collagen-reference-kicker" data-id="collagenKicker">
+              Referensi Ilmiah
+            </span>
+
+            <h2 id="collagen-reference-title" data-id="collagenTitle">
+              Keunggulan Kolagen Sapi untuk Kosmetik
+            </h2>
+
+            <p data-id="collagenDesc">
+              Pelajari peran kolagen pada struktur kulit, perbandingan kolagen sapi dan kolagen ikan,
+              keunggulannya dalam formulasi kosmetik, serta produk Mejavi Skin+ yang menggunakan kolagen sapi.
+            </p>
+
+            <div class="collagen-highlights" aria-label="Ringkasan dokumen">
+              <span data-id="collagenPoint1">Kolagen tipe I &amp; III</span>
+              <span data-id="collagenPoint2">Stabilitas termal tinggi</span>
+              <span data-id="collagenPoint3">Profil aroma netral</span>
+            </div>
+
+            <div class="collagen-reference-actions">
+              <a
+                class="collagen-primary-link"
+                href="documents/keunggulan-kolagen-sapi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-id="collagenRead"
+              >
+                Baca PDF lengkap ↗
+              </a>
+
+              <a
+                class="collagen-download-link"
+                href="documents/keunggulan-kolagen-sapi.pdf"
+                download="Keunggulan-Kolagen-Sapi-untuk-Kosmetik.pdf"
+                data-id="collagenDownload"
+              >
+                Unduh PDF
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </section>
+
+<section class="newsletter">
+
+      <div class="container">
+
+        <div class="newsletter-inner reveal">
+
+          <h2 data-id="newsletterTitle">
+            Stay close with Mejavi.
+          </h2>
+
+          <p data-id="newsletterDesc">
+            Dapatkan informasi produk dan kabar terbaru dari Mejavi Skin.
+          </p>
+
+          <form
+            id="newsletterForm"
+            class="newsletter-form"
+          >
+
+            <input
+              type="email"
+              id="newsletterEmail"
+              placeholder="Email kamu"
+              required
+            >
+
+            <button
+              class="btn btn-dark"
+              type="submit"
+              data-id="subscribeBtn"
+            >
+              Subscribe
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+<!-- ===============================
+       FOOTER
+  ================================ -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <img
+            src="logo-mejavi.png"
+            class="footer-logo"
+            alt="Mejavi"
+          >
+
+          <p class="footer-about" data-id="footerDesc">
+            Mejavi Skin menghadirkan rangkaian skincare dan body care
+            untuk melengkapi rutinitas perawatan kulit sehari-hari.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-title" data-id="footerMenu">
+            Menu
+          </div>
+
+          <div class="footer-links">
+            <a data-id='navAbout' data-page-link='about' href='/about'>Tentang</a>
+            <a data-id='navProducts' data-page-link='products' href='/products'>Produk</a>
+            <a data-page-link='ingredients' href='/ingredients'>Ingredients</a>
+            <a data-page-link='video' href='/video'>Video</a>
+            <a data-id='navCollaboration' data-page-link='collaboration' href='/collaboration'>Kolaborasi</a>
+            <a data-page-link='faq' href='/faq'>FAQ</a>
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-title" data-id="footerFollow">
+            Follow Us
+          </div>
+
+          <div class="footer-links">
+
+            <a
+              href="https://www.instagram.com/mejaviskinc"
+              target="_blank"
+            >
+              Instagram ↗
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@mejaviskinplus"
+              target="_blank"
+            >
+              TikTok ↗
+            </a>
+
+            <a href="mailto:mejaviskinc@gmail.com">
+              mejaviskinc@gmail.com
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+
+        <span>
+          © <span id="year"></span> Mejavi Skin. All rights reserved.
+        </span>
+
+        <span>
+          Di Distribusikan Oleh PT SATU SATU NYA
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ===============================
+       PRODUCT MODAL
+  ================================ -->
+
+  <div class="modal" id="productModal">
+
+    <div class="modal-box">
+
+      <button
+        class="modal-close"
+        id="modalClose"
+      >
+        ×
+      </button>
+
+      <div class="modal-grid">
+
+        <div class="modal-img">
+          <img id="modalImage" alt="">
+        </div>
+
+
+        <div class="modal-content">
+
+          <span class="category" id="modalCategory"></span>
+
+          <h2 id="modalName"></h2>
+
+          <div
+            class="modal-price"
+            id="modalPrice"
+          ></div>
+
+
+          <div
+            class="variant-wrap"
+            id="variantWrap"
+          ></div>
+
+
+          <div class="modal-section">
+            <strong data-id="modalBenefit">
+              Manfaat
+            </strong>
+
+            <p id="modalBenefits"></p>
+          </div>
+
+
+          <div class="modal-section">
+            <strong data-id="modalIngredients">
+              Ingredients
+            </strong>
+
+            <p id="modalIngredientsText"></p>
+          </div>
+
+
+          <div class="modal-section">
+            <strong data-id="modalHow">
+              Cara Pakai
+            </strong>
+
+            <p id="modalHowText"></p>
+          </div>
+
+
+          <button
+            class="checkout"
+            id="checkoutBtn"
+            data-id="buyLynk"
+          >
+            Beli melalui Lynk.id
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- WhatsApp -->
+  <a
+    class="wa-float"
+    href="https://wa.me/628214570677"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat dengan Mejavi Skin melalui WhatsApp"
+  >
+    <span class="wa-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img">
+        <path d="M20.5 11.5a8.5 8.5 0 0 1-12.65 7.42L3.5 20.5l1.43-4.2A8.5 8.5 0 1 1 20.5 11.5Z"></path>
+        <path d="M8.25 7.75c.55 4.2 3.8 7.45 8 8l1.1-2.05-2.65-1.15-.85 1c-1.65-.65-2.75-1.75-3.4-3.4l1-.85-1.15-2.65-2.05 1.1Z"></path>
+      </svg>
+    </span>
+    <span class="wa-text" data-id="whatsappChat">Chat WhatsApp</span>
+  </a>
+
+  <script src="site-content.js"></script>
+  <script src="script.js"></script>
+  <script src="store.js"></script>
+  <script src="javi.js?v=20260921"></script>
+
+</body>
+</html>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="412f1382-fcb2-4353-9270-c725007db00c" data-app-host="app.netlify.com"></script>

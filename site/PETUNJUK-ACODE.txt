@@ -1,0 +1,80 @@
+PETUNJUK WEBSITE MEJAVI SKIN — VERSI MULTI-PAGE
+
+1. Buka folder "Website Baru" menggunakan Acode.
+2. Jalankan atau preview file index.html sebagai halaman utama.
+3. Jangan memindahkan file HTML, CSS, JavaScript, gambar, atau video secara terpisah karena semuanya saling terhubung melalui path relatif.
+
+STRUKTUR HALAMAN
+
+- index.html          : Beranda dengan video background Hero, benefit, dan newsletter
+- about.html          : Tentang Mejavi Skin, Visi, dan Misi
+- products.html       : Daftar produk, detail, ukuran, harga, dan link pembelian
+- ingredients.html    : Key Ingredients dan penjelasannya
+- video.html          : Penjelasan proses produksi dan video Mejavi
+- reviews.html        : Ulasan pelanggan
+- collaboration.html  : Open Collaboration dan tombol pengajuan
+- faq.html            : Pertanyaan yang sering diajukan
+
+FILE UTAMA
+
+- style.css           : Seluruh pengaturan desain dan tampilan responsif
+- script.js           : Data produk, Ingredients, bahasa ID/EN, modal, hamburger, FAQ, dan fungsi website
+- site-content.js     : Mengambil konten yang sudah dipublikasikan dari backend
+- admin.html          : Halaman login dan panel Backend Website
+- admin.js            : Login, Simpan Draft, Publikasikan, serta editor konten
+- admin.css           : Tampilan panel Backend Website
+- content-default.json: Cadangan data website saat backend belum tersedia
+- javi.js             : Tampilan dan interaksi Customer Service AI Javi di seluruh halaman
+- ../netlify/functions/javi.mjs : Backend aman untuk menghubungkan Javi ke OpenAI API
+- ../netlify.toml     : Konfigurasi deploy dan Netlify Functions
+- mejavi-hero.mp4     : Video proses produksi untuk background Beranda dan halaman Video
+
+CUSTOMER SERVICE AI — JAVI
+
+- Tombol "Tanya Javi" tersedia di seluruh halaman, berdampingan dengan tombol WhatsApp.
+- Javi dapat membantu pertanyaan produk, ingredients, cara pakai, harga, BPOM, rutinitas, dan kolaborasi.
+- Bahasa Javi mengikuti pilihan ID / EN pada website.
+- Agar respons AI aktif, ikuti langkah lengkap pada file PETUNJUK-JAVI-AI.txt.
+- Jangan pernah menaruh OPENAI_API_KEY di file HTML, CSS, atau JavaScript browser.
+
+TOMBOL WHATSAPP
+
+- Tombol WhatsApp tersedia di semua halaman dan sudah memiliki animasi pulse, glow, serta gerakan ikon.
+- Nomor tujuan dapat diubah pada tautan https://wa.me/ di setiap file HTML.
+
+TAMPILAN BERANDA
+
+- Judul Hero memakai font Playfair Display dan teks pendamping memakai Poppins, mengikuti gaya website referensi Mejavi.
+- Font dimuat melalui Google Fonts saat perangkat terhubung internet; tersedia font cadangan agar website tetap terbaca saat offline.
+- Tingkat kecerahan video dan lapisan overlay Hero dapat diubah pada bagian HERO di style.css.
+- Empat kartu benefit memakai deskripsi lengkap dan tersedia dalam Bahasa Indonesia serta Inggris.
+- Badge BPOM memiliki tautan ke situs resmi Cek BPOM; tambahkan nomor notifikasi resmi pada informasi produk atau kemasan bila diperlukan.
+
+REGISTRASI BPOM PER PRODUK
+
+- Keenam produk sudah memiliki nomor notifikasi BPOM, nama terdaftar, industri kosmetika, masa berlaku, kemasan pada dokumen, tautan pemeriksaan resmi, dan gambar dokumen/QR masing-masing.
+- Informasi tersebut tersimpan pada properti "bpom" di setiap produk dalam script.js.
+- File bukti berada di folder images/bpom dan dapat dibuka melalui modal Detail produk.
+- Informasi kemasan ditampilkan persis berdasarkan dokumen yang diberikan; perbarui data apabila tersedia dokumen registrasi atau ukuran kemasan baru.
+
+CARA MENGUBAH
+
+- Untuk mengubah tampilan, warna, ukuran, atau layout: edit style.css.
+- Untuk mengubah data produk, harga, ingredients, manfaat, cara pakai, link Lynk.id, atau terjemahan: edit script.js.
+- Untuk mengubah isi khusus suatu halaman: buka file HTML halaman tersebut.
+- Untuk menambahkan menu baru, tambahkan link halaman tersebut pada header dan mobile menu di seluruh file HTML, lalu tambahkan data terjemahannya ke script.js bila diperlukan.
+
+SAAT DI-UPLOAD KE HOSTING
+
+Untuk website lengkap dengan respons AI, deploy folder paling luar hasil ekstrak ZIP—bukan hanya folder "Website Baru". Pada folder paling luar terdapat netlify.toml, folder netlify, dan folder Website Baru. Konfigurasi akan mempublikasikan isi Website Baru sekaligus membangun backend Javi secara terpisah dan aman.
+
+BACKEND WEBSITE
+
+- Preview file lewat Acode dapat dipakai untuk melihat tampilan website, tetapi login backend memerlukan internet dan website yang sudah dideploy.
+- Setelah deploy, buka /admin pada domain website.
+- Login memakai akun MEJAVI WAREHOUSE dengan peran Kepala Gudang.
+- Simpan Draft tidak mengubah tampilan publik.
+- Publikasikan akan mengirim konten terbaru ke seluruh halaman website.
+- Panduan lengkap tersedia pada file ../BACKEND-WEBSITE.txt.
+
+Gunakan deploy berbasis Git atau Netlify CLI, lalu tambahkan OPENAI_API_KEY sebagai Environment variable di Netlify. Membuka Website Baru/index.html secara langsung tetap menampilkan widget, tetapi tidak dapat menjalankan respons OpenAI.
