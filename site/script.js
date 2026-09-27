@@ -2248,6 +2248,10 @@
       setTimeout(initReveal, 50);
     }
 
+    // Dipanggil oleh store.js setelah katalog terbaru selesai diambil dari Warehouse.
+    // Tanpa bridge ini, data berubah di memori tetapi kartu produk tidak dirender ulang.
+    window.renderProducts = renderProducts;
+
     function attachSwipeGallery(element, imageCount, onChange) {
       if (!element || imageCount < 2) return;
 
