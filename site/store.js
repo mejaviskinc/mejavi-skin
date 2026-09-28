@@ -449,7 +449,8 @@
       });
       if (!response.ok) return;
       const payload = await response.json();
-      const catalog = new Map((payload.products || []).map((item) => [item.sku, item]));
+      const products = Array.isArray(payload.products) ? payload.products : [];
+      const catalog = new Map(products.map((item) => [String(item.sku), item]));
 
       (window.mejaviProducts || []).forEach((product) => {
         product.variants.forEach((variant) => {
@@ -472,10 +473,21 @@
         });
       });
 
+      window.mejaviStorefrontCatalog = products;
+      window.mejaviStorefrontCatalogMeta = {
+        updatedAt: payload.catalog_updated_at || null,
+        syncedAt: payload.synced_at || null
+      };
       catalogLoaded = true;
       if (typeof window.renderProducts === "function") window.renderProducts();
       decorateProductStock();
-      window.dispatchEvent(new CustomEvent("mejavi:catalog-synced"));
+      window.dispatchEvent(new CustomEvent("mejavi:catalog-synced", {
+        detail: {
+          catalog: products,
+          updatedAt: payload.catalog_updated_at || null,
+          syncedAt: payload.synced_at || null
+        }
+      }));
     } catch (_error) {
       catalogLoaded = false;
     }
