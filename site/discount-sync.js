@@ -19,6 +19,7 @@
       const response = await fetch(API + "?refresh=" + Date.now(), { cache: "no-store" });
       if (!response.ok) return;
       const active = ((await response.json()).products || []).filter((item) => item.discount_active);
+      if (typeof window.renderProducts === "function") window.renderProducts();
       activeSignature = active.map((item) => item.sku + ":" + item.price + ":" + item.original_price + ":" + item.discount_value).sort().join("|");
       const count = document.getElementById("mejavi-notification-count");
       const panel = document.getElementById("mejavi-notification-panel");
