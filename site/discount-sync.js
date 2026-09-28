@@ -18,8 +18,21 @@
     try {
       const response = await fetch(API + "?refresh=" + Date.now(), { cache: "no-store" });
       if (!response.ok) return;
-      const active = ((await response.json()).products || []).filter((item) => item.discount_active);
+      const catalog = ((await response.json()).products || []);
+      const active = catalog.filter((item) => item.discount_active);
       if (typeof window.renderProducts === "function") window.renderProducts();
+      document.querySelectorAll("#productGrid .product-card").forEach((card) => {
+        const title = card.querySelector("h3")?.textContent?.trim().toLowerCase();
+        const match = catalog.find((item) => title && item.name.toLowerCase() === title);
+        const price = card.querySelector(".card-price");
+        if (!price || !match) return;
+        let badge = card.querySelector(".live-discount-badge");
+        if (match.discount_active) {
+          if (!badge) { badge = document.createElement("span"); badge.className = "live-discount-badge"; price.appendChild(badge); }
+          badge.textContent = match.discount_type === "percentage" ? "Diskon " + Number(match.discount_value) + "%" : "Hemat " + format(match.discount_value);
+          badge.style.cssText = "display:inline-block;margin-left:8px;padding:3px 7px;border-radius:999px;background:#211b16;color:#fff;font-size:11px;font-weight:700";
+        } else if (badge) badge.remove();
+      });
       activeSignature = active.map((item) => item.sku + ":" + item.price + ":" + item.original_price + ":" + item.discount_value).sort().join("|");
       const count = document.getElementById("mejavi-notification-count");
       const panel = document.getElementById("mejavi-notification-panel");
