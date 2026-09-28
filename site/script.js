@@ -2248,6 +2248,9 @@
       setTimeout(initReveal, 50);
     }
 
+    // Bridge publik untuk sinkronisasi harga, diskon, dan stok dari Warehouse.
+    window.mejaviProducts = products;
+
     // Dipanggil oleh store.js setelah katalog terbaru selesai diambil dari Warehouse.
     // Tanpa bridge ini, data berubah di memori tetapi kartu produk tidak dirender ulang.
     window.renderProducts = renderProducts;
