@@ -3,6 +3,7 @@
 
   const API = "https://yqutzzhkuuehvmuqzjvb.supabase.co/functions/v1/mejavi-storefront";
   const DISMISSED_KEY = "mejavi_dismissed_promos_v1";
+  const CATALOG_EVENT = "mejavi:catalog-synced";
   let latestCatalog = [];
 
   const number = (value, fallback = 0) => {
@@ -38,7 +39,8 @@
     item?.discount_type,
     item?.discount_value,
     item?.discount_starts_at,
-    item?.discount_ends_at
+    item?.discount_ends_at,
+    item?.updated_at
   ].map((value) => String(value ?? "")).join("|");
 
   const discountLabel = (item) => {
@@ -169,6 +171,12 @@
     });
   }
 
+  function applyCatalog(catalog) {
+    latestCatalog = Array.isArray(catalog) ? catalog : [];
+    applyCardPromos(latestCatalog);
+    renderNotificationPanel(latestCatalog);
+  }
+
   function renderNotificationPanel(catalog) {
     const panel = document.getElementById("mejavi-notification-panel");
     const count = document.getElementById("mejavi-notification-count");
@@ -280,9 +288,7 @@
       if (!response.ok) return;
 
       const payload = await response.json();
-      latestCatalog = Array.isArray(payload.products) ? payload.products : [];
-      applyCardPromos(latestCatalog);
-      renderNotificationPanel(latestCatalog);
+      applyCatalog(payload.products);
     } catch (_error) {
       // Website tetap memakai harga bawaan ketika Warehouse tidak merespons.
     }
@@ -292,6 +298,11 @@
     if (latestCatalog.length) applyCardPromos(latestCatalog);
   }
 
+  setupBell();
+  window.addEventListener(CATALOG_EVENT, (event) => {
+    const sharedCatalog = event.detail?.catalog || window.mejaviStorefrontCatalog;
+    if (Array.isArray(sharedCatalog)) applyCatalog(sharedCatalog);
+  });
   sync();
   window.setInterval(sync, 15000);
   window.addEventListener("mejavi:variant-change", refreshCards);
