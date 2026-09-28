@@ -30,6 +30,7 @@ jobs:
           node scripts/validate-site.mjs
           node --check site/script.js
           node --check site/store.js
+          node --check site/discount-sync.js
           node --check site/tracking.js
           node --check site/javi.js
           node --check site/site-content.js
