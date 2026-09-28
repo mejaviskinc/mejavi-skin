@@ -475,6 +475,7 @@
       catalogLoaded = true;
       if (typeof window.renderProducts === "function") window.renderProducts();
       decorateProductStock();
+      window.dispatchEvent(new CustomEvent("mejavi:catalog-synced"));
     } catch (_error) {
       catalogLoaded = false;
     }
