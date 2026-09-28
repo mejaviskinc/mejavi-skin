@@ -1,6 +1,5 @@
 (function () {
   const API = "https://yqutzzhkuuehvmuqzjvb.supabase.co/functions/v1/mejavi-storefront";
-  const DISMISS_KEY = "mejavi_discount_notice_dismissed";
   const format = (value) => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(Number(value || 0));
   let activeSignature = "";
   function setupBell() {
@@ -41,8 +40,7 @@
       count.style.display = active.length ? "block" : "none";
       panel.innerHTML = active.length ? "<strong>Promo sedang berlangsung</strong><div style='margin-top:8px'>" + active.map((item) => "<div style='padding:8px 0;border-bottom:1px solid #f0ece7'><b>" + item.name + "</b><br><s>" + format(item.original_price) + "</s> <strong>" + format(item.price) + "</strong></div>").join("") + "</div><button type='button' id='mejavi-dismiss-notif' style='margin-top:10px;border:0;background:#211b16;color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer'>Tutup notifikasi</button>" : "Tidak ada promo aktif saat ini.";
       const dismiss = document.getElementById("mejavi-dismiss-notif");
-      if (dismiss) dismiss.onclick = () => { localStorage.setItem(DISMISS_KEY, activeSignature); panel.hidden = true; count.style.display = "none"; };
-      if (localStorage.getItem(DISMISS_KEY) === activeSignature) { count.style.display = "none"; panel.hidden = true; }
+      if (dismiss) dismiss.onclick = () => { panel.hidden = true; };
     } catch (_) {}
   }
   sync();
