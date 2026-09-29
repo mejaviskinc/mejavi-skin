@@ -324,26 +324,26 @@
 
         ingredients: {
           id:
-            " Collagen,Niacinamide,Argireline• Lumicease, Ethyl Ascorbic Acid (EAA), Aloe Vera Extract,Lipomoist.",
+            "Water, Sodium Acrylates Copolymer (and) Lecithin, Coco-Caprylate/Caprate, Caprylic/Capric Triglyceride, Titanium Dioxide, Inulin, Niacinamide, Alpha-Arbutin, 3-O-Ethyl Ascorbic Acid (and) Polyglyceryl-10 Oleate (and) Polyglyceryl-6 Laurate (and) Sorbitan Palmitate (and) Magnolol (and) Honokiol andAqua, Glycerin, WaterAqua (and) Acetyl Hexapeptide-8 (and) Caprylyl Glycol, Water, Butylene Glycol, Glycerin, 1,2-Hexanediol, Ethyl Hexanediol, Lactobacillus Ferment, Goat Milk Extract, Glycerin (and) Water (and) Hydrolyzed Pea Protein (and) Glucose (and) Sodium Chloride (and) Sodium Succinate, WaterAqua) (and) Xanthan Gum (and) Caprylyl Glycol (and) Phenoxyethanol (and) Glucose (and) Chondrus Crispus Extract (and) Ethylhexylglycerin, Sodium DNA, Centella Asiatica Extract, Phenoxyethanol (and) Glyceryl Laurate, Fragrance.",
 
           en:
-            "Collagen,Niacinamide,Argireline• Lumicease, Ethyl Ascorbic Acid (EAA), Aloe Vera Extract,Lipomoist."
+            "Water, Sodium Acrylates Copolymer (and) Lecithin, Coco-Caprylate/Caprate, Caprylic/Capric Triglyceride, Titanium Dioxide, Inulin, Niacinamide, Alpha-Arbutin, 3-O-Ethyl Ascorbic Acid (and) Polyglyceryl-10 Oleate (and) Polyglyceryl-6 Laurate (and) Sorbitan Palmitate (and) Magnolol (and) Honokiol andAqua, Glycerin, WaterAqua (and) Acetyl Hexapeptide-8 (and) Caprylyl Glycol, Water, Butylene Glycol, Glycerin, 1,2-Hexanediol, Ethyl Hexanediol, Lactobacillus Ferment, Goat Milk Extract, Glycerin (and) Water (and) Hydrolyzed Pea Protein (and) Glucose (and) Sodium Chloride (and) Sodium Succinate, WaterAqua) (and) Xanthan Gum (and) Caprylyl Glycol (and) Phenoxyethanol (and) Glucose (and) Chondrus Crispus Extract (and) Ethylhexylglycerin, Sodium DNA, Centella Asiatica Extract, Phenoxyethanol (and) Glyceryl Laurate, Fragrance."
         },
 
         benefits: {
           id:
-            "Krim pelembab (Daily Moisturizer) yang dapat mengurangi kulit eksim, mencerahkan kulit dan memiliki kandungan antioksidant yang baik untuk menyehatkan kulit.",
+            "MejaviSkin+ Fresh Hydra Creme dapat membantu mencerahkan kulit, membantu meratakan warna kulit, membantu menjaga kelembapan kulit, membantu mengurangi kerutan di kulit wajah, serta membantu melindungi kulit dari sinar UV.",
 
           en:
-            "A daily moisturizing cream formulated to help soothe eczema-prone skin, brighten the skin, and provide antioxidant benefits that help maintain healthy-looking skin."
+            "MejaviSkin+ Fresh Hydra Creme may help brighten the skin, help even the appearance of skin tone, help maintain skin moisture, help reduce the appearance of facial wrinkles, and help protect the skin from UV exposure."
         },
 
         how: {
           id:
-            "Bersihkan wajah terlebih dahulu, kemudian keringkan dengan lembut. Ambil Lumiere Essence Hydra Cream secukupnya, lalu aplikasikan secara merata pada wajah dan leher. Pijat lembut hingga krim terserap sempurna.Gunakan secara rutin pada pagi dan malam hari. Pada pagi hari, lanjutkan dengan penggunaan sunscreen untuk membantu melindungi kulit dari paparan sinar matahari.",
+            "Ambil MejaviSkin+ Fresh Hydra Creme secukupnya, kemudian aplikasikan secara merata pada area wajah dengan menggunakan tangan, gunakan secara rutin 2 kali sehari pagi dan malam hari setelah mandi atau setelah membersihkan wajah.",
 
           en:
-            "Cleanse your face thoroughly and gently pat dry. Apply an appropriate amount of Lumiere Essence Hydra Cream evenly to the face and neck. Gently massage until fully absorbed.Use regularly in the morning and evening. During daytime use, follow with sunscreen to help protect the skin from sun exposure."
+            "Apply an adequate amount of MejaviSkin+ Fresh Hydra Creme evenly to the face with clean hands. Use regularly twice a day, in the morning and at night, after bathing or cleansing the face."
         }
       },
 
@@ -1815,12 +1815,48 @@
       };
     }
 
+    function repairLegacyFreshHydraDetails() {
+      const freshHydra = products.find(product => product.id === "all-in-one");
+      if (!freshHydra) return;
+
+      const legacyText = [
+        freshHydra.ingredients?.id,
+        freshHydra.benefits?.id,
+        freshHydra.how?.id
+      ].join(" ");
+
+      // The published backend record still contains the previous Fresh Hydra
+      // copy. Keep the storefront aligned with the current product label until
+      // the backend content record is republished from the admin panel.
+      if (!/Collagen,Niacinamide,Argireline|Krim pelembab \(Daily Moisturizer\)|Lumiere Essence Hydra Cream/i.test(legacyText)) return;
+
+      freshHydra.ingredients = {
+        id:
+          "Water, Sodium Acrylates Copolymer (and) Lecithin, Coco-Caprylate/Caprate, Caprylic/Capric Triglyceride, Titanium Dioxide, Inulin, Niacinamide, Alpha-Arbutin, 3-O-Ethyl Ascorbic Acid (and) Polyglyceryl-10 Oleate (and) Polyglyceryl-6 Laurate (and) Sorbitan Palmitate (and) Magnolol (and) Honokiol andAqua, Glycerin, WaterAqua (and) Acetyl Hexapeptide-8 (and) Caprylyl Glycol, Water, Butylene Glycol, Glycerin, 1,2-Hexanediol, Ethyl Hexanediol, Lactobacillus Ferment, Goat Milk Extract, Glycerin (and) Water (and) Hydrolyzed Pea Protein (and) Glucose (and) Sodium Chloride (and) Sodium Succinate, WaterAqua) (and) Xanthan Gum (and) Caprylyl Glycol (and) Phenoxyethanol (and) Glucose (and) Chondrus Crispus Extract (and) Ethylhexylglycerin, Sodium DNA, Centella Asiatica Extract, Phenoxyethanol (and) Glyceryl Laurate, Fragrance.",
+        en:
+          "Water, Sodium Acrylates Copolymer (and) Lecithin, Coco-Caprylate/Caprate, Caprylic/Capric Triglyceride, Titanium Dioxide, Inulin, Niacinamide, Alpha-Arbutin, 3-O-Ethyl Ascorbic Acid (and) Polyglyceryl-10 Oleate (and) Polyglyceryl-6 Laurate (and) Sorbitan Palmitate (and) Magnolol (and) Honokiol andAqua, Glycerin, WaterAqua (and) Acetyl Hexapeptide-8 (and) Caprylyl Glycol, Water, Butylene Glycol, Glycerin, 1,2-Hexanediol, Ethyl Hexanediol, Lactobacillus Ferment, Goat Milk Extract, Glycerin (and) Water (and) Hydrolyzed Pea Protein (and) Glucose (and) Sodium Chloride (and) Sodium Succinate, WaterAqua) (and) Xanthan Gum (and) Caprylyl Glycol (and) Phenoxyethanol (and) Glucose (and) Chondrus Crispus Extract (and) Ethylhexylglycerin, Sodium DNA, Centella Asiatica Extract, Phenoxyethanol (and) Glyceryl Laurate, Fragrance."
+      };
+      freshHydra.benefits = {
+        id:
+          "MejaviSkin+ Fresh Hydra Creme dapat membantu mencerahkan kulit, membantu meratakan warna kulit, membantu menjaga kelembapan kulit, membantu mengurangi kerutan di kulit wajah, serta membantu melindungi kulit dari sinar UV.",
+        en:
+          "MejaviSkin+ Fresh Hydra Creme may help brighten the skin, help even the appearance of skin tone, help maintain skin moisture, help reduce the appearance of facial wrinkles, and help protect the skin from UV exposure."
+      };
+      freshHydra.how = {
+        id:
+          "Ambil MejaviSkin+ Fresh Hydra Creme secukupnya, kemudian aplikasikan secara merata pada area wajah dengan menggunakan tangan, gunakan secara rutin 2 kali sehari pagi dan malam hari setelah mandi atau setelah membersihkan wajah.",
+        en:
+          "Apply an adequate amount of MejaviSkin+ Fresh Hydra Creme evenly to the face with clean hands. Use regularly twice a day, in the morning and at night, after bathing or cleansing the face."
+      };
+    }
+
 
     function applyBackendContent(content) {
       if (!content || typeof content !== "object") return;
 
       replaceContentArray(products, content.products);
       repairLegacySerumizerDetails();
+      repairLegacyFreshHydraDetails();
       replaceContentArray(keyIngredients, content.keyIngredients);
 
       if (content.ingredientResearch) {
