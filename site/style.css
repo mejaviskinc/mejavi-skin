@@ -3072,7 +3072,8 @@ body:not([data-page="home"]) main > section:first-child {
 
 .javi-launcher {
   position: fixed;
-  right: 205px;
+  left: 22px;
+  right: auto;
   bottom: 22px;
   z-index: 1600;
 
@@ -3205,7 +3206,8 @@ body:not([data-page="home"]) main > section:first-child {
 
 .javi-panel {
   position: fixed;
-  right: 22px;
+  left: 22px;
+  right: auto;
   bottom: 94px;
   z-index: 1600;
 
@@ -3226,7 +3228,7 @@ body:not([data-page="home"]) main > section:first-child {
 
   opacity: 0;
   transform: translateY(22px) scale(.965);
-  transform-origin: bottom right;
+  transform-origin: bottom left;
   pointer-events: none;
   transition:
     opacity .22s ease,
@@ -3728,7 +3730,8 @@ body:not([data-page="home"]) main > section:first-child {
 
 @media (max-width: 640px) {
   .javi-launcher {
-    right: 84px;
+    left: 15px;
+    right: auto;
     bottom: 15px;
     width: 58px;
     min-width: 58px;
@@ -3754,7 +3757,8 @@ body:not([data-page="home"]) main > section:first-child {
   }
 
   .javi-panel {
-    right: 10px;
+    left: 10px;
+    right: auto;
     bottom: 84px;
     width: calc(100vw - 20px);
     height: min(680px, calc(100dvh - 104px));
