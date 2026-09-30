@@ -218,37 +218,24 @@
     .halal-btn {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      min-height: 36px;
-      padding: 0 12px;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      min-height: 42px;
+      padding: 4px;
       border: 1px solid rgba(53, 106, 64, .26);
-      border-radius: 100px;
+      border-radius: 50%;
       background: rgba(244, 250, 244, .92);
       color: var(--green-dark);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .2px;
-      white-space: nowrap;
+      line-height: 0;
       transition: .25s ease;
-    }
-
-    .halal-btn span {
-      display: inline-grid;
-      width: 17px;
-      height: 17px;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--green-dark);
-      color: #fff;
-      font-size: 11px;
-      line-height: 1;
     }
 
     .halal-btn-logo {
       display: block;
-      width: 20px;
-      height: 20px;
-      flex: 0 0 20px;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
       object-fit: cover;
       border: 1px solid rgba(255, 255, 255, .56);
       border-radius: 50%;
@@ -2833,21 +2820,15 @@
       }
 
       .halal-btn {
-        min-height: 34px;
-        padding: 0 9px;
-        font-size: 10px;
-      }
-
-      .halal-btn span {
-        width: 16px;
-        height: 16px;
-        font-size: 10px;
+        width: 36px;
+        height: 36px;
+        min-height: 36px;
       }
 
       .halal-btn-logo {
-        width: 18px;
-        height: 18px;
-        flex-basis: 18px;
+        width: 27px;
+        height: 27px;
+        flex-basis: 27px;
       }
 
       header .navbar {
