@@ -215,6 +215,48 @@
       gap: 9px;
     }
 
+    .halal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 36px;
+      padding: 0 12px;
+      border: 1px solid rgba(53, 106, 64, .26);
+      border-radius: 100px;
+      background: rgba(244, 250, 244, .92);
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      transition: .25s ease;
+    }
+
+    .halal-btn span {
+      display: inline-grid;
+      width: 17px;
+      height: 17px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: #fff;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .halal-btn:hover,
+    .halal-btn.active {
+      border-color: var(--green-dark);
+      background: var(--green-dark);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .halal-btn:hover span,
+    .halal-btn.active span {
+      background: rgba(255, 255, 255, .2);
+    }
+
     .lang-btn {
       border: 1px solid var(--border);
       background: white;
@@ -2784,6 +2826,18 @@
         width: min(100% - 26px, 1180px);
       }
 
+      .halal-btn {
+        min-height: 34px;
+        padding: 0 9px;
+        font-size: 10px;
+      }
+
+      .halal-btn span {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+      }
+
       header .navbar {
         height: 72px;
       }
@@ -3057,6 +3111,131 @@ body:not([data-page="home"]) main > section:first-child {
 @media (max-width: 640px) {
   body:not([data-page="home"]) main > section:first-child {
     padding-top: 115px;
+  }
+}
+
+/* ================================
+   HALAL VERIFICATION
+================================= */
+
+.halal-section {
+  min-height: calc(100vh - 160px);
+  background:
+    radial-gradient(circle at 86% 18%, rgba(216, 235, 210, .62), transparent 34%),
+    #fbfcfa;
+}
+
+.page-halal .section-head h1 {
+  margin-top: 10px;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -2.7px;
+  font-weight: 600;
+}
+
+.halal-card {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(300px, 1.18fr);
+  gap: 38px;
+  align-items: center;
+  padding: clamp(22px, 4vw, 48px);
+  border: 1px solid rgba(53, 106, 64, .13);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, .84);
+  box-shadow: 0 24px 70px rgba(31, 54, 35, .11);
+}
+
+.halal-card-copy h2 {
+  max-width: 520px;
+  margin: 18px 0 18px;
+  font-size: clamp(26px, 3.4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.halal-card-copy p {
+  margin-top: 9px;
+  color: #6b756b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.halal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 100px;
+  background: #edf7eb;
+  color: var(--green-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .65px;
+  text-transform: uppercase;
+}
+
+.halal-status span {
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green-dark);
+  color: #fff;
+  font-size: 11px;
+}
+
+.halal-card-copy .btn {
+  margin-top: 28px;
+}
+
+.halal-document {
+  display: block;
+  justify-self: center;
+  width: min(100%, 440px);
+  padding: 10px;
+  border: 1px solid rgba(31, 51, 34, .12);
+  border-radius: 20px;
+  background: #f5f7f3;
+  box-shadow: 0 16px 35px rgba(31, 54, 35, .12);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.halal-document:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 42px rgba(31, 54, 35, .18);
+}
+
+.halal-document img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 13px;
+}
+
+@media (max-width: 760px) {
+  .halal-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .halal-document {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-halal .section-head h1 {
+    letter-spacing: -1.7px;
+  }
+
+  .halal-card {
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .halal-card-copy h2 {
+    letter-spacing: -.8px;
   }
 }
 
