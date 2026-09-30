@@ -244,17 +244,23 @@
       line-height: 1;
     }
 
+    .halal-btn-logo {
+      display: block;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, .56);
+      border-radius: 50%;
+      background: #fff;
+    }
+
     .halal-btn:hover,
     .halal-btn.active {
       border-color: var(--green-dark);
       background: var(--green-dark);
       color: #fff;
       transform: translateY(-1px);
-    }
-
-    .halal-btn:hover span,
-    .halal-btn.active span {
-      background: rgba(255, 255, 255, .2);
     }
 
     .lang-btn {
@@ -2836,6 +2842,12 @@
         width: 16px;
         height: 16px;
         font-size: 10px;
+      }
+
+      .halal-btn-logo {
+        width: 18px;
+        height: 18px;
+        flex-basis: 18px;
       }
 
       header .navbar {
