@@ -12,6 +12,10 @@
   const ENDPOINT =
     `${SUPABASE_URL}/rest/v1/website_content` +
     "?key=eq.main&select=published_content,published_at,version";
+  const OFFICIAL_SOCIAL_HANDLES = Object.freeze({
+    instagram: "mejaviskincare",
+    tiktok: "mejaviskinc_"
+  });
 
   function isObject(value) {
     return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -79,8 +83,12 @@
   function applySettings(settings) {
     if (!isObject(settings)) return;
 
-    const instagram = cleanHandle(settings.instagram);
-    const tiktok = cleanHandle(settings.tiktok);
+    const instagram = cleanHandle(
+      OFFICIAL_SOCIAL_HANDLES.instagram || settings.instagram
+    );
+    const tiktok = cleanHandle(
+      OFFICIAL_SOCIAL_HANDLES.tiktok || settings.tiktok
+    );
     const email = String(settings.email || "").trim();
     const whatsapp = String(settings.whatsapp || "").replace(/\D/g, "");
 
