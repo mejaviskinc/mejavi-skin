@@ -26,6 +26,14 @@
         "Mejavi Skin+ Fresh Hydra Cream is available in three cream color variations: white, light brown, and pink. All three colors have the same skincare uses and benefits. So, whichever cream color you use, its facial-care function remains the same."
     });
 
+    const heroDescription = Object.freeze({
+      id:
+        "Mejavi Skin menghadirkan rangkaian skincare dan body care yang dirancang untuk membantu merawat kulit sensitif agar tampak sehat, lembap, cerah dan terawat setiap hari.",
+
+      en:
+        "Mejavi Skin brings together skincare and body care products designed to help care for sensitive skin so it looks healthy, moisturized, bright, and well cared for every day."
+    });
+
 
     /* ==========================================
        PRODUCT DATA
@@ -925,7 +933,7 @@
           '<span class="hero-title-lead">Rawat kulitmu.</span><span class="hero-title-main">Temukan glow-mu.</span>',
 
         heroDesc:
-          "Mejavi Skin menghadirkan rangkaian skincare dan body care yang dirancang untuk membantu merawat kulit agar tampak sehat, lembap, cerah dan terawat setiap hari.",
+          "Mejavi Skin menghadirkan rangkaian skincare dan body care yang dirancang untuk membantu merawat kulit sensitif agar tampak sehat, lembap, cerah dan terawat setiap hari.",
 
         shopNow: "Belanja Sekarang",
         watchVideo: "▶ Lihat Video",
@@ -1347,7 +1355,7 @@
           '<span class="hero-title-lead">Care for your skin.</span><span class="hero-title-main">Find your glow.</span>',
 
         heroDesc:
-          "Mejavi Skin brings together skincare and body care products designed to support healthy-looking, moisturized and well-cared-for skin every day.",
+          "Mejavi Skin brings together skincare and body care products designed to help care for sensitive skin so it looks healthy, moisturized, bright, and well cared for every day.",
 
         shopNow:
           "Shop Now",
@@ -1878,6 +1886,11 @@
       };
     }
 
+    function enforceHeroDescription() {
+      translation.id.heroDesc = heroDescription.id;
+      translation.en.heroDesc = heroDescription.en;
+    }
+
 
     function applyBackendContent(content) {
       if (!content || typeof content !== "object") return;
@@ -1899,6 +1912,8 @@
       if (content.translations?.en) {
         mergeContent(translation.en, content.translations.en);
       }
+
+      enforceHeroDescription();
 
       window.mejaviApplySiteSettings?.(content.settings);
     }
