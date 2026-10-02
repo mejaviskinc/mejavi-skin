@@ -2354,6 +2354,20 @@
       line-height: 1.75;
     }
 
+    .modal-care-note {
+      padding: 15px 17px;
+      border-radius: 18px;
+      background: #f7f2e9;
+    }
+
+    .modal-care-note strong {
+      color: #6b5947;
+    }
+
+    .modal-care-note p {
+      margin-bottom: 0;
+    }
+
     .modal-bpom {
       margin: 26px 0 22px;
       padding: 21px;

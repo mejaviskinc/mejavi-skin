@@ -10,6 +10,14 @@
     let selectedVariant = 0;
     let selectedIngredient = null;
 
+    const productCareNote = Object.freeze({
+      id:
+        "Mejavi Skin+ juga dapat menjadi pilihan perawatan untuk kulit berminyak, rentan berjerawat, dan memiliki pori-pori yang tampak besar. Dengan pilihan produk yang sesuai kebutuhan kulit, perawatan rutin membantu menjaga kelembapan serta mendukung kulit yang terasa lebih halus, nyaman, dan tampak terawat.",
+
+      en:
+        "Mejavi Skin+ can also be an option for caring for oily, acne-prone skin with visibly enlarged pores. With product choices suited to the skin's needs, a consistent routine helps maintain moisture and supports skin that feels smoother, more comfortable, and well cared for."
+    });
+
 
     /* ==========================================
        PRODUCT DATA
@@ -1268,6 +1276,9 @@
         modalHow:
           "Cara Pakai",
 
+        modalCareNote:
+          "Catatan Perawatan",
+
         productBpomRegistered:
           "Terdaftar BPOM",
 
@@ -1698,6 +1709,9 @@
 
         modalHow:
           "How to Use",
+
+        modalCareNote:
+          "Care Note",
 
         productBpomRegistered:
           "BPOM Registered",
@@ -2375,6 +2389,33 @@
     }
 
 
+    function ensureProductCareNoteSection() {
+      const benefits = document.getElementById("modalBenefits");
+      if (!benefits?.parentElement) return null;
+
+      let section = document.getElementById("modalCareNoteSection");
+      if (!section) {
+        section = document.createElement("div");
+        section.id = "modalCareNoteSection";
+        section.className = "modal-section modal-care-note";
+
+        const title = document.createElement("strong");
+        title.id = "modalCareNoteTitle";
+
+        const note = document.createElement("p");
+        note.id = "modalCareNote";
+
+        section.append(title, note);
+        benefits.parentElement.after(section);
+      }
+
+      return {
+        title: section.querySelector("#modalCareNoteTitle"),
+        note: section.querySelector("#modalCareNote")
+      };
+    }
+
+
     function updateModal() {
 
       const product =
@@ -2435,6 +2476,14 @@
         "modalBenefits"
       ).textContent =
         product.benefits[currentLanguage];
+
+      const careNoteSection = ensureProductCareNoteSection();
+      if (careNoteSection) {
+        careNoteSection.title.textContent =
+          translation[currentLanguage].modalCareNote;
+        careNoteSection.note.textContent =
+          productCareNote[currentLanguage];
+      }
 
 
       document.getElementById(
