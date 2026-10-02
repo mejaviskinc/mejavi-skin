@@ -18,6 +18,14 @@
         "Mejavi Skin+ can also be an option for caring for oily, acne-prone skin with visibly enlarged pores. With product choices suited to the skin's needs, a consistent routine helps maintain moisture and supports skin that feels smoother, more comfortable, and well cared for."
     });
 
+    const freshHydraColorNote = Object.freeze({
+      id:
+        "Mejavi Skin+ Fresh Hydra Cream hadir dalam tiga variasi warna krim, yaitu putih, cokelat muda, dan pink. Ketiga warna tersebut memiliki kegunaan dan manfaat perawatan yang sama. Jadi, apa pun warna krim yang kamu gunakan, fungsinya untuk perawatan wajah tetap sama.",
+
+      en:
+        "Mejavi Skin+ Fresh Hydra Cream is available in three cream color variations: white, light brown, and pink. All three colors have the same skincare uses and benefits. So, whichever cream color you use, its facial-care function remains the same."
+    });
+
 
     /* ==========================================
        PRODUCT DATA
@@ -1279,6 +1287,9 @@
         modalCareNote:
           "Catatan Perawatan",
 
+        modalColorNote:
+          "Variasi Warna Krim",
+
         productBpomRegistered:
           "Terdaftar BPOM",
 
@@ -1712,6 +1723,9 @@
 
         modalCareNote:
           "Care Note",
+
+        modalColorNote:
+          "Cream Color Variations",
 
         productBpomRegistered:
           "BPOM Registered",
@@ -2410,8 +2424,39 @@
       }
 
       return {
+        section,
         title: section.querySelector("#modalCareNoteTitle"),
         note: section.querySelector("#modalCareNote")
+      };
+    }
+
+
+    function ensureFreshHydraColorNoteSection() {
+      const anchor =
+        document.getElementById("modalCareNoteSection") ||
+        document.getElementById("modalBenefits")?.parentElement;
+      if (!anchor) return null;
+
+      let section = document.getElementById("modalFreshHydraColorNoteSection");
+      if (!section) {
+        section = document.createElement("div");
+        section.id = "modalFreshHydraColorNoteSection";
+        section.className = "modal-section modal-care-note modal-color-note";
+
+        const title = document.createElement("strong");
+        title.id = "modalFreshHydraColorNoteTitle";
+
+        const note = document.createElement("p");
+        note.id = "modalFreshHydraColorNote";
+
+        section.append(title, note);
+        anchor.after(section);
+      }
+
+      return {
+        section,
+        title: section.querySelector("#modalFreshHydraColorNoteTitle"),
+        note: section.querySelector("#modalFreshHydraColorNote")
       };
     }
 
@@ -2483,6 +2528,19 @@
           translation[currentLanguage].modalCareNote;
         careNoteSection.note.textContent =
           productCareNote[currentLanguage];
+      }
+
+      const freshHydraColorNoteSection = ensureFreshHydraColorNoteSection();
+      if (freshHydraColorNoteSection) {
+        const isFreshHydra = product.id === "all-in-one";
+        freshHydraColorNoteSection.section.hidden = !isFreshHydra;
+
+        if (isFreshHydra) {
+          freshHydraColorNoteSection.title.textContent =
+            translation[currentLanguage].modalColorNote;
+          freshHydraColorNoteSection.note.textContent =
+            freshHydraColorNote[currentLanguage];
+        }
       }
 
 
