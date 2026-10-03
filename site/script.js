@@ -18,6 +18,14 @@
         "Mejavi Skin+ can also be an option for caring for oily, acne-prone skin with visibly enlarged pores. With product choices suited to the skin's needs, a consistent routine helps maintain moisture and supports skin that feels smoother, more comfortable, and well cared for."
     });
 
+    const completeCareNote = Object.freeze({
+      id:
+        "Dengan membeli Paket Lengkap Mejavi Skin+, kamu dapat melengkapi kebutuhan perawatan wajah dan tubuh dalam satu pilihan yang lebih praktis. Rangkaian ini memudahkan kamu menjalani rutinitas perawatan secara menyeluruh, mulai dari membersihkan kulit hingga menjaga kelembapannya agar terasa nyaman, halus, dan tampak terawat. Agar hasil perawatan lebih maksimal, gunakan setiap produk secara rutin sesuai petunjuk pemakaian dan kebutuhan kulitmu. Perawatan yang lengkap, tepat, dan konsisten dapat membantu mendukung manfaat yang lebih optimal dalam rutinitas harianmu. Berikan waktu bagi kulit untuk beradaptasi dan nikmati proses perawatannya secara bertahap. Hasil dapat berbeda pada setiap orang, tergantung kondisi kulit, kecocokan produk, dan keteraturan pemakaian.",
+
+      en:
+        "By purchasing the Complete Care Bundle from Mejavi Skin+, you can meet your face and body care needs in one practical choice. This range makes it easier to follow a complete care routine, from cleansing the skin to maintaining its moisture so it feels comfortable, smooth, and well cared for. For more optimal care results, use each product regularly according to its directions and your skin's needs. A complete, appropriate, and consistent routine can help support more optimal benefits in your daily care. Give your skin time to adapt and enjoy the process gradually. Results may vary from person to person depending on skin condition, product compatibility, and consistency of use."
+    });
+
     const freshHydraColorNote = Object.freeze({
       id:
         "Mejavi Skin+ Fresh Hydra Cream hadir dalam tiga variasi warna krim, yaitu putih, cokelat muda, dan pink. Ketiga warna tersebut memiliki kegunaan dan manfaat perawatan yang sama. Jadi, apa pun warna krim yang kamu gunakan, fungsinya untuk perawatan wajah tetap sama.",
@@ -2631,7 +2639,7 @@
         careNoteSection.title.textContent =
           translation[currentLanguage].modalCareNote;
         careNoteSection.note.textContent =
-          productCareNote[currentLanguage];
+          (product.isBundle ? completeCareNote : productCareNote)[currentLanguage];
       }
 
       const freshHydraColorNoteSection = ensureFreshHydraColorNoteSection();
