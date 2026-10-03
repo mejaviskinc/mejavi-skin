@@ -2864,11 +2864,6 @@
           </div>
 
           <div class="modal-bpom-item">
-            <span>${text.modalBpomManufacturer}</span>
-            <strong>${bpom.manufacturer}</strong>
-          </div>
-
-          <div class="modal-bpom-item">
             <span>${text.modalBpomValidity}</span>
             <strong>${bpom.validity[currentLanguage]}</strong>
           </div>
