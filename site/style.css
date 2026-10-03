@@ -2591,6 +2591,11 @@
       font-weight: 750;
     }
 
+    .checkout:disabled {
+      cursor: not-allowed;
+      opacity: .48;
+    }
+
     /* ================================
        FLOAT WHATSAPP
     ================================= */

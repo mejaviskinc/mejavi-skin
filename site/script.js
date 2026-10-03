@@ -8,6 +8,7 @@
 
     let selectedProduct = null;
     let selectedVariant = 0;
+    let selectedVariantConfirmed = false;
     let selectedIngredient = null;
 
     const productCareNote = Object.freeze({
@@ -1359,7 +1360,10 @@
           "Chat WhatsApp",
 
         buyLynk:
-          "Beli melalui Lynk.id"
+          "Beli melalui Lynk.id",
+
+        chooseSizeFirst:
+          "Pilih ukuran terlebih dahulu"
       },
 
 
@@ -1796,7 +1800,10 @@
           "Chat on WhatsApp",
 
         buyLynk:
-          "Buy through Lynk.id"
+          "Buy through Lynk.id",
+
+        chooseSizeFirst:
+          "Choose a size first"
       }
 
     };
@@ -2291,6 +2298,7 @@
       if (!variant) return;
 
       card.dataset.selectedVariant = String(variantIndex);
+      card.dataset.variantConfirmed = "true";
       card.querySelector(".product-badge").textContent = variant.size;
 
       const image = card.querySelector(".product-image img");
@@ -2301,7 +2309,9 @@
         `${variant.originalPrice ? `<span class="old-price">${rupiah(variant.originalPrice)}</span>` : ""}${rupiah(variant.price)}`;
 
       const buyButton = card.querySelector(".small-btn.buy");
-      if (buyButton) buyButton.disabled = variant.available === false;
+      if (buyButton) {
+        buyButton.disabled = variant.available === false;
+      }
     }
 
     function renderProducts() {
@@ -2316,7 +2326,10 @@
       const previousSelections = new Map(
         [...grid.querySelectorAll(".product-card")].map(card => [
           card.dataset.productId,
-          card.dataset.selectedVariant
+          {
+            index: card.dataset.selectedVariant,
+            confirmed: card.dataset.variantConfirmed === "true"
+          }
         ])
       );
 
@@ -2336,12 +2349,19 @@
         const firstVariant = product.variants[0];
         const previousSelection = previousSelections.get(product.id);
         const defaultVariantIndex = getDefaultVariantIndex(product);
+        const previousIndex = previousSelection?.index;
+        const previousConfirmed = previousSelection?.confirmed === true;
+        const canRestoreSelection = product.variants.length === 1 || (
+          previousConfirmed &&
+          previousIndex !== undefined &&
+          previousIndex !== "" &&
+          product.variants[Number(previousIndex)]
+        );
         const selectedVariantIndex = product.variants.length > 1 &&
-          previousSelection !== undefined &&
-          previousSelection !== "" &&
-          product.variants[Number(previousSelection)]
-          ? Number(previousSelection)
+          canRestoreSelection
+          ? Number(previousIndex)
           : defaultVariantIndex;
+        const variantConfirmed = product.variants.length === 1 || canRestoreSelection;
         const selectedCardVariant = selectedVariantIndex === null
           ? null
           : product.variants[selectedVariantIndex];
@@ -2359,9 +2379,9 @@
         const badgeLabel = selectedCardVariant
           ? selectedCardVariant.size
           : `${firstVariant.size}${product.variants.length > 1 ? "+" : ""}`;
-        const buyDisabled = selectedCardVariant
-          ? selectedCardVariant.available === false
-          : product.variants.length > 1;
+        const buyDisabled = product.variants.length > 1
+          ? !variantConfirmed || selectedCardVariant?.available === false
+          : selectedCardVariant?.available === false;
 
 
         const card =
@@ -2373,6 +2393,7 @@
         card.dataset.selectedVariant = selectedVariantIndex === null
           ? ""
           : String(selectedVariantIndex);
+        card.dataset.variantConfirmed = String(variantConfirmed);
 
 
         card.innerHTML = `
@@ -2427,8 +2448,8 @@
               <label class="card-variant-field">
                 <span>${currentLanguage === "id" ? "Pilih ukuran" : "Choose size"}</span>
                 <select class="card-variant-select" aria-label="${currentLanguage === "id" ? "Pilih ukuran produk" : "Choose product size"}">
-                  <option value=""${selectedVariantIndex === null ? " selected" : ""} disabled>${currentLanguage === "id" ? "Pilih dahulu" : "Select first"}</option>
-                  ${product.variants.map((variant, variantIndex) => `<option value="${variantIndex}"${variantIndex === selectedVariantIndex ? " selected" : ""}>${variant.size} — ${rupiah(variant.price)}</option>`).join("")}
+                  <option value=""${!variantConfirmed ? " selected" : ""} disabled>${currentLanguage === "id" ? "Pilih dahulu" : "Select first"}</option>
+                  ${product.variants.map((variant, variantIndex) => `<option value="${variantIndex}"${variantConfirmed && variantIndex === selectedVariantIndex ? " selected" : ""}>${variant.size} — ${rupiah(variant.price)}</option>`).join("")}
                 </select>
               </label>
             ` : ""}
@@ -2555,7 +2576,11 @@
       selectedProduct = index;
       const product = products[index];
       const cardVariantIndex = getCardVariantIndex(card, product);
-      selectedVariant = cardVariantIndex === null ? 0 : cardVariantIndex;
+      selectedVariant = cardVariantIndex === null
+        ? getDefaultVariantIndex(product) ?? 0
+        : cardVariantIndex;
+      selectedVariantConfirmed = product.variants.length <= 1 ||
+        card?.dataset.variantConfirmed === "true";
 
       updateModal();
 
@@ -2626,6 +2651,11 @@
 
       const product =
         products[selectedProduct];
+
+      if (product.variants.length > 1 && !selectedVariantConfirmed) {
+        document.querySelector("#variantWrap .variant-btn")?.focus();
+        return;
+      }
 
       const variant =
         product.variants[selectedVariant];
@@ -2745,7 +2775,7 @@
           button.className =
             "variant-btn" +
             (
-              index === selectedVariant
+              index === selectedVariant && selectedVariantConfirmed
                 ? " active"
                 : ""
             );
@@ -2758,6 +2788,7 @@
           button.onclick = () => {
 
             selectedVariant = index;
+            selectedVariantConfirmed = true;
             updateModal();
 
           };
@@ -2766,6 +2797,17 @@
           variantWrap.appendChild(button);
         }
       );
+
+      const checkout = document.getElementById("checkoutBtn");
+      if (checkout) {
+        const needsSelection = product.variants.length > 1 && !selectedVariantConfirmed;
+        const unavailable = variant.available === false;
+        checkout.disabled = needsSelection || unavailable;
+        checkout.setAttribute("aria-disabled", String(checkout.disabled));
+        checkout.textContent = needsSelection
+          ? translation[currentLanguage].chooseSizeFirst
+          : translation[currentLanguage].buyLynk;
+      }
     }
 
 
@@ -2943,11 +2985,13 @@
       const product = products[index];
       const selected = card?.dataset.selectedVariant;
 
-      if (product.variants.length > 1 && selected === "") {
+      if (product.variants.length > 1 && card?.dataset.variantConfirmed !== "true") {
         card?.querySelector(".card-variant-select")?.focus();
         return;
       }
 
+      selectedVariantConfirmed = product.variants.length <= 1 ||
+        card?.dataset.variantConfirmed === "true";
       selectedVariant = selected === undefined || selected === "" ? 0 : Number(selected);
 
       const variant =

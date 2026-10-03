@@ -522,7 +522,9 @@
       if (!product?.variants?.length) return;
 
       const selectedValue = card.dataset.selectedVariant;
-      const needsSelection = product.variants.length > 1 && selectedValue === "";
+      const selectionConfirmed = product.variants.length <= 1 ||
+        card.dataset.variantConfirmed === "true";
+      const needsSelection = product.variants.length > 1 && !selectionConfirmed;
       const variantIndex = needsSelection ? null : Number(selectedValue || 0);
       const variant = variantIndex === null ? null : product.variants[variantIndex];
 
@@ -533,7 +535,7 @@
       const note = document.createElement("small");
       note.className = "warehouse-stock-note";
       if (needsSelection) {
-        note.textContent = language() === "en" ? "Choose a size to see availability." : "Pilih ukuran untuk melihat ketersediaan.";
+        note.textContent = language() === "en" ? "Choose a size first to unlock buying." : "Pilih ukuran terlebih dahulu untuk membeli.";
         if (buy) buy.disabled = true;
       } else if (variant.available === false) {
         note.classList.add("sold-out");
