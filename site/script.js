@@ -2652,11 +2652,6 @@
       const product =
         products[selectedProduct];
 
-      if (product.variants.length > 1 && !selectedVariantConfirmed) {
-        document.querySelector("#variantWrap .variant-btn")?.focus();
-        return;
-      }
-
       const variant =
         product.variants[selectedVariant];
 
