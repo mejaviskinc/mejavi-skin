@@ -2828,9 +2828,17 @@
       const text =
         translation[currentLanguage];
 
+      const defaultBottleWeights = {
+        "facial-foam": { id: "100 ml", en: "100 ml" },
+        serum: { id: "20 ml", en: "20 ml" },
+        "all-in-one": { id: "30 g", en: "30 g" },
+        moisturizer: { id: "15 g", en: "15 g" },
+        "herbal-relaxing": { id: "50 g", en: "50 g" }
+      };
+
       const bottleWeight = product.id === "body-serum"
         ? (variant?.weight || variant?.size || "")
-        : (variant?.weight || bpom.bottleWeight?.[currentLanguage] || variant?.size || "");
+        : (variant?.weight || bpom.bottleWeight?.[currentLanguage] || defaultBottleWeights[product.id]?.[currentLanguage] || variant?.size || "");
 
       let section =
         document.getElementById("modalBpom");
