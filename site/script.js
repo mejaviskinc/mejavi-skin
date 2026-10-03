@@ -26,6 +26,14 @@
         "By purchasing the Complete Care Bundle from Mejavi Skin+, you can meet your face and body care needs in one practical choice. This range makes it easier to follow a complete care routine, from cleansing the skin to maintaining its moisture so it feels comfortable, smooth, and well cared for. For more optimal care results, use each product regularly according to its directions and your skin's needs. A complete, appropriate, and consistent routine can help support more optimal benefits in your daily care. Give your skin time to adapt and enjoy the process gradually. Results may vary from person to person depending on skin condition, product compatibility, and consistency of use."
     });
 
+    const herbalRelaxingCareNote = Object.freeze({
+      id:
+        "Mejavi Skin+ Herbal Relaxing Cream dapat menjadi pilihan untuk melengkapi perawatan tubuh dan momen relaksasi setelah beraktivitas. Gunakan sesuai petunjuk pada kemasan serta sesuaikan pemakaiannya dengan kebutuhan dan kenyamanan kulit. Jadikan waktu perawatan sebagai kesempatan untuk beristirahat, merawat diri, dan menikmati momen yang lebih tenang.",
+
+      en:
+        "Mejavi Skin+ Herbal Relaxing Cream can be an option to complement body care and moments of relaxation after activities. Use it according to the directions on the packaging and adjust its use to your skin's needs and comfort. Make your care time an opportunity to rest, care for yourself, and enjoy a calmer moment."
+    });
+
     const freshHydraColorNote = Object.freeze({
       id:
         "Mejavi Skin+ Fresh Hydra Cream hadir dalam tiga variasi warna krim, yaitu putih, cokelat muda, dan pink. Ketiga warna tersebut memiliki kegunaan dan manfaat perawatan yang sama. Jadi, apa pun warna krim yang kamu gunakan, fungsinya untuk perawatan wajah tetap sama.",
@@ -2638,8 +2646,12 @@
       if (careNoteSection) {
         careNoteSection.title.textContent =
           translation[currentLanguage].modalCareNote;
-        careNoteSection.note.textContent =
-          (product.isBundle ? completeCareNote : productCareNote)[currentLanguage];
+        const careNote = product.isBundle
+          ? completeCareNote
+          : product.id === "herbal-relaxing"
+            ? herbalRelaxingCareNote
+            : productCareNote;
+        careNoteSection.note.textContent = careNote[currentLanguage];
       }
 
       const freshHydraColorNoteSection = ensureFreshHydraColorNoteSection();
