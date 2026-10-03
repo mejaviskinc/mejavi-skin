@@ -1910,6 +1910,25 @@
       };
     }
 
+    function repairLegacyLumiereDetails() {
+      const lumiere = products.find(product => product.id === "moisturizer");
+      if (!lumiere) return;
+
+      const legacyText = [lumiere.benefits?.id].join(" ");
+
+      // Keep the storefront aligned when the published catalog still contains
+      // the previous Lumiere benefits copy.
+      if (!/Membantu mengurangi keluhan kulit eksim/i.test(legacyText)) return;
+
+      lumiere.benefits = {
+        id:
+          "Membantu merawat kulit kering agar terasa lebih lembut dan nyaman, sekaligus mendukung tampilan kulit yang lebih cerah dan terawat. Diperkaya kandungan antioksidan yang membantu melindungi kulit dari dampak radikal bebas akibat paparan lingkungan, sebagai bagian dari perawatan harian untuk menjaga kulit tetap sehat.",
+
+        en:
+          "Helps care for dry skin so it feels softer and more comfortable, while supporting a brighter and well-cared-for appearance. Enriched with antioxidants that help protect the skin from the effects of free radicals caused by environmental exposure, as part of a daily routine to help keep skin healthy."
+      };
+    }
+
     function enforceHeroDescription() {
       translation.id.heroDesc = heroDescription.id;
       translation.en.heroDesc = heroDescription.en;
@@ -1922,6 +1941,7 @@
       replaceContentArray(products, content.products);
       repairLegacySerumizerDetails();
       repairLegacyFreshHydraDetails();
+      repairLegacyLumiereDetails();
       replaceContentArray(keyIngredients, content.keyIngredients);
 
       if (content.ingredientResearch) {
