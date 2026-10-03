@@ -186,6 +186,10 @@
           number: "NA18251209959",
           registeredName: "MEJAVI SKIN + Brightening Gentle Cleanser",
           manufacturer: "SATU HATI UNTUK NEGERI",
+          bottleWeight: {
+            id: "100 ml",
+            en: "100 ml"
+          },
           packaging: {
             id: "Botol + dus 50 mL; botol 60 mL.",
             en: "50 mL bottle with box; 60 mL bottle."
@@ -263,6 +267,10 @@
           number: "NA18250117979",
           registeredName: "MEJAVI SKIN + Plump + Bright Serumizer",
           manufacturer: "SATU HATI UNTUK NEGERI",
+          bottleWeight: {
+            id: "20 ml",
+            en: "20 ml"
+          },
           packaging: {
             id: "Botol + dus 20 mL.",
             en: "20 mL bottle with box."
@@ -339,6 +347,10 @@
           number: "NA18250118206",
           registeredName: "MEJAVI SKIN + Fresh Hydra Cream",
           manufacturer: "SATU HATI UNTUK NEGERI",
+          bottleWeight: {
+            id: "30 g",
+            en: "30 g"
+          },
           packaging: {
             id: "Pot + dus 30 g; pot + dus 20 g.",
             en: "30 g jar with box; 20 g jar with box."
@@ -416,6 +428,10 @@
           number: "NA18250117980",
           registeredName: "MEJAVI SKIN + Lumiere Essence Hydra Cream",
           manufacturer: "SATU HATI UNTUK NEGERI",
+          bottleWeight: {
+            id: "15 g",
+            en: "15 g"
+          },
           packaging: {
             id: "Botol + dus 100 g; botol 100 mL.",
             en: "100 g bottle with box; 100 mL bottle."
@@ -493,6 +509,10 @@
           number: "NA18260101852",
           registeredName: "MEJAVI SKIN + Herbal Relaxing Cream",
           manufacturer: "SATU HATI UNTUK NEGERI",
+          bottleWeight: {
+            id: "50 g",
+            en: "50 g"
+          },
           packaging: {
             id: "Tube 20 g; tube + dus 20 g; tube 35 g; tube + dus 35 g; tube 60 g; tube + dus 60 g; tube 100 g; tube + dus 100 g.",
             en: "20 g tube; 20 g tube with box; 35 g tube; 35 g tube with box; 60 g tube; 60 g tube with box; 100 g tube; 100 g tube with box."
@@ -1338,11 +1358,8 @@
         modalBpomValidity:
           "Masa Berlaku",
 
-        modalBpomPackaging:
-          "Kemasan pada Dokumen",
-
-        modalBpomManufacturer:
-          "Industri Kosmetika",
+        modalBpomWeight:
+          "Berat Botol",
 
         modalBpomVerify:
           "Cek di situs BPOM ↗",
@@ -1778,11 +1795,8 @@
         modalBpomValidity:
           "Validity Period",
 
-        modalBpomPackaging:
-          "Packaging on Document",
-
-        modalBpomManufacturer:
-          "Cosmetics Manufacturer",
+        modalBpomWeight:
+          "Bottle Weight",
 
         modalBpomVerify:
           "Check on BPOM website ↗",
@@ -2751,7 +2765,7 @@
       if (product.isBundle) {
         document.getElementById("modalBpom")?.remove();
       } else {
-        renderModalBpom(product);
+        renderModalBpom(product, variant);
       }
 
 
@@ -2806,13 +2820,17 @@
     }
 
 
-    function renderModalBpom(product) {
+    function renderModalBpom(product, variant = null) {
 
       const bpom =
         product.bpom;
 
       const text =
         translation[currentLanguage];
+
+      const bottleWeight = product.id === "body-serum"
+        ? (variant?.weight || variant?.size || "")
+        : (variant?.weight || bpom.bottleWeight?.[currentLanguage] || variant?.size || "");
 
       let section =
         document.getElementById("modalBpom");
@@ -2869,8 +2887,8 @@
           </div>
 
           <div class="modal-bpom-item modal-bpom-item-wide">
-            <span>${text.modalBpomPackaging}</span>
-            <strong>${bpom.packaging[currentLanguage]}</strong>
+            <span>${text.modalBpomWeight}</span>
+            <strong>${bottleWeight}</strong>
           </div>
         </div>
 
