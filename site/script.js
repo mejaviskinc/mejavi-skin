@@ -2261,6 +2261,20 @@
     }
 
 
+    function getDefaultVariantIndex(product) {
+      if (product.variants.length === 1) return 0;
+
+      if (product.id === "body-serum") {
+        const sixtyGramIndex = product.variants.findIndex(variant =>
+          String(variant?.size || "").trim().toLowerCase() === "60gr"
+        );
+        return sixtyGramIndex >= 0 ? sixtyGramIndex : 0;
+      }
+
+      return null;
+    }
+
+
     function getCardVariantIndex(card, product) {
       const raw = card?.dataset.selectedVariant;
       if (product.variants.length > 1 && (raw === undefined || raw === "")) {
@@ -2321,14 +2335,13 @@
 
         const firstVariant = product.variants[0];
         const previousSelection = previousSelections.get(product.id);
+        const defaultVariantIndex = getDefaultVariantIndex(product);
         const selectedVariantIndex = product.variants.length > 1 &&
           previousSelection !== undefined &&
           previousSelection !== "" &&
           product.variants[Number(previousSelection)]
           ? Number(previousSelection)
-          : product.variants.length === 1
-            ? 0
-            : null;
+          : defaultVariantIndex;
         const selectedCardVariant = selectedVariantIndex === null
           ? null
           : product.variants[selectedVariantIndex];
