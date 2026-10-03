@@ -2189,6 +2189,63 @@
        PRODUCT RENDER
     ========================================== */
 
+    function getVariantImage(variant) {
+      const value =
+        variant?.image ??
+        variant?.image_url ??
+        variant?.imageUrl ??
+        variant?.photo ??
+        variant?.photo_url;
+
+      return typeof value === "string" ? value.trim() : "";
+    }
+
+
+    function getProductImages(product, variant = null) {
+      const variantImage = getVariantImage(variant);
+      if (variantImage) return [variantImage];
+
+      const gallery = Array.isArray(product?.images)
+        ? product.images.filter(image => typeof image === "string" && image.trim())
+        : [];
+      if (gallery.length) return gallery;
+
+      const fallback = typeof product?.image === "string"
+        ? product.image.trim()
+        : "";
+      return fallback ? [fallback] : [];
+    }
+
+
+    function getCardVariantIndex(card, product) {
+      const raw = card?.dataset.selectedVariant;
+      if (product.variants.length > 1 && (raw === undefined || raw === "")) {
+        return null;
+      }
+
+      const index = Number(raw || 0);
+      return product.variants[index] ? index : product.variants.length > 1 ? null : 0;
+    }
+
+
+    function setCardVariant(card, product, variantIndex) {
+      const variant = product.variants[variantIndex];
+      if (!variant) return;
+
+      card.dataset.selectedVariant = String(variantIndex);
+      card.querySelector(".product-badge").textContent = variant.size;
+
+      const image = card.querySelector(".product-image img");
+      const variantImages = getProductImages(product, variant);
+      if (image && variantImages[0]) image.src = variantImages[0];
+
+      card.querySelector(".card-price").innerHTML =
+        `${variant.originalPrice ? `<span class="old-price">${rupiah(variant.originalPrice)}</span>` : ""}${rupiah(variant.price)}`;
+
+      const buyButton = card.querySelector(".small-btn.buy");
+      if (buyButton) buyButton.disabled = variant.available === false;
+    }
+
     function renderProducts() {
 
       const grid =
@@ -2197,6 +2254,13 @@
       if (!grid) {
         return;
       }
+
+      const previousSelections = new Map(
+        [...grid.querySelectorAll(".product-card")].map(card => [
+          card.dataset.productId,
+          card.dataset.selectedVariant
+        ])
+      );
 
       grid.innerHTML = "";
 
@@ -2211,18 +2275,36 @@
           );
 
 
-        const priceLabel =
-          product.variants.length > 1
+        const firstVariant = product.variants[0];
+        const previousSelection = previousSelections.get(product.id);
+        const selectedVariantIndex = product.variants.length > 1 &&
+          previousSelection !== undefined &&
+          previousSelection !== "" &&
+          product.variants[Number(previousSelection)]
+          ? Number(previousSelection)
+          : product.variants.length === 1
+            ? 0
+            : null;
+        const selectedCardVariant = selectedVariantIndex === null
+          ? null
+          : product.variants[selectedVariantIndex];
+        const priceLabel = selectedCardVariant
+          ? rupiah(selectedCardVariant.price)
+          : product.variants.length > 1
             ? `${currentLanguage === "id"
                 ? "Mulai"
                 : "From"} ${rupiah(minPrice)}`
             : rupiah(minPrice);
-
-        const firstVariant = product.variants[0];
-        const oldPriceLabel = firstVariant.originalPrice
-          ? `<span class="old-price">${rupiah(firstVariant.originalPrice)}</span>`
+        const oldPriceLabel = (selectedCardVariant || firstVariant).originalPrice
+          ? `<span class="old-price">${rupiah((selectedCardVariant || firstVariant).originalPrice)}</span>`
           : "";
-        const cardImages = product.images?.length ? product.images : [product.image];
+        const cardImages = getProductImages(product, selectedCardVariant);
+        const badgeLabel = selectedCardVariant
+          ? selectedCardVariant.size
+          : `${firstVariant.size}${product.variants.length > 1 ? "+" : ""}`;
+        const buyDisabled = selectedCardVariant
+          ? selectedCardVariant.available === false
+          : product.variants.length > 1;
 
 
         const card =
@@ -2230,7 +2312,10 @@
 
         card.className =
           "product-card reveal";
-        card.dataset.selectedVariant = product.variants.length > 1 ? "" : "0";
+        card.dataset.productId = product.id;
+        card.dataset.selectedVariant = selectedVariantIndex === null
+          ? ""
+          : String(selectedVariantIndex);
 
 
         card.innerHTML = `
@@ -2249,10 +2334,7 @@
             ` : ""}
 
             <span class="product-badge">
-              ${product.variants[0].size}
-              ${product.variants.length > 1
-                ? "+"
-                : ""}
+              ${badgeLabel}
             </span>
 
             ${product.isBundle ? "" : `<span class="product-bpom-badge">
@@ -2288,8 +2370,8 @@
               <label class="card-variant-field">
                 <span>${currentLanguage === "id" ? "Pilih ukuran" : "Choose size"}</span>
                 <select class="card-variant-select" aria-label="${currentLanguage === "id" ? "Pilih ukuran produk" : "Choose product size"}">
-                  <option value="" selected disabled>${currentLanguage === "id" ? "Pilih dahulu" : "Select first"}</option>
-                  ${product.variants.map((variant, variantIndex) => `<option value="${variantIndex}">${variant.size} — ${rupiah(variant.price)}</option>`).join("")}
+                  <option value=""${selectedVariantIndex === null ? " selected" : ""} disabled>${currentLanguage === "id" ? "Pilih dahulu" : "Select first"}</option>
+                  ${product.variants.map((variant, variantIndex) => `<option value="${variantIndex}"${variantIndex === selectedVariantIndex ? " selected" : ""}>${variant.size} — ${rupiah(variant.price)}</option>`).join("")}
                 </select>
               </label>
             ` : ""}
@@ -2303,7 +2385,7 @@
 
               <button
                 class="small-btn"
-                onclick="openProduct(${index})"
+                onclick="openProduct(${index}, this.closest('.product-card'))"
               >
                 ${currentLanguage === "id"
                   ? "Detail"
@@ -2313,7 +2395,7 @@
               <button
                 class="small-btn buy"
                 onclick="quickBuy(${index}, this.closest('.product-card'))"
-                ${product.variants.length > 1 ? "disabled" : ""}
+                ${buyDisabled ? "disabled" : ""}
               >
                 ${currentLanguage === "id"
                   ? "Beli"
@@ -2332,12 +2414,7 @@
         if (variantSelect) {
           variantSelect.addEventListener("change", () => {
             const variantIndex = Number(variantSelect.value);
-            const variant = product.variants[variantIndex];
-            card.dataset.selectedVariant = String(variantIndex);
-            card.querySelector(".product-badge").textContent = variant.size;
-            card.querySelector(".card-price").innerHTML = `${variant.originalPrice ? `<span class="old-price">${rupiah(variant.originalPrice)}</span>` : ""}${rupiah(variant.price)}`;
-            const buyButton = card.querySelector(".small-btn.buy");
-            buyButton.disabled = variant.available === false;
+            setCardVariant(card, product, variantIndex);
             window.dispatchEvent(new CustomEvent("mejavi:variant-change"));
           });
         }
@@ -2369,6 +2446,16 @@
     // Dipanggil oleh store.js setelah katalog terbaru selesai diambil dari Warehouse.
     // Tanpa bridge ini, data berubah di memori tetapi kartu produk tidak dirender ulang.
     window.renderProducts = renderProducts;
+
+    window.addEventListener("mejavi:catalog-synced", () => {
+      if (
+        selectedProduct !== null &&
+        modal.classList.contains("active") &&
+        products[selectedProduct]?.variants[selectedVariant]
+      ) {
+        updateModal();
+      }
+    });
 
     function attachSwipeGallery(element, imageCount, onChange) {
       if (!element || imageCount < 2) return;
@@ -2406,10 +2493,12 @@
       document.getElementById("productModal");
 
 
-    function openProduct(index) {
+    function openProduct(index, card = null) {
 
       selectedProduct = index;
-      selectedVariant = 0;
+      const product = products[index];
+      const cardVariantIndex = getCardVariantIndex(card, product);
+      selectedVariant = cardVariantIndex === null ? 0 : cardVariantIndex;
 
       updateModal();
 
@@ -2486,7 +2575,7 @@
 
 
       const modalImage = document.getElementById("modalImage");
-      const galleryImages = product.images?.length ? product.images : [product.image];
+      const galleryImages = getProductImages(product, variant);
       modalImage.src = galleryImages[0];
       modalImage.alt = product.name[currentLanguage];
 

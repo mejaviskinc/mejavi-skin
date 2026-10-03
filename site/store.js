@@ -101,6 +101,21 @@
     }).format(Number(value) || 0);
   }
 
+  function variantImage(variant) {
+    const value =
+      variant?.image ??
+      variant?.image_url ??
+      variant?.imageUrl ??
+      variant?.photo ??
+      variant?.photo_url;
+
+    return typeof value === "string" ? value.trim() : "";
+  }
+
+  function productImage(product, variant) {
+    return variantImage(variant) || product?.image || "";
+  }
+
   function newOrderKey() {
     if (window.crypto && typeof window.crypto.randomUUID === "function") {
       return window.crypto.randomUUID();
@@ -218,7 +233,7 @@
       </div>
 
       <div class="order-product-summary">
-        <img src="${activeProduct.image}" alt="">
+        <img src="${productImage(activeProduct, activeVariant)}" alt="">
         <div>
           <span>${t.product}</span>
           <strong id="orderProductName"></strong>
@@ -282,7 +297,7 @@
       </div>
 
       <div class="order-product-summary">
-        <img src="${activeProduct.image}" alt="">
+        <img src="${productImage(activeProduct, activeVariant)}" alt="">
         <div>
           <span>${t.product}</span>
           <strong id="orderProductName"></strong>
@@ -467,8 +482,15 @@
           variant.discountActive = Boolean(current.discount_active);
           variant.stock = Number(current.stock);
           variant.available = Boolean(current.available);
-          if (current.image_url) {
-            product.image = current.image_url;
+          variant.image = typeof current.image_url === "string"
+            ? current.image_url.trim()
+            : "";
+
+          // Produk dengan satu SKU tetap memakai foto SKU tersebut sebagai
+          // foto utama. Untuk produk multi-varian, foto disimpan per varian
+          // agar pilihan berat tidak saling menimpa.
+          if (product.variants.length === 1 && variant.image) {
+            product.image = variant.image;
           }
         });
       });
