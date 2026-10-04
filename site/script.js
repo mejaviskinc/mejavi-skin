@@ -1877,6 +1877,22 @@
       target.splice(0, target.length, ...cloneContent(incoming));
     }
 
+    const canonicalBpomCertificates = Object.freeze({
+      "body-serum": "images/bpom/body-serum.jpg?v=202610041125",
+      "facial-foam": "images/bpom/gentle-cleanser.jpg?v=202610041125",
+      serum: "images/bpom/serumizer.jpg?v=202610041125",
+      "all-in-one": "images/bpom/fresh-hydra-cream.jpg?v=202610041125",
+      moisturizer: "images/bpom/lumiere-hydra-cream.jpg?v=202610041125",
+      "herbal-relaxing": "images/bpom/herbal-relaxing-cream.jpg?v=202610041125"
+    });
+
+    function enforceCanonicalBpomCertificates() {
+      Object.entries(canonicalBpomCertificates).forEach(([productId, certificate]) => {
+        const product = products.find(item => item.id === productId);
+        if (product?.bpom) product.bpom.certificate = certificate;
+      });
+    }
+
     function repairLegacySerumizerDetails() {
       const serumizer = products.find(product => product.id === "serum");
       if (!serumizer) return;
@@ -1976,6 +1992,7 @@
       if (!content || typeof content !== "object") return;
 
       replaceContentArray(products, content.products);
+      enforceCanonicalBpomCertificates();
       repairLegacySerumizerDetails();
       repairLegacyFreshHydraDetails();
       repairLegacyLumiereDetails();
