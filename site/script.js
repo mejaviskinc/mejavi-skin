@@ -132,6 +132,15 @@
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250117959"
         },
 
+        halal: {
+          number: "LPPOM-00150195590123",
+          validity: {
+            id: "10 Januari 2027",
+            en: "January 10, 2027"
+          },
+          certificate: "documents/halal/body-serum.jpg?v=202610041530"
+        },
+
         description: {
           id:
             "Body serum untuk membantu merawat kulit tubuh agar terasa lembut, lembap dan tampak terawat.",
@@ -233,6 +242,15 @@
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18251209959"
         },
 
+        halal: {
+          number: "LPPOM-00150195590123",
+          validity: {
+            id: "10 Januari 2027",
+            en: "January 10, 2027"
+          },
+          certificate: "documents/halal/gentle-cleanser.jpg?v=202610041530"
+        },
+
         description: {
           id:
             "Facial foam untuk membantu membersihkan kulit wajah dari kotoran dan minyak berlebih.",
@@ -314,6 +332,15 @@
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250117979"
         },
 
+        halal: {
+          number: "LPPOM-00150195590123",
+          validity: {
+            id: "10 Januari 2027",
+            en: "January 10, 2027"
+          },
+          certificate: "documents/halal/serumizer.jpg?v=202610041530"
+        },
+
         description: {
           id:
             "Serum wajah dengan tekstur ringan untuk melengkapi rutinitas skincare harian.",
@@ -392,6 +419,15 @@
           },
           certificate: "images/bpom/fresh-hydra-cream.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250118206"
+        },
+
+        halal: {
+          number: "LPPOM-00150195590123",
+          validity: {
+            id: "10 Januari 2027",
+            en: "January 10, 2027"
+          },
+          certificate: "documents/halal/fresh-hydra-cream.jpg?v=202610041530"
         },
 
         description: {
@@ -475,6 +511,15 @@
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250117980"
         },
 
+        halal: {
+          number: "LPPOM-00150195590123",
+          validity: {
+            id: "10 Januari 2027",
+            en: "January 10, 2027"
+          },
+          certificate: "documents/halal/lumiere-hydra-cream.jpg?v=202610041530"
+        },
+
         description: {
           id:
             "Moisturizer untuk membantu menjaga kulit tetap terasa lembap dan nyaman.",
@@ -554,6 +599,15 @@
           },
           certificate: "images/bpom/herbal-relaxing-cream.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18260101852"
+        },
+
+        halal: {
+          number: "LPPOM-00150195590123",
+          validity: {
+            id: "10 Januari 2027",
+            en: "January 10, 2027"
+          },
+          certificate: "documents/halal/herbal-relaxing-cream.jpg?v=202610041530"
         },
 
         description: {
@@ -1404,6 +1458,24 @@
         modalBpomNote:
           "Informasi ditampilkan sesuai dokumen BPOM yang diberikan. Cocokkan nomor notifikasi dan kemasan sebelum membeli.",
 
+        modalHalalTitle:
+          "Sertifikat Halal",
+
+        modalHalalNumber:
+          "Nomor Ketetapan Halal",
+
+        modalHalalValidity:
+          "Berlaku sampai",
+
+        modalHalalDocument:
+          "Lihat sertifikat halal",
+
+        modalHalalPreview:
+          "Ketuk untuk membuka sertifikat halal",
+
+        modalHalalNote:
+          "Sertifikat halal ditampilkan sesuai dokumen terbaru yang diberikan.",
+
         whatsappChat:
           "Chat WhatsApp",
 
@@ -1841,6 +1913,24 @@
         modalBpomNote:
           "Information is shown according to the supplied BPOM document. Match the notification number and packaging before purchase.",
 
+        modalHalalTitle:
+          "Halal Certificate",
+
+        modalHalalNumber:
+          "Halal Decree No.",
+
+        modalHalalValidity:
+          "Valid until",
+
+        modalHalalDocument:
+          "View halal certificate",
+
+        modalHalalPreview:
+          "Tap to open the halal certificate",
+
+        modalHalalNote:
+          "The halal certificate is shown according to the latest supplied document.",
+
         whatsappChat:
           "Chat on WhatsApp",
 
@@ -1905,6 +1995,46 @@
       Object.entries(canonicalBpomCertificates).forEach(([productId, certificate]) => {
         const product = products.find(item => item.id === productId);
         if (product?.bpom) product.bpom.certificate = certificate;
+      });
+    }
+
+    const canonicalHalalCertificates = Object.freeze({
+      "body-serum": {
+        number: "LPPOM-00150195590123",
+        validity: { id: "10 Januari 2027", en: "January 10, 2027" },
+        certificate: "documents/halal/body-serum.jpg?v=202610041530"
+      },
+      "facial-foam": {
+        number: "LPPOM-00150195590123",
+        validity: { id: "10 Januari 2027", en: "January 10, 2027" },
+        certificate: "documents/halal/gentle-cleanser.jpg?v=202610041530"
+      },
+      serum: {
+        number: "LPPOM-00150195590123",
+        validity: { id: "10 Januari 2027", en: "January 10, 2027" },
+        certificate: "documents/halal/serumizer.jpg?v=202610041530"
+      },
+      "all-in-one": {
+        number: "LPPOM-00150195590123",
+        validity: { id: "10 Januari 2027", en: "January 10, 2027" },
+        certificate: "documents/halal/fresh-hydra-cream.jpg?v=202610041530"
+      },
+      moisturizer: {
+        number: "LPPOM-00150195590123",
+        validity: { id: "10 Januari 2027", en: "January 10, 2027" },
+        certificate: "documents/halal/lumiere-hydra-cream.jpg?v=202610041530"
+      },
+      "herbal-relaxing": {
+        number: "LPPOM-00150195590123",
+        validity: { id: "10 Januari 2027", en: "January 10, 2027" },
+        certificate: "documents/halal/herbal-relaxing-cream.jpg?v=202610041530"
+      }
+    });
+
+    function enforceCanonicalHalalCertificates() {
+      Object.entries(canonicalHalalCertificates).forEach(([productId, halal]) => {
+        const product = products.find(item => item.id === productId);
+        if (product) product.halal = cloneContent(halal);
       });
     }
 
@@ -2008,6 +2138,7 @@
 
       replaceContentArray(products, content.products);
       enforceCanonicalBpomCertificates();
+      enforceCanonicalHalalCertificates();
       repairLegacySerumizerDetails();
       repairLegacyFreshHydraDetails();
       repairLegacyLumiereDetails();
@@ -2821,6 +2952,7 @@
       } else {
         renderModalBpom(product, variant);
       }
+      renderModalHalal(product);
 
 
       const variantWrap =
@@ -2871,6 +3003,85 @@
           ? translation[currentLanguage].chooseSizeFirst
           : translation[currentLanguage].buyLynk;
       }
+    }
+
+
+    function renderModalHalal(product) {
+      const halal = product?.halal;
+      const text = translation[currentLanguage];
+      let section = document.getElementById("modalHalal");
+
+      if (!halal) {
+        section?.remove();
+        return;
+      }
+
+      if (!section) {
+        section = document.createElement("section");
+        section.id = "modalHalal";
+        section.className = "modal-bpom modal-halal";
+
+        const checkout = document.getElementById("checkoutBtn");
+        checkout.parentNode.insertBefore(section, checkout);
+      }
+
+      section.innerHTML = `
+        <div class="modal-bpom-header">
+          <span class="modal-bpom-mark" aria-hidden="true">
+            <svg viewBox="0 0 42 48">
+              <path d="M21 3 38 9v12.5c0 11-6.8 19.9-17 24.1C10.8 41.4 4 32.5 4 21.5V9L21 3Z"></path>
+              <path d="m13.5 23.5 5 5 10-11"></path>
+            </svg>
+          </span>
+
+          <span>
+            <small>${text.modalHalalTitle}</small>
+            <strong>${product.name[currentLanguage]}</strong>
+          </span>
+        </div>
+
+        <div class="modal-bpom-details">
+          <div class="modal-bpom-item">
+            <span>${text.modalHalalNumber}</span>
+            <strong class="modal-bpom-number">${halal.number}</strong>
+          </div>
+
+          <div class="modal-bpom-item">
+            <span>${text.modalHalalValidity}</span>
+            <strong>${halal.validity[currentLanguage]}</strong>
+          </div>
+        </div>
+
+        <div class="modal-bpom-actions">
+          <a
+            href="${halal.certificate}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ${text.modalHalalDocument}
+          </a>
+        </div>
+
+        <a
+          class="modal-bpom-preview"
+          href="${halal.certificate}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="${text.modalHalalDocument}: ${product.name[currentLanguage]}"
+        >
+          <img
+            src="${halal.certificate}"
+            alt="${text.modalHalalDocument} ${product.name[currentLanguage]}"
+            loading="lazy"
+          >
+
+          <span>${text.modalHalalPreview} ↗</span>
+        </a>
+
+        <p class="modal-bpom-note">
+          ${text.modalHalalNote}
+        </p>
+      `;
     }
 
 

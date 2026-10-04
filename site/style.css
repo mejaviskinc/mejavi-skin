@@ -2385,6 +2385,68 @@
         #f6faf5;
     }
 
+    .modal-halal {
+      border-color: #ded8ed;
+      background:
+        radial-gradient(circle at top right, rgba(178, 161, 214, .16), transparent 36%),
+        #faf9ff;
+    }
+
+    .modal-halal .modal-bpom-mark {
+      background: linear-gradient(145deg, #9a83c5, #66518f);
+      box-shadow: 0 9px 22px rgba(102, 81, 143, .22);
+    }
+
+    .modal-halal .modal-bpom-header small {
+      color: #81749e;
+    }
+
+    .modal-halal .modal-bpom-header strong {
+      color: #493b67;
+    }
+
+    .modal-halal .modal-bpom-item {
+      border-color: #e7e1f1;
+    }
+
+    .modal-halal .modal-bpom-number {
+      color: #66518f !important;
+    }
+
+    .modal-halal .modal-bpom-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .modal-halal .modal-bpom-actions a {
+      border-color: #d7cbea;
+      color: #66518f;
+    }
+
+    .modal-halal .modal-bpom-actions a:first-child {
+      border-color: #7560a3;
+      background: #7560a3;
+    }
+
+    .modal-halal .modal-bpom-preview {
+      height: 360px;
+      border-color: #e4def0;
+      background: #fff;
+    }
+
+    .modal-halal .modal-bpom-preview img {
+      object-fit: contain;
+      object-position: center;
+      padding: 8px;
+    }
+
+    .modal-halal .modal-bpom-preview::after {
+      background: linear-gradient(180deg, transparent 66%, rgba(38, 28, 62, .76));
+    }
+
+    .modal-halal .modal-bpom-note {
+      color: #817a8f;
+    }
+
     .modal-bpom-header {
       display: flex;
       align-items: center;
@@ -3152,6 +3214,12 @@ body:not([data-page="home"]) main > section:first-child {
   font-weight: 600;
 }
 
+.halal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
 .halal-card {
   display: grid;
   grid-template-columns: minmax(0, .82fr) minmax(300px, 1.18fr);
@@ -3162,6 +3230,24 @@ body:not([data-page="home"]) main > section:first-child {
   border-radius: 30px;
   background: rgba(255, 255, 255, .84);
   box-shadow: 0 24px 70px rgba(31, 54, 35, .11);
+}
+
+.halal-card-compact {
+  grid-template-columns: minmax(0, .92fr) minmax(170px, 1.08fr);
+  gap: 22px;
+  padding: 24px;
+}
+
+.halal-card-compact .halal-card-copy h2 {
+  font-size: clamp(21px, 2.2vw, 30px);
+}
+
+.halal-card-compact .halal-card-copy .btn {
+  margin-top: 18px;
+}
+
+.halal-card-compact .halal-document {
+  width: min(100%, 260px);
 }
 
 .halal-card-copy h2 {
@@ -3230,6 +3316,12 @@ body:not([data-page="home"]) main > section:first-child {
   width: 100%;
   height: auto;
   border-radius: 13px;
+}
+
+@media (max-width: 1000px) {
+  .halal-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
