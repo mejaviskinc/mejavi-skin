@@ -19,6 +19,14 @@
         "Mejavi Skin+ can also be an option for caring for oily, acne-prone skin with visibly enlarged pores. With product choices suited to the skin's needs, a consistent routine helps maintain moisture and supports skin that feels smoother, more comfortable, and well cared for."
     });
 
+    const bodySerumCareNote = Object.freeze({
+      id:
+        "Mejavi Skin+ Body Serum membantu menjaga kelembapan kulit tubuh agar terasa lebih lembut, halus, nyaman, dan tampak terawat. Oleskan secara merata pada kulit tubuh yang bersih sesuai petunjuk pemakaian, terutama pada area yang terasa kering. Gunakan secara rutin dan sesuaikan dengan kebutuhan serta kecocokan kulit untuk mendukung hasil perawatan yang lebih optimal.",
+
+      en:
+        "Mejavi Skin+ Body Serum helps maintain body-skin moisture so it feels softer, smoother, more comfortable, and well cared for. Apply evenly to clean body skin according to the directions, especially on areas that feel dry. Use regularly and adjust it to your skin's needs and compatibility to support more optimal care results."
+    });
+
     const completeCareNote = Object.freeze({
       id:
         "Dengan membeli Paket Lengkap Mejavi Skin+, kamu dapat melengkapi kebutuhan perawatan wajah dan tubuh dalam satu pilihan yang lebih praktis. Rangkaian ini memudahkan kamu menjalani rutinitas perawatan secara menyeluruh, mulai dari membersihkan kulit hingga menjaga kelembapannya agar terasa nyaman, halus, dan tampak terawat. Agar hasil perawatan lebih maksimal, gunakan setiap produk secara rutin sesuai petunjuk pemakaian dan kebutuhan kulitmu. Perawatan yang lengkap, tepat, dan konsisten dapat membantu mendukung manfaat yang lebih optimal dalam rutinitas harianmu. Berikan waktu bagi kulit untuk beradaptasi dan nikmati proses perawatannya secara bertahap. Hasil dapat berbeda pada setiap orang, tergantung kondisi kulit, kecocokan produk, dan keteraturan pemakaian.",
@@ -2286,10 +2294,10 @@
       if (product.variants.length === 1) return 0;
 
       if (product.id === "body-serum") {
-        const sixtyGramIndex = product.variants.findIndex(variant =>
-          String(variant?.size || "").trim().toLowerCase() === "60gr"
+        const oneHundredGramIndex = product.variants.findIndex(variant =>
+          String(variant?.size || "").trim().toLowerCase() === "100gr"
         );
-        return sixtyGramIndex >= 0 ? sixtyGramIndex : 0;
+        return oneHundredGramIndex >= 0 ? oneHundredGramIndex : 0;
       }
 
       return null;
@@ -2728,6 +2736,8 @@
           translation[currentLanguage].modalCareNote;
         const careNote = product.isBundle
           ? completeCareNote
+          : product.id === "body-serum"
+            ? bodySerumCareNote
           : product.id === "herbal-relaxing"
             ? herbalRelaxingCareNote
             : product.id === "moisturizer"
