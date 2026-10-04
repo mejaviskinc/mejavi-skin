@@ -43,6 +43,21 @@
         "By purchasing the Complete Care Bundle from Mejavi Skin+, you can meet your face and body care needs in one practical choice. This range makes it easier to follow a complete care routine, from cleansing the skin to maintaining its moisture so it feels comfortable, smooth, and well cared for. For more optimal care results, use each product regularly according to its directions and your skin's needs. A complete, appropriate, and consistent routine can help support more optimal benefits in your daily care. Give your skin time to adapt and enjoy the process gradually. Results may vary from person to person depending on skin condition, product compatibility, and consistency of use."
     });
 
+    const completeHowNote = Object.freeze({
+      id: {
+        text:
+          "1. Bersihkan wajah dengan Brightening Gentle Cleanser.\nBasahi wajah, gunakan pembersih secukupnya, lalu pijat lembut. Bilas hingga bersih dan keringkan dengan menepuk wajah menggunakan handuk lembut.\n\n2. Lanjutkan dengan Plump+Bright Serumiser.\nAplikasikan secukupnya pada wajah yang bersih. Ratakan dengan lembut dan biarkan meresap sebelum melanjutkan ke tahap berikutnya.\n\n3. Gunakan pelembap wajah.\nPilih Lumiere Essence Hydra Cream atau Fresh Hydra Cream, kemudian oleskan tipis dan merata pada wajah serta leher. Sesuaikan jumlah pemakaian dengan kebutuhan dan kenyamanan kulit.\n\n4. Lengkapi perawatan pagi dengan sunscreen.\nGunakan sunscreen dengan perlindungan UVA/UVB dan SPF minimal 30 sebagai langkah terakhir perawatan wajah pada pagi hari. Aplikasikan kembali setiap dua jam saat berada di luar ruangan.\n\n5. Rawat kulit tubuh dengan Radiance Treatment Body Serum.\nSetelah mandi, oleskan secukupnya pada kulit tubuh yang bersih dan sudah dikeringkan. Ratakan sambil memijat lembut hingga meresap.\n\nPada malam hari, ulangi langkah membersihkan wajah, memakai serumiser, dan menggunakan pelembap. Ikuti petunjuk pada kemasan masing-masing produk serta perkenalkan produk baru secara bertahap.",
+        html:
+          "<strong>1. Bersihkan wajah dengan Brightening Gentle Cleanser.</strong><br>Basahi wajah, gunakan pembersih secukupnya, lalu pijat lembut. Bilas hingga bersih dan keringkan dengan menepuk wajah menggunakan handuk lembut.<br><br><strong>2. Lanjutkan dengan Plump+Bright Serumiser.</strong><br>Aplikasikan secukupnya pada wajah yang bersih. Ratakan dengan lembut dan biarkan meresap sebelum melanjutkan ke tahap berikutnya.<br><br><strong>3. Gunakan pelembap wajah.</strong><br>Pilih <strong>Lumiere Essence Hydra Cream atau Fresh Hydra Cream</strong>, kemudian oleskan tipis dan merata pada wajah serta leher. Sesuaikan jumlah pemakaian dengan kebutuhan dan kenyamanan kulit.<br><br><strong>4. Lengkapi perawatan pagi dengan sunscreen.</strong><br>Gunakan sunscreen dengan perlindungan UVA/UVB dan SPF minimal 30 sebagai langkah terakhir perawatan wajah pada pagi hari. Aplikasikan kembali setiap dua jam saat berada di luar ruangan.<br><br><strong>5. Rawat kulit tubuh dengan Radiance Treatment Body Serum.</strong><br>Setelah mandi, oleskan secukupnya pada kulit tubuh yang bersih dan sudah dikeringkan. Ratakan sambil memijat lembut hingga meresap.<br><br>Pada malam hari, ulangi langkah membersihkan wajah, memakai serumiser, dan menggunakan pelembap. Ikuti petunjuk pada kemasan masing-masing produk serta perkenalkan produk baru secara bertahap."
+      },
+      en: {
+        text:
+          "1. Cleanse your face with Brightening Gentle Cleanser.\nWet your face, apply an adequate amount of cleanser, and massage gently. Rinse thoroughly and pat your face dry with a soft towel.\n\n2. Follow with Plump+Bright Serumizer.\nApply an adequate amount to clean skin. Spread gently and let it absorb before moving to the next step.\n\n3. Use a facial moisturizer.\nChoose Lumiere Essence Hydra Cream or Fresh Hydra Cream, then apply a thin, even layer to the face and neck. Adjust the amount according to your skin's needs and comfort.\n\n4. Complete your morning routine with sunscreen.\nUse sunscreen with UVA/UVB protection and at least SPF 30 as the final step of your morning face-care routine. Reapply every two hours when outdoors.\n\n5. Care for the body with Radiance Treatment Body Serum.\nAfter bathing, apply an adequate amount to clean, dry body skin. Spread it evenly while massaging gently until absorbed.\n\nAt night, repeat the cleansing, serumizer, and moisturizer steps. Follow the directions on each product's packaging and introduce new products gradually.",
+        html:
+          "<strong>1. Cleanse your face with Brightening Gentle Cleanser.</strong><br>Wet your face, apply an adequate amount of cleanser, and massage gently. Rinse thoroughly and pat your face dry with a soft towel.<br><br><strong>2. Follow with Plump+Bright Serumizer.</strong><br>Apply an adequate amount to clean skin. Spread gently and let it absorb before moving to the next step.<br><br><strong>3. Use a facial moisturizer.</strong><br>Choose <strong>Lumiere Essence Hydra Cream or Fresh Hydra Cream</strong>, then apply a thin, even layer to the face and neck. Adjust the amount according to your skin's needs and comfort.<br><br><strong>4. Complete your morning routine with sunscreen.</strong><br>Use sunscreen with UVA/UVB protection and at least SPF 30 as the final step of your morning face-care routine. Reapply every two hours when outdoors.<br><br><strong>5. Care for the body with Radiance Treatment Body Serum.</strong><br>After bathing, apply an adequate amount to clean, dry body skin. Spread it evenly while massaging gently until absorbed.<br><br>At night, repeat the cleansing, serumizer, and moisturizer steps. Follow the directions on each product's packaging and introduce new products gradually."
+      }
+    });
+
     const herbalRelaxingCareNote = Object.freeze({
       id:
         "Mejavi Skin+ Herbal Relaxing Cream dapat menjadi pilihan untuk melengkapi perawatan tubuh dan momen relaksasi setelah beraktivitas. Gunakan sesuai petunjuk pada kemasan serta sesuaikan pemakaiannya dengan kebutuhan dan kenyamanan kulit. Jadikan waktu perawatan sebagai kesempatan untuk beristirahat, merawat diri, dan menikmati momen yang lebih tenang.",
@@ -2793,10 +2808,12 @@
         product.ingredients[currentLanguage];
 
 
-      document.getElementById(
-        "modalHowText"
-      ).textContent =
-        product.how[currentLanguage];
+      const modalHowText = document.getElementById("modalHowText");
+      if (product.isBundle) {
+        modalHowText.innerHTML = completeHowNote[currentLanguage].html;
+      } else {
+        modalHowText.textContent = product.how[currentLanguage];
+      }
 
 
       if (product.isBundle) {

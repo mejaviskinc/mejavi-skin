@@ -2354,6 +2354,13 @@
       line-height: 1.75;
     }
 
+    #modalHowText strong {
+      color: inherit;
+      font-size: inherit;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+
     .modal-care-note {
       padding: 15px 17px;
       border-radius: 18px;
