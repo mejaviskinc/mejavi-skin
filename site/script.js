@@ -2941,7 +2941,27 @@
 
       const modalHowText = document.getElementById("modalHowText");
       if (product.isBundle) {
-        modalHowText.innerHTML = completeHowNote[currentLanguage].html;
+        modalHowText.innerHTML = completeHowNote[currentLanguage].html
+          .replace(
+            "<strong>Brightening Gentle Cleanser</strong>",
+            "<strong>1. Brightening Gentle Cleanser</strong>"
+          )
+          .replace(
+            "<strong>1. Plump+Bright Serumiser</strong>",
+            "<strong>2. Plump+Bright Serumiser</strong>"
+          )
+          .replace(
+            "<strong>2. Lumiere Essence Hydra Cream</strong>",
+            "<strong>3. Lumiere Essence Hydra Cream</strong>"
+          )
+          .replace(
+            "<strong>3. Fresh Hydra Cream</strong>",
+            "<strong>4. Fresh Hydra Cream</strong>"
+          )
+          .replace(
+            "<strong>4. Radiance Treatment Body Serum</strong>",
+            "<strong>5. Radiance Treatment Body Serum</strong>"
+          );
       } else {
         modalHowText.textContent = product.how[currentLanguage];
       }
