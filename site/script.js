@@ -27,6 +27,14 @@
         "Mejavi Skin+ Body Serum helps maintain body-skin moisture so it feels softer, smoother, more comfortable, and well cared for. Apply evenly to clean body skin according to the directions, especially on areas that feel dry. Use regularly and adjust it to your skin's needs and compatibility to support more optimal care results."
     });
 
+    const serumizerCareNote = Object.freeze({
+      id:
+        "Rawat kelembapan dan tampilan cerah kulitmu dengan Mejavi Skin+ Plump+Bright Serumiser. Sebagai bagian dari perawatan harian, serumiser ini membantu kulit terasa lebih lembut, halus, dan kenyal, sekaligus mendukung wajah yang tampak segar serta terawat. Gunakan secara teratur sesuai petunjuk pemakaian dan perhatikan kecocokannya dengan kulit untuk mendapatkan manfaat perawatan yang optimal.",
+
+      en:
+        "Care for your skin's moisture and bright appearance with Mejavi Skin+ Plump+Bright Serumizer. As part of your daily routine, this serumizer helps skin feel softer, smoother, and more supple while supporting a fresh, well-cared-for-looking complexion. Use regularly according to the directions and pay attention to how well it suits your skin for optimal care benefits."
+    });
+
     const completeCareNote = Object.freeze({
       id:
         "Dengan membeli Paket Lengkap Mejavi Skin+, kamu dapat melengkapi kebutuhan perawatan wajah dan tubuh dalam satu pilihan yang lebih praktis. Rangkaian ini memudahkan kamu menjalani rutinitas perawatan secara menyeluruh, mulai dari membersihkan kulit hingga menjaga kelembapannya agar terasa nyaman, halus, dan tampak terawat. Agar hasil perawatan lebih maksimal, gunakan setiap produk secara rutin sesuai petunjuk pemakaian dan kebutuhan kulitmu. Perawatan yang lengkap, tepat, dan konsisten dapat membantu mendukung manfaat yang lebih optimal dalam rutinitas harianmu. Berikan waktu bagi kulit untuk beradaptasi dan nikmati proses perawatannya secara bertahap. Hasil dapat berbeda pada setiap orang, tergantung kondisi kulit, kecocokan produk, dan keteraturan pemakaian.",
@@ -2738,6 +2746,8 @@
           ? completeCareNote
           : product.id === "body-serum"
             ? bodySerumCareNote
+          : product.id === "serum"
+            ? serumizerCareNote
           : product.id === "herbal-relaxing"
             ? herbalRelaxingCareNote
             : product.id === "moisturizer"
