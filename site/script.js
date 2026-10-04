@@ -113,7 +113,7 @@
             id: "12 November 2025 – 11 November 2028",
             en: "November 12, 2025 – November 11, 2028"
           },
-          certificate: "images/bpom/body-serum.jpg",
+          certificate: "images/bpom/body-serum.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250117959"
         },
 
@@ -214,7 +214,7 @@
             id: "13 November 2025 – 12 November 2028",
             en: "November 13, 2025 – November 12, 2028"
           },
-          certificate: "images/bpom/gentle-cleanser.jpg",
+          certificate: "images/bpom/gentle-cleanser.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18251209959"
         },
 
@@ -295,7 +295,7 @@
             id: "13 November 2025 – 12 November 2028",
             en: "November 13, 2025 – November 12, 2028"
           },
-          certificate: "images/bpom/serumizer.jpg",
+          certificate: "images/bpom/serumizer.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250117979"
         },
 
@@ -375,7 +375,7 @@
             id: "18 November 2025 – 17 November 2028",
             en: "November 18, 2025 – November 17, 2028"
           },
-          certificate: "images/bpom/fresh-hydra-cream.jpg",
+          certificate: "images/bpom/fresh-hydra-cream.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250118206"
         },
 
@@ -456,7 +456,7 @@
             id: "13 November 2025 – 12 November 2028",
             en: "November 13, 2025 – November 12, 2028"
           },
-          certificate: "images/bpom/lumiere-hydra-cream.jpg",
+          certificate: "images/bpom/lumiere-hydra-cream.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18250117980"
         },
 
@@ -537,7 +537,7 @@
             id: "17 Februari 2026 – 16 Februari 2029",
             en: "February 17, 2026 – February 16, 2029"
           },
-          certificate: "images/bpom/herbal-relaxing-cream.jpg",
+          certificate: "images/bpom/herbal-relaxing-cream.jpg?v=202610041125",
           verifyUrl: "https://cekbpom.pom.go.id/all-produk?query=NA18260101852"
         },
 
