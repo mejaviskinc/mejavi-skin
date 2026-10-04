@@ -3066,10 +3066,6 @@
             <strong class="modal-bpom-number">${halal.number}</strong>
           </div>
 
-          <div class="modal-bpom-item">
-            <span>${text.modalHalalValidity}</span>
-            <strong>${halal.validity[currentLanguage]}</strong>
-          </div>
         </div>
 
         <div class="modal-bpom-actions">
@@ -3174,10 +3170,6 @@
             <strong>${bpom.registeredName}</strong>
           </div>
 
-          <div class="modal-bpom-item">
-            <span>${text.modalBpomValidity}</span>
-            <strong>${bpom.validity[currentLanguage]}</strong>
-          </div>
 
           <div class="modal-bpom-item modal-bpom-item-wide">
             <span>${text.modalBpomWeight}</span>
