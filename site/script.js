@@ -1998,6 +1998,17 @@
       });
     }
 
+    function enforceCanonicalLumiereVariant() {
+      const lumiere = products.find(product => product.id === "moisturizer");
+      if (!lumiere || !Array.isArray(lumiere.variants)) return;
+
+      const variant =
+        lumiere.variants.find(item => item.sku === "MJV007") ||
+        (lumiere.variants.length === 1 ? lumiere.variants[0] : null);
+
+      if (variant) variant.size = "15gr";
+    }
+
     const canonicalHalalCertificates = Object.freeze({
       "body-serum": {
         number: "LPPOM-00150195590123",
@@ -2137,6 +2148,7 @@
       if (!content || typeof content !== "object") return;
 
       replaceContentArray(products, content.products);
+      enforceCanonicalLumiereVariant();
       enforceCanonicalBpomCertificates();
       enforceCanonicalHalalCertificates();
       repairLegacySerumizerDetails();
