@@ -530,7 +530,7 @@
 
         variants: [
           {
-            size: "35gr",
+            size: "15gr",
             price: 122000,
             sku: "MJV007",
 
