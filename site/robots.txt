@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://mejaviskinc.github.io/mejavi-skin/sitemap.xml
+Sitemap: https://mejaviskincare.co.id/sitemap.xml
