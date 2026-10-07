@@ -1,0 +1,2 @@
+Deploy trigger after updating Paket Lengkap main image.
+Commit: 53985b53b898491d338bb8f3d42e2004eb440a95
