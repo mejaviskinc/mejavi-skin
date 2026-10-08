@@ -113,7 +113,12 @@
   }
 
   function productImage(product, variant) {
-    return variantImage(variant) || product?.image || "";
+    const mainImage = typeof product?.image === "string"
+      ? product.image.trim()
+      : "";
+
+    if (product?.isBundle && mainImage) return mainImage;
+    return variantImage(variant) || mainImage;
   }
 
   function newOrderKey() {
@@ -486,10 +491,9 @@
             ? current.image_url.trim()
             : "";
 
-          // Produk dengan satu SKU tetap memakai foto SKU tersebut sebagai
-          // foto utama. Untuk produk multi-varian, foto disimpan per varian
-          // agar pilihan berat tidak saling menimpa.
-          if (product.variants.length === 1 && variant.image) {
+          // Produk tunggal biasa boleh memakai foto dari Warehouse. Bundle
+          // tetap memakai galeri website agar foto paket utama tidak tertimpa.
+          if (!product.isBundle && product.variants.length === 1 && variant.image) {
             product.image = variant.image;
           }
         });

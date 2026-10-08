@@ -46,15 +46,15 @@
     const completeHowNote = Object.freeze({
       id: {
         text:
-          "Brightening Gentle Cleanser\nBasahi wajah, tuangkan pembersih secukupnya, lalu pijat lembut secara merata. Bilas hingga bersih dan keringkan dengan menepuk wajah menggunakan handuk lembut.\n\n1. Plump+Bright Serumiser\nSetelah membersihkan wajah, aplikasikan serumiser secukupnya. Ratakan dengan lembut pada kulit wajah dan biarkan meresap sebelum menggunakan pelembap.\n\n2. Lumiere Essence Hydra Cream\nOleskan tipis dan merata pada wajah serta leher setelah memakai serumiser. Sesuaikan jumlah pemakaian dengan kebutuhan kulit untuk membantu menjaga kelembapan dan kenyamanannya.\n\n3. Fresh Hydra Cream\nGunakan sebagai pilihan pelembap alternatif setelah serumiser. Aplikasikan secukupnya secara merata pada wajah dan leher, pada pagi maupun malam hari sesuai petunjuk pemakaian.\n\n4. Radiance Treatment Body Serum\nSetelah mandi, oleskan secukupnya pada kulit tubuh yang bersih dan sudah dikeringkan. Ratakan sambil memijat lembut hingga meresap, terutama pada area yang terasa kering.\n\nUrutan perawatan wajah: Brightening Gentle Cleanser → Plump+Bright Serumiser → Lumiere Essence Hydra Cream → Fresh Hydra Cream. Pilih salah satu krim pada tahap pelembap sesuai kebutuhan dan kecocokan kulit.\n\nGunakan setiap produk sesuai petunjuk pada kemasan dan pakai produk baru secara bertahap.",
+          "1. Brightening Gentle Cleanser\nBasahi wajah, tuangkan pembersih secukupnya, lalu pijat lembut secara merata. Bilas hingga bersih dan keringkan dengan menepuk wajah menggunakan handuk lembut.\n\n2. Plump+Bright Serumiser\nSetelah membersihkan wajah, aplikasikan serumiser secukupnya. Ratakan dengan lembut pada kulit wajah dan biarkan meresap sebelum menggunakan pelembap.\n\n3. Lumiere Essence Hydra Cream\nOleskan tipis dan merata pada wajah serta leher setelah memakai serumiser. Sesuaikan jumlah pemakaian dengan kebutuhan kulit untuk membantu menjaga kelembapan dan kenyamanannya.\n\n4. Fresh Hydra Cream\nGunakan sebagai pilihan pelembap alternatif setelah serumiser. Aplikasikan secukupnya secara merata pada wajah dan leher, pada pagi maupun malam hari sesuai petunjuk pemakaian.\n\n5. Radiance Treatment Body Serum\nSetelah mandi, oleskan secukupnya pada kulit tubuh yang bersih dan sudah dikeringkan. Ratakan sambil memijat lembut hingga meresap, terutama pada area yang terasa kering.\n\nUrutan perawatan wajah: Brightening Gentle Cleanser → Plump+Bright Serumiser → Lumiere Essence Hydra Cream → Fresh Hydra Cream. Pilih salah satu krim pada tahap pelembap sesuai kebutuhan dan kecocokan kulit.\n\nGunakan setiap produk sesuai petunjuk pada kemasan dan pakai produk baru secara bertahap.",
         html:
-          "<strong>Brightening Gentle Cleanser</strong><br>Basahi wajah, tuangkan pembersih secukupnya, lalu pijat lembut secara merata. Bilas hingga bersih dan keringkan dengan menepuk wajah menggunakan handuk lembut.<br><br><strong>1. Plump+Bright Serumiser</strong><br>Setelah membersihkan wajah, aplikasikan serumiser secukupnya. Ratakan dengan lembut pada kulit wajah dan biarkan meresap sebelum menggunakan pelembap.<br><br><strong>2. Lumiere Essence Hydra Cream</strong><br>Oleskan tipis dan merata pada wajah serta leher setelah memakai serumiser. Sesuaikan jumlah pemakaian dengan kebutuhan kulit untuk membantu menjaga kelembapan dan kenyamanannya.<br><br><strong>3. Fresh Hydra Cream</strong><br>Gunakan sebagai pilihan pelembap alternatif setelah serumiser. Aplikasikan secukupnya secara merata pada wajah dan leher, pada pagi maupun malam hari sesuai petunjuk pemakaian.<br><br><strong>4. Radiance Treatment Body Serum</strong><br>Setelah mandi, oleskan secukupnya pada kulit tubuh yang bersih dan sudah dikeringkan. Ratakan sambil memijat lembut hingga meresap, terutama pada area yang terasa kering.<br><br><strong>Urutan perawatan wajah:</strong> Brightening Gentle Cleanser → Plump+Bright Serumiser → <strong>Lumiere Essence Hydra Cream → Fresh Hydra Cream</strong>. Pilih salah satu krim pada tahap pelembap sesuai kebutuhan dan kecocokan kulit.<br><br>Gunakan setiap produk sesuai petunjuk pada kemasan dan pakai produk baru secara bertahap."
+          "<strong>1. Brightening Gentle Cleanser</strong><br>Basahi wajah, tuangkan pembersih secukupnya, lalu pijat lembut secara merata. Bilas hingga bersih dan keringkan dengan menepuk wajah menggunakan handuk lembut.<br><br><strong>2. Plump+Bright Serumiser</strong><br>Setelah membersihkan wajah, aplikasikan serumiser secukupnya. Ratakan dengan lembut pada kulit wajah dan biarkan meresap sebelum menggunakan pelembap.<br><br><strong>3. Lumiere Essence Hydra Cream</strong><br>Oleskan tipis dan merata pada wajah serta leher setelah memakai serumiser. Sesuaikan jumlah pemakaian dengan kebutuhan kulit untuk membantu menjaga kelembapan dan kenyamanannya.<br><br><strong>4. Fresh Hydra Cream</strong><br>Gunakan sebagai pilihan pelembap alternatif setelah serumiser. Aplikasikan secukupnya secara merata pada wajah dan leher, pada pagi maupun malam hari sesuai petunjuk pemakaian.<br><br><strong>5. Radiance Treatment Body Serum</strong><br>Setelah mandi, oleskan secukupnya pada kulit tubuh yang bersih dan sudah dikeringkan. Ratakan sambil memijat lembut hingga meresap, terutama pada area yang terasa kering.<br><br><strong>Urutan perawatan wajah:</strong> Brightening Gentle Cleanser → Plump+Bright Serumiser → <strong>Lumiere Essence Hydra Cream → Fresh Hydra Cream</strong>. Pilih salah satu krim pada tahap pelembap sesuai kebutuhan dan kecocokan kulit.<br><br>Gunakan setiap produk sesuai petunjuk pada kemasan dan pakai produk baru secara bertahap."
       },
       en: {
         text:
-          "Brightening Gentle Cleanser\nWet your face, pour an adequate amount of cleanser, and massage gently and evenly. Rinse thoroughly and pat your face dry with a soft towel.\n\n1. Plump+Bright Serumiser\nAfter cleansing your face, apply an adequate amount of serumiser. Spread gently over the facial skin and let it absorb before applying moisturizer.\n\n2. Lumiere Essence Hydra Cream\nApply a thin, even layer to the face and neck after using the serumiser. Adjust the amount according to your skin's needs to help maintain moisture and comfort.\n\n3. Fresh Hydra Cream\nUse as an alternative moisturizer after the serumiser. Apply an adequate amount evenly to the face and neck, morning or evening, according to the directions for use.\n\n4. Radiance Treatment Body Serum\nAfter bathing, apply an adequate amount to clean, dry body skin. Spread it evenly while massaging gently until absorbed, especially on areas that feel dry.\n\nFacial care order: Brightening Gentle Cleanser → Plump+Bright Serumiser → Lumiere Essence Hydra Cream → Fresh Hydra Cream. Choose one cream at the moisturizer step according to your skin's needs and compatibility.\n\nUse each product according to the directions on its packaging and introduce new products gradually.",
+          "1. Brightening Gentle Cleanser\nWet your face, pour an adequate amount of cleanser, and massage gently and evenly. Rinse thoroughly and pat your face dry with a soft towel.\n\n2. Plump+Bright Serumiser\nAfter cleansing your face, apply an adequate amount of serumiser. Spread gently over the facial skin and let it absorb before applying moisturizer.\n\n3. Lumiere Essence Hydra Cream\nApply a thin, even layer to the face and neck after using the serumiser. Adjust the amount according to your skin's needs to help maintain moisture and comfort.\n\n4. Fresh Hydra Cream\nUse as an alternative moisturizer after the serumiser. Apply an adequate amount evenly to the face and neck, morning or evening, according to the directions for use.\n\n5. Radiance Treatment Body Serum\nAfter bathing, apply an adequate amount to clean, dry body skin. Spread it evenly while massaging gently until absorbed, especially on areas that feel dry.\n\nFacial care order: Brightening Gentle Cleanser → Plump+Bright Serumiser → Lumiere Essence Hydra Cream → Fresh Hydra Cream. Choose one cream at the moisturizer step according to your skin's needs and compatibility.\n\nUse each product according to the directions on its packaging and introduce new products gradually.",
         html:
-          "<strong>Brightening Gentle Cleanser</strong><br>Wet your face, pour an adequate amount of cleanser, and massage gently and evenly. Rinse thoroughly and pat your face dry with a soft towel.<br><br><strong>1. Plump+Bright Serumiser</strong><br>After cleansing your face, apply an adequate amount of serumiser. Spread gently over the facial skin and let it absorb before applying moisturizer.<br><br><strong>2. Lumiere Essence Hydra Cream</strong><br>Apply a thin, even layer to the face and neck after using the serumiser. Adjust the amount according to your skin's needs to help maintain moisture and comfort.<br><br><strong>3. Fresh Hydra Cream</strong><br>Use as an alternative moisturizer after the serumiser. Apply an adequate amount evenly to the face and neck, morning or evening, according to the directions for use.<br><br><strong>4. Radiance Treatment Body Serum</strong><br>After bathing, apply an adequate amount to clean, dry body skin. Spread it evenly while massaging gently until absorbed, especially on areas that feel dry.<br><br><strong>Facial care order:</strong> Brightening Gentle Cleanser → Plump+Bright Serumiser → <strong>Lumiere Essence Hydra Cream → Fresh Hydra Cream</strong>. Choose one cream at the moisturizer step according to your skin's needs and compatibility.<br><br>Use each product according to the directions on its packaging and introduce new products gradually."
+          "<strong>1. Brightening Gentle Cleanser</strong><br>Wet your face, pour an adequate amount of cleanser, and massage gently and evenly. Rinse thoroughly and pat your face dry with a soft towel.<br><br><strong>2. Plump+Bright Serumiser</strong><br>After cleansing your face, apply an adequate amount of serumiser. Spread gently over the facial skin and let it absorb before applying moisturizer.<br><br><strong>3. Lumiere Essence Hydra Cream</strong><br>Apply a thin, even layer to the face and neck after using the serumiser. Adjust the amount according to your skin's needs to help maintain moisture and comfort.<br><br><strong>4. Fresh Hydra Cream</strong><br>Use as an alternative moisturizer after the serumiser. Apply an adequate amount evenly to the face and neck, morning or evening, according to the directions for use.<br><br><strong>5. Radiance Treatment Body Serum</strong><br>After bathing, apply an adequate amount to clean, dry body skin. Spread it evenly while massaging gently until absorbed, especially on areas that feel dry.<br><br><strong>Facial care order:</strong> Brightening Gentle Cleanser → Plump+Bright Serumiser → <strong>Lumiere Essence Hydra Cream → Fresh Hydra Cream</strong>. Choose one cream at the moisturizer step according to your skin's needs and compatibility.<br><br>Use each product according to the directions on its packaging and introduce new products gradually."
       }
     });
 
@@ -697,8 +697,8 @@
           en: "Ingredients follow the individual products included in the bundle."
         },
         how: {
-          id: "Pilih paket, tekan Beli melalui Lynk.id, lalu selesaikan data pengiriman dan pembayaran.",
-          en: "Choose the bundle, tap Buy through Lynk.id, then complete shipping and payment details."
+          id: completeHowNote.id.text,
+          en: completeHowNote.en.text
         }
       }
 
@@ -2459,17 +2459,19 @@
 
 
     function getProductImages(product, variant = null) {
-      const variantImage = getVariantImage(variant);
-      if (variantImage) return [variantImage];
-
       const gallery = Array.isArray(product?.images)
         ? product.images.filter(image => typeof image === "string" && image.trim())
         : [];
-      if (gallery.length) return gallery;
 
       const fallback = typeof product?.image === "string"
         ? product.image.trim()
         : "";
+
+      if (product?.isBundle && gallery.length) return gallery;
+
+      const variantImage = getVariantImage(variant);
+      if (variantImage) return [variantImage];
+      if (gallery.length) return gallery;
       return fallback ? [fallback] : [];
     }
 
@@ -2954,27 +2956,7 @@
 
       const modalHowText = document.getElementById("modalHowText");
       if (product.isBundle) {
-        modalHowText.innerHTML = completeHowNote[currentLanguage].html
-          .replace(
-            "<strong>Brightening Gentle Cleanser</strong>",
-            "<strong>1. Brightening Gentle Cleanser</strong>"
-          )
-          .replace(
-            "<strong>1. Plump+Bright Serumiser</strong>",
-            "<strong>2. Plump+Bright Serumiser</strong>"
-          )
-          .replace(
-            "<strong>2. Lumiere Essence Hydra Cream</strong>",
-            "<strong>3. Lumiere Essence Hydra Cream</strong>"
-          )
-          .replace(
-            "<strong>3. Fresh Hydra Cream</strong>",
-            "<strong>4. Fresh Hydra Cream</strong>"
-          )
-          .replace(
-            "<strong>4. Radiance Treatment Body Serum</strong>",
-            "<strong>5. Radiance Treatment Body Serum</strong>"
-          );
+        modalHowText.innerHTML = completeHowNote[currentLanguage].html;
       } else {
         modalHowText.textContent = product.how[currentLanguage];
       }
