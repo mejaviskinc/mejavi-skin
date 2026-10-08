@@ -666,8 +666,9 @@
           id: "Paket Lengkap",
           en: "Complete Care Bundle"
         },
-        image: "images/paket-lengkap/paket-lengkap-tabung-ramping.jpg",
+        image: "images/paket-lengkap/paket-lengkap-hero-20261008.jpg",
         images: [
+          "images/paket-lengkap/paket-lengkap-hero-20261008.jpg",
           "images/paket-lengkap/paket-lengkap-tabung-ramping.jpg",
           "images/paket-lengkap/Screenshot_20260911-223903.jpg",
           "images/paket-lengkap/Screenshot_20260911-223724.jpg",
