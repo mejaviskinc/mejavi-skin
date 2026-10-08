@@ -14,6 +14,81 @@
   let orderKey = "";
   let catalogLoaded = false;
 
+  const TRUSTED_IMAGE_HOSTS = Object.freeze([
+    "mejaviskincare.co.id",
+    "mejaviskinc.github.io",
+    "yqutzzhkuuehvmuqzjvb.supabase.co"
+  ]);
+  const TRUSTED_CHECKOUT_HOSTS = Object.freeze(["lynk.id"]);
+
+  function trustedHost(hostname, allowedHosts) {
+    return allowedHosts.some((host) =>
+      hostname === host || hostname.endsWith(`.${host}`)
+    );
+  }
+
+  function safeUrl(value, {
+    allowedHosts = [],
+    allowDataImage = false,
+    fallback = ""
+  } = {}) {
+    const raw = String(value ?? "").trim();
+    if (!raw || /[\u0000-\u001f\u007f]/.test(raw)) return fallback;
+    if (/^(?:javascript|vbscript):/i.test(raw.replace(/\s+/g, ""))) {
+      return fallback;
+    }
+
+    if (
+      allowDataImage &&
+      /^data:image\/(?:png|jpe?g|webp|gif|svg\+xml);base64,/i.test(raw)
+    ) {
+      return raw;
+    }
+
+    try {
+      const parsed = new URL(raw, window.location.href);
+
+      if (parsed.origin === window.location.origin) {
+        return /^[a-z][a-z0-9+.-]*:/i.test(raw) ? parsed.href : raw;
+      }
+
+      if (
+        parsed.protocol === "https:" &&
+        trustedHost(parsed.hostname, allowedHosts)
+      ) {
+        return parsed.href;
+      }
+    } catch (_error) {
+      return fallback;
+    }
+
+    return fallback;
+  }
+
+  function safeImageSrc(value, fallback = "") {
+    return safeUrl(value, {
+      allowedHosts: TRUSTED_IMAGE_HOSTS,
+      allowDataImage: true,
+      fallback
+    });
+  }
+
+  function safeCheckoutUrl(value) {
+    return safeUrl(value, {
+      allowedHosts: TRUSTED_CHECKOUT_HOSTS,
+      fallback: "#"
+    });
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
   const copy = {
     id: {
       track: "Lacak Pesanan",
@@ -109,16 +184,14 @@
       variant?.photo ??
       variant?.photo_url;
 
-    return typeof value === "string" ? value.trim() : "";
+    return safeImageSrc(value);
   }
 
   function productImage(product, variant) {
-    const mainImage = typeof product?.image === "string"
-      ? product.image.trim()
-      : "";
+    const mainImage = safeImageSrc(product?.image);
 
     if (product?.isBundle && mainImage) return mainImage;
-    return variantImage(variant) || mainImage;
+    return variantImage(variant) || mainImage || "logo-mejavi.png";
   }
 
   function newOrderKey() {
@@ -226,6 +299,8 @@
     if (!content || !activeProduct || !activeVariant) return;
 
     const available = activeVariant.available !== false;
+    const checkoutUrl = safeCheckoutUrl(activeVariant.lynk);
+    const canCheckout = available && checkoutUrl !== "#";
     const stockText = Number.isFinite(Number(activeVariant.stock))
       ? `${t.stock}: ${Math.max(0, Number(activeVariant.stock))}`
       : "";
@@ -238,7 +313,7 @@
       </div>
 
       <div class="order-product-summary">
-        <img src="${productImage(activeProduct, activeVariant)}" alt="">
+        <img src="${escapeHtml(productImage(activeProduct, activeVariant))}" alt="">
         <div>
           <span>${t.product}</span>
           <strong id="orderProductName"></strong>
@@ -247,11 +322,11 @@
       </div>
 
       <div class="order-success-actions">
-        <a class="order-submit ${available ? "" : "disabled"}"
-           href="${available ? activeVariant.lynk : "#"}"
-           ${available ? 'target="_blank" rel="noopener noreferrer"' : 'aria-disabled="true"'}
+        <a class="order-submit ${canCheckout ? "" : "disabled"}"
+           href="${canCheckout ? escapeHtml(checkoutUrl) : "#"}"
+           ${canCheckout ? 'target="_blank" rel="noopener noreferrer"' : 'aria-disabled="true"'}
            data-lynk-checkout>
-          ${available ? t.submit : t.unavailable}
+          ${canCheckout ? t.submit : t.unavailable}
         </a>
         <a class="order-secondary" href="track.html">${t.trackOrder}</a>
       </div>
@@ -270,11 +345,11 @@
       `${activeVariant.size} · ${rupiah(activeVariant.price)}`;
 
     const link = content.querySelector("[data-lynk-checkout]");
-    if (link && available) {
+    if (link && canCheckout) {
       link.addEventListener("click", () => {
         localStorage.setItem("mejavi_last_lynk_product", JSON.stringify({
           sku: activeVariant.sku,
-          lynk: activeVariant.lynk,
+          lynk: checkoutUrl,
           opened_at: new Date().toISOString()
         }));
         window.setTimeout(closeCheckout, 250);
@@ -302,7 +377,7 @@
       </div>
 
       <div class="order-product-summary">
-        <img src="${productImage(activeProduct, activeVariant)}" alt="">
+        <img src="${escapeHtml(productImage(activeProduct, activeVariant))}" alt="">
         <div>
           <span>${t.product}</span>
           <strong id="orderProductName"></strong>
@@ -410,7 +485,7 @@
           items: [{ sku: activeVariant.sku, quantity }],
           note: String(fields.get("note") || "").trim(),
           idempotency_key: orderKey,
-          checkout_url: activeVariant.lynk
+          checkout_url: safeCheckoutUrl(activeVariant.lynk)
         })
       });
 
@@ -437,6 +512,7 @@
     const t = text();
     const content = document.getElementById("orderModalContent");
     const modal = document.getElementById("orderModal");
+    const checkoutUrl = safeCheckoutUrl(order.checkout_url);
     modal.dataset.state = "success";
     content.innerHTML = `
       <div class="order-success-mark" aria-hidden="true">✓</div>
@@ -451,13 +527,18 @@
         <div><dt>${t.payment}</dt><dd>${t.pending}</dd></div>
       </dl>
       <div class="order-success-actions">
-        <a class="order-submit" href="${order.checkout_url}" target="_blank" rel="noopener noreferrer">${t.pay}</a>
+        <a class="order-submit${checkoutUrl === "#" ? " disabled" : ""}" href="${escapeHtml(checkoutUrl)}" target="_blank" rel="noopener noreferrer">${t.pay}</a>
         <a class="order-secondary" href="track.html?order=${encodeURIComponent(order.order_number)}">${t.trackOrder}</a>
         <button class="order-link-button" type="button" data-order-close-success>${t.close}</button>
       </div>
     `;
     content.querySelector("#successOrderNumber").textContent = order.order_number;
     content.querySelector("#successOrderTotal").textContent = rupiah(order.total);
+    if (checkoutUrl === "#") {
+      const paymentLink = content.querySelector(".order-submit");
+      paymentLink.setAttribute("aria-disabled", "true");
+      paymentLink.addEventListener("click", (event) => event.preventDefault());
+    }
     content.querySelector("[data-order-close-success]").addEventListener("click", closeCheckout);
   }
 

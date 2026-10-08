@@ -1,0 +1,16 @@
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-r/RRk7JrT3W71EKi5MMG7ixfSpJ2JsmX5wVPHpe5Mg0='; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://yqutzzhkuuehvmuqzjvb.supabase.co; frame-src 'none'; frame-ancestors 'none'; form-action 'self' https://wa.me https://api.whatsapp.com https://lynk.id; upgrade-insecure-requests"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+<FilesMatch "(^\.|composer\.(json|lock)|package(-lock)?\.json|vite\.config\.)">
+  Require all denied
+</FilesMatch>

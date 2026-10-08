@@ -9,6 +9,8 @@ const RATE_LIMIT_REQUESTS = 8;
 const buckets = new Map();
 
 const ALLOWED_ORIGINS = new Set([
+  "https://mejaviskincare.co.id",
+  "https://www.mejaviskincare.co.id",
   "https://mejaviskinc.github.io",
   "https://mejaviskinc.netlify.app",
   "https://euphonious-scone-aa243d.netlify.app",
@@ -18,13 +20,13 @@ const ALLOWED_ORIGINS = new Set([
 
 const KNOWLEDGE = `
 Mejavi Skin+ adalah brand skincare dan body care untuk rutinitas harian.
-Kontak resmi: WhatsApp +62 821-4570-677, email mejaviskinc@gmail.com, Instagram @mejaviskinc, TikTok @mejaviskinplus.
+Kontak resmi: WhatsApp +62 821-4570-677, email mejaviskinc@gmail.com, Instagram @mejaviskinc, TikTok @mejaviskinc_.
 Produk dan harga website:
 - Radiance Treatment Body Serum: 60gr Rp69.000, 100gr Rp129.900, 250gr Rp215.000. BPOM NA18250117959.
 - Brightening Gentle Cleanser: 100gr Rp89.000. BPOM NA18251209959.
 - Plump + Bright Serumizer: 20gr Rp98.000. BPOM NA18250117979.
 - Fresh Hydra Cream: Day & Night Rp179.900. BPOM NA18250118206.
-- Lumiere Essence Hydra Cream: 35gr Rp122.000. BPOM NA18250117980.
+- Lumiere Essence Hydra Cream: 15gr Rp122.000. BPOM NA18250117980.
 - Herbal Relaxing Cream: 35gr Rp68.000. BPOM NA18260101852.
 Panduan rutin umum: pagi cleanser, serum, moisturizer/cream, lalu sunscreen; malam cleanser, serum, lalu moisturizer/cream.
 Pembelian dilakukan dari halaman Produk dan pembayaran dilanjutkan melalui Lynk.id.
@@ -263,7 +265,7 @@ function fallbackReply(message, language) {
   if (/cleanser|facial foam|sabun/.test(q)) return en ? "Brightening Gentle Cleanser is listed at 100gr for Rp89,000. BPOM: NA18251209959. It is intended to help cleanse dirt and excess oil from the face." : "Brightening Gentle Cleanser tercantum ukuran 100gr dengan harga Rp89.000. BPOM: NA18251209959. Produk ini digunakan untuk membantu membersihkan kotoran dan minyak berlebih pada wajah.";
   if (/serumizer|serum wajah|plump/.test(q)) return en ? "Plump + Bright Serumizer is listed at 20gr for Rp98,000. BPOM: NA18250117979. It is a lightweight facial serum for a daily skincare routine." : "Plump + Bright Serumizer tercantum ukuran 20gr dengan harga Rp98.000. BPOM: NA18250117979. Ini adalah serum wajah bertekstur ringan untuk rutinitas harian.";
   if (/fresh hydra|day.*night|all in one/.test(q)) return en ? "Fresh Hydra Cream is listed as a Day & Night set for Rp179,900. BPOM: NA18250118206." : "Fresh Hydra Cream tercantum sebagai paket Day & Night dengan harga Rp179.900. BPOM: NA18250118206.";
-  if (/lumiere|moisturizer|pelembap|pelembab/.test(q)) return en ? "Lumiere Essence Hydra Cream is listed at 35gr for Rp122,000. BPOM: NA18250117980. It is a moisturizer intended to help keep skin feeling hydrated and comfortable." : "Lumiere Essence Hydra Cream tercantum ukuran 35gr dengan harga Rp122.000. BPOM: NA18250117980. Produk ini merupakan moisturizer untuk membantu kulit terasa lembap dan nyaman.";
+  if (/lumiere|moisturizer|pelembap|pelembab/.test(q)) return en ? "Lumiere Essence Hydra Cream is listed at 15gr for Rp122,000. BPOM: NA18250117980. It is a moisturizer intended to help keep skin feeling hydrated and comfortable." : "Lumiere Essence Hydra Cream tercantum ukuran 15gr dengan harga Rp122.000. BPOM: NA18250117980. Produk ini merupakan moisturizer untuk membantu kulit terasa lembap dan nyaman.";
   if (/herbal|relaxing/.test(q)) return en ? "Herbal Relaxing Cream is listed at 35gr for Rp68,000. BPOM: NA18260101852. It is for external use and light massage on the body." : "Herbal Relaxing Cream tercantum ukuran 35gr dengan harga Rp68.000. BPOM: NA18260101852. Produk digunakan untuk pemakaian luar dan pijat ringan pada tubuh.";
   if (/harga|price|produk|product|pilih|recommend|rekomendasi/.test(q)) {
     return en ? "Mejavi currently lists Body Serum, Brightening Gentle Cleanser, Plump + Bright Serumizer, Fresh Hydra Cream, Lumiere Essence Hydra Cream, and Herbal Relaxing Cream. Open the Products page to compare current prices, sizes, and stock. " + wa : "Mejavi saat ini menampilkan Body Serum, Brightening Gentle Cleanser, Plump + Bright Serumizer, Fresh Hydra Cream, Lumiere Essence Hydra Cream, dan Herbal Relaxing Cream. Buka halaman Produk untuk membandingkan harga, ukuran, dan stok terbaru. " + wa;
