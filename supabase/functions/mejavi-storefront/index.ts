@@ -22,6 +22,8 @@ const supabaseAdmin = createClient(SUPABASE_URL, String(resolveSecretKey()), {
 });
 
 const ALLOWED_ORIGINS = new Set([
+  "https://mejaviskincare.co.id",
+  "https://www.mejaviskincare.co.id",
   "https://mejaviskinc.github.io",
   "https://mejaviskinc.netlify.app",
   "https://euphonious-scone-aa243d.netlify.app",
@@ -30,7 +32,7 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 const baseHeaders = {
-  "Access-Control-Allow-Headers": "content-type, x-client-info",
+  "Access-Control-Allow-Headers": "content-type, x-client-info, accept-language, cache-control",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Content-Type": "application/json; charset=utf-8",
   "X-Content-Type-Options": "nosniff",

@@ -77,7 +77,13 @@
   }
 
   function cleanHandle(value) {
-    return String(value || "").trim().replace(/^@/, "");
+    const handle = String(value || "").trim().replace(/^@/, "");
+    return /^[a-z0-9._]{1,30}$/i.test(handle) ? handle : "";
+  }
+
+  function cleanEmail(value) {
+    const email = String(value || "").trim();
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
   }
 
   function applySettings(settings) {
@@ -89,7 +95,7 @@
     const tiktok = cleanHandle(
       OFFICIAL_SOCIAL_HANDLES.tiktok || settings.tiktok
     );
-    const email = String(settings.email || "").trim();
+    const email = cleanEmail(settings.email);
     const whatsapp = String(settings.whatsapp || "").replace(/\D/g, "");
 
     if (instagram) {
