@@ -1135,7 +1135,52 @@
         navIngredients: "Ingredients",
         navVideo: "Video",
         navReviews: "Review",
+        navArticles: "Artikel & Acara",
         navCollaboration: "Kolaborasi",
+
+        articlesTag: "Artikel & Acara",
+        articlesTitle: "Edukasi, cerita brand, dan agenda Mejavi Skin+.",
+        articlesDesc:
+          "Temukan rangkuman artikel perawatan kulit, update campaign, dan acara Mejavi Skin+ dalam satu halaman.",
+        articleLabel1: "Artikel",
+        articleTitle1: "Rutinitas simpel untuk kulit sensitif",
+        articleText1:
+          "Mulai dari cleanser lembut, serum ringan, hingga pelembap yang membantu kulit terasa nyaman tanpa membuat rutinitas terasa rumit.",
+        articleLabel2: "Artikel",
+        articleTitle2: "Kenapa hidrasi penting untuk glow sehat",
+        articleText2:
+          "Kulit yang terhidrasi baik dapat terasa lebih halus, lembut, dan tampak lebih segar saat dirawat secara konsisten.",
+        articleLabel3: "Artikel",
+        articleTitle3: "Mengenal Paket Lengkap Mejavi Skin+",
+        articleText3:
+          "Satu rangkaian praktis untuk membersihkan, melembapkan, dan melengkapi perawatan wajah serta tubuh setiap hari.",
+        articleLabel4: "Brand Story",
+        articleTitle4: "Glow Up, Show Up",
+        articleText4:
+          "Semangat Mejavi Skin+ untuk hadir lebih segar, lebih rapi, dan lebih dekat dengan kebutuhan perawatan kulit sehari-hari.",
+        articleLabel5: "Tips",
+        articleTitle5: "Cara memilih produk sesuai kebutuhan kulit",
+        articleText5:
+          "Kenali kondisi kulit, mulai bertahap, dan perhatikan kecocokan agar rutinitas skincare terasa lebih aman dan nyaman.",
+        eventsTag: "Acara Mejavi Skin+",
+        eventsTitle: "Agenda brand, campaign, dan kolaborasi.",
+        eventsDesc:
+          "Ruang khusus untuk informasi acara, campaign, model day, creator project, dan peluang kolaborasi bersama Mejavi Skin+.",
+        eventBadge1: "Dibuka",
+        eventTitle1: "Creator & Affiliate Campaign",
+        eventText1:
+          "Program kolaborasi untuk content creator, affiliate, dan partner yang ingin membuat konten edukatif seputar Mejavi Skin+.",
+        eventCta1: "Ajukan Kolaborasi",
+        eventBadge2: "Segera hadir",
+        eventTitle2: "Beauty Booth & Mini Consultation",
+        eventText2:
+          "Agenda offline untuk mengenalkan produk, edukasi cara pakai, dan sesi konsultasi ringan bersama tim Mejavi Skin+.",
+        eventCta2: "Lihat Produk",
+        eventBadge3: "Campaign",
+        eventTitle3: "Model & Campaign Day",
+        eventText3:
+          "Aktivasi visual untuk kebutuhan foto produk, konten media sosial, dan materi brand Mejavi Skin+ berikutnya.",
+        eventCta3: "Hubungi Admin",
 
         heroTag: "✦ Everyday Skin Ritual",
 
@@ -1574,7 +1619,52 @@
         navIngredients: "Ingredients",
         navVideo: "Video",
         navReviews: "Reviews",
+        navArticles: "Articles & Events",
         navCollaboration: "Collaboration",
+
+        articlesTag: "Articles & Events",
+        articlesTitle: "Education, brand stories, and Mejavi Skin+ agendas.",
+        articlesDesc:
+          "Find skincare articles, campaign updates, and Mejavi Skin+ event information in one page.",
+        articleLabel1: "Article",
+        articleTitle1: "A simple routine for sensitive skin",
+        articleText1:
+          "Start with a gentle cleanser, lightweight serum, and moisturizer that help skin feel comfortable without making the routine complicated.",
+        articleLabel2: "Article",
+        articleTitle2: "Why hydration matters for a healthy glow",
+        articleText2:
+          "Well-hydrated skin can feel smoother, softer, and fresher when cared for consistently.",
+        articleLabel3: "Article",
+        articleTitle3: "Getting to know the Mejavi Skin+ complete bundle",
+        articleText3:
+          "A practical set for cleansing, moisturizing, and completing daily face and body care.",
+        articleLabel4: "Brand Story",
+        articleTitle4: "Glow Up, Show Up",
+        articleText4:
+          "The Mejavi Skin+ spirit to look fresher, feel more refined, and stay closer to everyday skincare needs.",
+        articleLabel5: "Tips",
+        articleTitle5: "How to choose products for your skin needs",
+        articleText5:
+          "Understand your skin condition, start gradually, and pay attention to compatibility so skincare feels safer and more comfortable.",
+        eventsTag: "Mejavi Skin+ Events",
+        eventsTitle: "Brand agendas, campaigns, and collaborations.",
+        eventsDesc:
+          "A dedicated space for events, campaigns, model days, creator projects, and collaboration opportunities with Mejavi Skin+.",
+        eventBadge1: "Open",
+        eventTitle1: "Creator & Affiliate Campaign",
+        eventText1:
+          "A collaboration program for creators, affiliates, and partners who want to create educational content around Mejavi Skin+.",
+        eventCta1: "Apply for Collaboration",
+        eventBadge2: "Coming soon",
+        eventTitle2: "Beauty Booth & Mini Consultation",
+        eventText2:
+          "An offline agenda to introduce products, share usage education, and offer light consultation with the Mejavi Skin+ team.",
+        eventCta2: "View Products",
+        eventBadge3: "Campaign",
+        eventTitle3: "Model & Campaign Day",
+        eventText3:
+          "A visual activation for product photos, social media content, and upcoming Mejavi Skin+ brand materials.",
+        eventCta3: "Contact Admin",
 
         heroTag:
           "✦ Everyday Skin Ritual",
