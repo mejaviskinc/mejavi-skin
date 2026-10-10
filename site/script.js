@@ -1143,9 +1143,10 @@
         articlesDesc:
           "Temukan rangkuman artikel perawatan kulit, update campaign, dan acara Mejavi Skin+ dalam satu halaman.",
         articleLabel1: "Artikel",
-        articleTitle1: "Rutinitas simpel untuk kulit sensitif",
+        articleTitle1: "Skincare untuk Kulit Sensitif",
         articleText1:
-          "Mulai dari cleanser lembut, serum ringan, hingga pelembap yang membantu kulit terasa nyaman tanpa membuat rutinitas terasa rumit.",
+          "Kulit sensitif butuh perawatan yang lebih lembut dan tidak berlebihan. Bangun rutinitas sederhana bersama Mejavi Skin+ agar kulit terasa lebih lembap, nyaman, dan terawat setiap hari.",
+        articleCta1: "Baca artikel lengkap",
         articleLabel2: "Artikel",
         articleTitle2: "Kenapa hidrasi penting untuk glow sehat",
         articleText2:
@@ -1627,9 +1628,10 @@
         articlesDesc:
           "Find skincare articles, campaign updates, and Mejavi Skin+ event information in one page.",
         articleLabel1: "Article",
-        articleTitle1: "A simple routine for sensitive skin",
+        articleTitle1: "Skincare for Sensitive Skin",
         articleText1:
-          "Start with a gentle cleanser, lightweight serum, and moisturizer that help skin feel comfortable without making the routine complicated.",
+          "Sensitive skin needs gentler, simpler care. Build a comfortable Mejavi Skin+ routine so the skin feels more hydrated, calm, and cared for every day.",
+        articleCta1: "Read full article",
         articleLabel2: "Article",
         articleTitle2: "Why hydration matters for a healthy glow",
         articleText2:
