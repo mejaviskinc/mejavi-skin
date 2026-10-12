@@ -109,6 +109,20 @@
     });
   }
 
+  function hideCollagenArticleThumbnail() {
+    if (document.body?.dataset.page !== "articles") return;
+
+    document
+      .querySelectorAll(
+        '.article-grid .article-card img[src*="skincare-kulit-sensitif-kolagen-sapi"]'
+      )
+      .forEach((image) => {
+        const imageLink = image.closest("a");
+        if (imageLink) imageLink.remove();
+        else image.remove();
+      });
+  }
+
   function applySettings(settings) {
     if (!isObject(settings)) return;
 
@@ -153,6 +167,14 @@
 
   // Pastikan link statis selalu memakai nomor resmi terbaru, bahkan jika CMS sedang tidak tersedia.
   rewriteWhatsAppLinks(DEFAULT_WHATSAPP_NUMBER);
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", hideCollagenArticleThumbnail, {
+      once: true
+    });
+  } else {
+    hideCollagenArticleThumbnail();
+  }
 
   const ready = fetchPublishedContent();
   window.mejaviCMSReady = ready;
