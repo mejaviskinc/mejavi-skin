@@ -16,6 +16,8 @@
     instagram: "mejaviskincare",
     tiktok: "mejaviskinc_"
   });
+  const DEFAULT_WHATSAPP_NUMBER = "628113196990";
+  const LEGACY_WHATSAPP_NUMBER = "628214570677";
 
   function isObject(value) {
     return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -86,6 +88,27 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
   }
 
+  function rewriteWhatsAppLinks(number) {
+    const whatsapp = String(number || "").replace(/\D/g, "");
+    if (!whatsapp) return;
+
+    document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
+      const current = link.getAttribute("href") || "";
+      const query = current.includes("?") ? current.slice(current.indexOf("?")) : "";
+      link.href = `https://wa.me/${whatsapp}${query}`;
+    });
+
+    document.querySelectorAll('a[href*="api.whatsapp.com/"]').forEach((link) => {
+      try {
+        const url = new URL(link.href, window.location.href);
+        url.searchParams.set("phone", whatsapp);
+        link.href = url.toString();
+      } catch (_error) {
+        // Abaikan link yang tidak valid.
+      }
+    });
+  }
+
   function applySettings(settings) {
     if (!isObject(settings)) return;
 
@@ -96,7 +119,11 @@
       OFFICIAL_SOCIAL_HANDLES.tiktok || settings.tiktok
     );
     const email = cleanEmail(settings.email);
-    const whatsapp = String(settings.whatsapp || "").replace(/\D/g, "");
+    const configuredWhatsapp = String(settings.whatsapp || "").replace(/\D/g, "");
+    const whatsapp =
+      !configuredWhatsapp || configuredWhatsapp === LEGACY_WHATSAPP_NUMBER
+        ? DEFAULT_WHATSAPP_NUMBER
+        : configuredWhatsapp;
 
     if (instagram) {
       document.querySelectorAll('a[href*="instagram.com"]').forEach((link) => {
@@ -119,16 +146,13 @@
       });
     }
 
-    if (whatsapp) {
-      document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
-        const current = link.getAttribute("href") || "";
-        const query = current.includes("?") ? current.slice(current.indexOf("?")) : "";
-        link.href = `https://wa.me/${whatsapp}${query}`;
-      });
-    }
+    rewriteWhatsAppLinks(whatsapp);
 
     window.mejaviSiteSettings = { ...settings, instagram, tiktok, email, whatsapp };
   }
+
+  // Pastikan link statis selalu memakai nomor resmi terbaru, bahkan jika CMS sedang tidak tersedia.
+  rewriteWhatsAppLinks(DEFAULT_WHATSAPP_NUMBER);
 
   const ready = fetchPublishedContent();
   window.mejaviCMSReady = ready;
