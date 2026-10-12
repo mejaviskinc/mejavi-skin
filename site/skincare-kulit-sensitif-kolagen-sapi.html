@@ -45,6 +45,32 @@
   <meta name="twitter:image:alt" content="Rangkaian produk Mejavi Skin+ untuk artikel skincare kulit sensitif dan kolagen sapi">
 
   <link rel="stylesheet" href="style.css?v=202610101112">
+  <style>
+    .article-page .article-hero-card {
+      width: min(100%, 380px);
+      justify-self: center;
+    }
+    .article-page .article-hero-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+    }
+    @media (max-width: 900px) {
+      .article-page .article-hero-card {
+        width: min(100%, 360px);
+        margin-inline: auto;
+      }
+    }
+    @media (max-width: 520px) {
+      .article-page .article-hero-card {
+        width: min(88vw, 320px);
+        border-radius: 20px;
+      }
+    }
+  </style>
 
   <script type="application/ld+json">
   {
