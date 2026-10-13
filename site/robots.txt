@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin.html
 
 Sitemap: https://mejaviskincare.co.id/sitemap.xml
+Sitemap: https://mejaviskincare.co.id/image-sitemap.xml
