@@ -37,6 +37,13 @@ jobs:
           node --check site/home-products.js
           node --check site/admin.js
 
+      - name: Include presentation site
+        shell: bash
+        run: |
+          rm -rf site/presentasi
+          mkdir -p site/presentasi
+          cp -R presentasi/. site/presentasi/
+
       - name: Bust browser cache for website assets
         shell: bash
         run: |
