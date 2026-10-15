@@ -37,6 +37,7 @@ jobs:
           node --check site/home-products.js
           node --check site/admin.js
           node --check presentasi/presentation-enhancements.js
+          node --check presentasi/presentation-ui-fixes.js
 
       - name: Include presentation site
         shell: bash
@@ -72,6 +73,13 @@ jobs:
             sed -i "s#</body>#  <script src=\"presentation-enhancements.js?v=${VERSION}\"></script>\n</body>#" site/presentasi/index.html
           else
             sed -E -i "s#presentation-enhancements\.js(\?v=[A-Za-z0-9._-]+)?#presentation-enhancements.js?v=${VERSION}#g" site/presentasi/index.html
+          fi
+
+          # Presentation-only UI polish for hero stats, header actions and care guidance.
+          if ! grep -q 'presentation-ui-fixes.js' site/presentasi/index.html; then
+            sed -i "s#</body>#  <script src=\"presentation-ui-fixes.js?v=${VERSION}\"></script>\n</body>#" site/presentasi/index.html
+          else
+            sed -E -i "s#presentation-ui-fixes\.js(\?v=[A-Za-z0-9._-]+)?#presentation-ui-fixes.js?v=${VERSION}#g" site/presentasi/index.html
           fi
 
       - name: Configure GitHub Pages
