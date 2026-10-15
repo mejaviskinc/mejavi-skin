@@ -38,6 +38,7 @@ jobs:
           node --check site/admin.js
           node --check presentasi/presentation-enhancements.js
           node --check presentasi/presentation-ui-fixes.js
+          node --check presentasi/presentation-product-adjustments.js
 
       - name: Include presentation site
         shell: bash
@@ -80,6 +81,13 @@ jobs:
             sed -i "s#</body>#  <script src=\"presentation-ui-fixes.js?v=${VERSION}\"></script>\n</body>#" site/presentasi/index.html
           else
             sed -E -i "s#presentation-ui-fixes\.js(\?v=[A-Za-z0-9._-]+)?#presentation-ui-fixes.js?v=${VERSION}#g" site/presentasi/index.html
+          fi
+
+          # Presentation-only product adjustments: remove Complete Package and update Fresh Hydra Cream size.
+          if ! grep -q 'presentation-product-adjustments.js' site/presentasi/index.html; then
+            sed -i "s#</body>#  <script src=\"presentation-product-adjustments.js?v=${VERSION}\"></script>\n</body>#" site/presentasi/index.html
+          else
+            sed -E -i "s#presentation-product-adjustments\.js(\?v=[A-Za-z0-9._-]+)?#presentation-product-adjustments.js?v=${VERSION}#g" site/presentasi/index.html
           fi
 
       - name: Configure GitHub Pages
