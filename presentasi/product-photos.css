@@ -1,0 +1,14 @@
+.products{align-items:stretch}
+.product{padding:176px 24px 24px;min-height:360px;transition:transform .25s ease,box-shadow .25s ease}
+.product::before{content:"";position:absolute;left:0;right:0;top:0;height:150px;background-color:#f7f2ea;background-position:center;background-repeat:no-repeat;background-size:contain;border-bottom:1px solid var(--line);z-index:0}
+.product:nth-child(1)::before{background-image:url('../images/cleaner.jpg')}
+.product:nth-child(2)::before{background-image:url('../images/serum.jpg')}
+.product:nth-child(3)::before{background-image:url('../images/moisturizer.jpg')}
+.product:nth-child(4)::before{background-image:url('../images/cream.jpg')}
+.product:nth-child(5)::before{background-image:url('../images/bodyserum.jpg')}
+.product:nth-child(6)::before{background-image:url('../images/herbal.jpg')}
+.product .tag,.product strong,.product small{position:relative;z-index:2}
+.product:hover{transform:translateY(-5px);box-shadow:0 18px 46px rgba(38,30,20,.10)}
+@media(max-width:900px){.product{padding-top:168px;min-height:345px}.product::before{height:144px}}
+@media(max-width:620px){.product{padding:162px 20px 22px;min-height:0}.product::before{height:138px}.product strong,.product small{max-width:100%}}
+@media(prefers-reduced-motion:reduce){.product{transition:none}.product:hover{transform:none}}
