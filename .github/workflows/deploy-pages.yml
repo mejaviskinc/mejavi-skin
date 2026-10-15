@@ -36,6 +36,7 @@ jobs:
           node --check site/site-content.js
           node --check site/home-products.js
           node --check site/admin.js
+          node --check presentasi/presentation-enhancements.js
 
       - name: Include presentation site
         shell: bash
@@ -64,6 +65,13 @@ jobs:
             sed -i "s#</body>#  <script src=\"home-products.js?v=${VERSION}\"></script>\n</body>#" site/index.html
           else
             sed -E -i "s#home-products\.js(\?v=[A-Za-z0-9._-]+)?#home-products.js?v=${VERSION}#g" site/index.html
+          fi
+
+          # Presentation-only richer copy + click-to-fullscreen video with sound.
+          if ! grep -q 'presentation-enhancements.js' site/presentasi/index.html; then
+            sed -i "s#</body>#  <script src=\"presentation-enhancements.js?v=${VERSION}\"></script>\n</body>#" site/presentasi/index.html
+          else
+            sed -E -i "s#presentation-enhancements\.js(\?v=[A-Za-z0-9._-]+)?#presentation-enhancements.js?v=${VERSION}#g" site/presentasi/index.html
           fi
 
       - name: Configure GitHub Pages
