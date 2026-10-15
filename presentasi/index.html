@@ -5,29 +5,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#080808" />
   <title>MEJAVI SKIN+ — Glow Up, Show Up</title>
-  <meta name="description" content="MEJAVI SKIN+ — Modern skincare for sensitive skin. Explore an interactive luxury 3D product showroom." />
+  <meta name="description" content="MEJAVI SKIN+ official interactive product showroom using product data and photography from the main Mejavi Skin+ website." />
   <style>
     :root{--bg:#070707;--panel:#10100f;--cream:#f3eadf;--gold:#c8a56a;--gold2:#ecd4a3;--line:rgba(255,255,255,.12);--muted:#b9b3aa}
-    *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:white;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
-    body{min-height:100vh;background:radial-gradient(circle at 50% -10%,rgba(200,165,106,.13),transparent 38%),#070707}
-    a{color:inherit;text-decoration:none}.shell{min-height:100vh;position:relative;overflow:hidden}
-    .grain{position:fixed;inset:0;pointer-events:none;opacity:.12;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E")}
-    header{position:fixed;z-index:30;top:0;left:0;right:0;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(7,7,7,.82),rgba(7,7,7,.28))}
-    .brand{display:flex;align-items:center;gap:14px;letter-spacing:.18em;font-weight:700;font-size:14px}.brandmark{width:32px;height:32px;border:1px solid rgba(236,212,163,.55);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-family:Georgia,serif;font-size:15px;box-shadow:inset 0 0 20px rgba(200,165,106,.08),0 0 25px rgba(200,165,106,.08)}
-    .nav{display:flex;gap:24px;color:#d8d4ce;font-size:12px;letter-spacing:.14em;text-transform:uppercase}.nav a{opacity:.75;transition:.2s}.nav a:hover{opacity:1;color:var(--gold2)}
-    .hero{min-height:100vh;display:grid;grid-template-columns:minmax(300px,.78fr) minmax(460px,1.22fr);align-items:center;gap:2vw;padding:110px 5vw 42px;position:relative}
-    .copy{position:relative;z-index:10;max-width:660px}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold2);font-size:11px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:24px}.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
-    h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:.88;letter-spacing:-.055em;font-size:clamp(70px,8vw,136px)} h1 span{display:block;color:var(--cream)}
-    .tagline{font-size:clamp(20px,2vw,30px);margin:24px 0 16px;color:#fff;letter-spacing:-.02em}.lead{max-width:560px;color:var(--muted);font-size:15px;line-height:1.75;margin:0}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{border-radius:999px;padding:14px 20px;border:1px solid var(--line);font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.03);color:#fff;transition:.25s}.btn.primary{background:var(--cream);color:#111;border-color:var(--cream)}.btn:hover{transform:translateY(-2px);border-color:rgba(236,212,163,.48);box-shadow:0 10px 30px rgba(0,0,0,.2)}
-    .stage-wrap{height:min(76vh,800px);min-height:560px;position:relative}.stage{width:100%;height:100%;position:relative;border-radius:38px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:radial-gradient(circle at 50% 44%,rgba(200,165,106,.14),rgba(255,255,255,.015) 40%,rgba(0,0,0,.18) 72%);box-shadow:inset 0 0 90px rgba(255,255,255,.018),0 30px 80px rgba(0,0,0,.36)}
-    #webgl{position:absolute;inset:0}.stage-ui{position:absolute;inset:0;pointer-events:none}.stage-top{position:absolute;top:24px;left:26px;right:26px;display:flex;justify-content:space-between;align-items:flex-start}.index{font-size:11px;color:#bfb8ad;letter-spacing:.18em;text-transform:uppercase}.live{display:flex;align-items:center;gap:8px;color:#cfc9bf;font-size:10px;letter-spacing:.18em;text-transform:uppercase}.dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);box-shadow:0 0 14px var(--gold2)}
-    .stage-bottom{position:absolute;bottom:22px;left:24px;right:24px;display:flex;align-items:end;justify-content:space-between}.product-meta h3{margin:0 0 5px;font-size:18px;font-weight:500;letter-spacing:-.02em}.product-meta p{margin:0;color:#a9a39a;font-size:12px;letter-spacing:.08em}.hint{font-size:10px;color:#aaa49c;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:10px 13px;border-radius:999px;background:rgba(7,7,7,.3);backdrop-filter:blur(8px)}
-    .products{padding:90px 5vw 110px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}.section-head h2{font:500 clamp(38px,5vw,72px)/1 Georgia,serif;margin:0;letter-spacing:-.04em}.section-head p{max-width:430px;margin:0;color:#9f9a92;font-size:14px;line-height:1.7}
-    .product-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.card{background:linear-gradient(180deg,#111110,#0c0c0b);border:1px solid rgba(255,255,255,.08);border-radius:24px;min-height:280px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:.25s;position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:auto -20% -44% -20%;height:55%;background:radial-gradient(circle,rgba(200,165,106,.13),transparent 68%)}.card:hover{transform:translateY(-5px);border-color:rgba(236,212,163,.3)}.mini-bottle{height:150px;display:grid;place-items:center}.shape{width:70px;height:118px;border-radius:19px 19px 16px 16px;background:linear-gradient(145deg,#f1e9dd,#cfc3b4);position:relative;box-shadow:0 22px 45px rgba(0,0,0,.3)}.shape:before{content:"";position:absolute;width:42px;height:24px;border-radius:7px 7px 4px 4px;left:14px;top:-17px;background:#1a1a19}.shape:after{content:"MEJAVI";position:absolute;left:0;right:0;top:50px;text-align:center;color:#151515;font-size:9px;letter-spacing:.14em}.card:nth-child(2) .shape{height:132px;border-radius:14px}.card:nth-child(3) .shape{width:56px;height:120px;background:linear-gradient(145deg,#fff,#d6d4cf)}.card:nth-child(4) .shape,.card:nth-child(5) .shape,.card:nth-child(6) .shape{width:82px;height:74px;border-radius:16px;margin-top:36px}.card:nth-child(6) .shape{background:linear-gradient(145deg,#dbc4aa,#ad9276)}.card h4{margin:0;font-size:13px;font-weight:500;line-height:1.35}.card small{color:#88827b;letter-spacing:.1em;text-transform:uppercase;font-size:9px;margin-top:8px;display:block}
-    .footer{padding:40px 5vw 70px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;color:#8b857d;font-size:12px}.footer b{color:#eee;font-weight:500;letter-spacing:.12em}
-    @media(max-width:1100px){.hero{grid-template-columns:1fr;padding-top:130px}.copy{max-width:800px}.stage-wrap{height:68vh}.product-grid{grid-template-columns:repeat(3,1fr)}h1{font-size:clamp(66px,14vw,120px)}}
-    @media(max-width:680px){header{padding:0 20px;height:68px}.nav{display:none}.hero{padding:100px 18px 28px}.copy{padding:0 4px}.lead{font-size:14px}.stage-wrap{height:62vh;min-height:500px}.stage{border-radius:28px}.stage-bottom{align-items:flex-end}.hint{display:none}.products{padding:68px 18px 80px}.section-head{display:block}.section-head p{margin-top:14px}.product-grid{grid-template-columns:repeat(2,1fr)}.card{min-height:250px}.footer{padding:32px 18px 48px;display:block}.footer span{display:block;margin-top:10px}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0;background:var(--bg);color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}body{min-height:100vh;background:radial-gradient(circle at 50% -10%,rgba(200,165,106,.13),transparent 38%),#070707}a{color:inherit;text-decoration:none}button{font:inherit}.shell{min-height:100vh;position:relative;overflow:hidden}.grain{position:fixed;inset:0;pointer-events:none;opacity:.09;z-index:50;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
+    header{position:fixed;z-index:40;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(7,7,7,.9),rgba(7,7,7,.42))}.brand{display:flex;align-items:center;gap:12px;letter-spacing:.18em;font-weight:700;font-size:13px}.brandmark{width:34px;height:34px;border:1px solid rgba(236,212,163,.55);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-family:Georgia,serif;box-shadow:inset 0 0 22px rgba(200,165,106,.08),0 0 26px rgba(200,165,106,.08)}.nav{display:flex;gap:24px;color:#d8d4ce;font-size:11px;letter-spacing:.15em;text-transform:uppercase}.nav a{opacity:.72;transition:.2s}.nav a:hover{opacity:1;color:var(--gold2)}
+    .hero{min-height:100vh;display:grid;grid-template-columns:minmax(300px,.78fr) minmax(500px,1.22fr);align-items:center;gap:2vw;padding:108px 5vw 46px}.copy{position:relative;z-index:10;max-width:650px}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold2);font-size:11px;letter-spacing:.27em;text-transform:uppercase;margin-bottom:22px}.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:.88;letter-spacing:-.055em;font-size:clamp(68px,8vw,132px)}h1 span{display:block;color:var(--cream)}.tagline{font-size:clamp(20px,2vw,29px);margin:23px 0 15px}.lead{max-width:560px;color:var(--muted);font-size:15px;line-height:1.75;margin:0}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{border-radius:999px;padding:14px 20px;border:1px solid var(--line);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.03);color:#fff;transition:.25s}.btn.primary{background:var(--cream);color:#111;border-color:var(--cream)}.btn:hover{transform:translateY(-2px);border-color:rgba(236,212,163,.48)}
+    .stage-wrap{height:min(78vh,810px);min-height:580px;position:relative}.stage{width:100%;height:100%;position:relative;border-radius:38px;overflow:hidden;border:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 50% 43%,rgba(200,165,106,.15),rgba(255,255,255,.015) 42%,rgba(0,0,0,.2) 74%);box-shadow:inset 0 0 100px rgba(255,255,255,.018),0 30px 80px rgba(0,0,0,.38);cursor:pointer}.stage:hover{border-color:rgba(236,212,163,.25)}#webgl{position:absolute;inset:0;width:100%;height:100%}.photo-frame{position:absolute;z-index:8;left:50%;top:50%;width:min(48%,360px);height:min(66%,500px);transform:translate(-50%,-54%);border:1px solid rgba(236,212,163,.5);border-radius:30px;padding:16px;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.025));box-shadow:0 0 34px rgba(200,165,106,.12),inset 0 0 28px rgba(255,255,255,.025);backdrop-filter:blur(7px);transition:.35s ease}.stage:hover .photo-frame{border-color:rgba(236,212,163,.82);box-shadow:0 0 52px rgba(200,165,106,.2),inset 0 0 36px rgba(255,255,255,.04)}.photo-inner{position:relative;width:100%;height:100%;border-radius:20px;overflow:hidden;background:#f7f3ec}.hero-product{width:100%;height:100%;object-fit:contain;display:block;animation:floatProduct 5s ease-in-out infinite;transition:opacity .28s ease,filter .35s ease,transform .4s ease}.stage:hover .hero-product{filter:brightness(1.06)}.photo-inner:after{content:"";position:absolute;top:-20%;bottom:-20%;width:25%;left:-40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-16deg);opacity:0}.stage:hover .photo-inner:after{animation:sweep 1.25s ease}.swap-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(236,212,163,.28),transparent 45%);opacity:0;mix-blend-mode:screen}.swap-glow.active{animation:flash .6s ease}.stage-ui{position:absolute;z-index:10;inset:0;pointer-events:none}.stage-top{position:absolute;top:24px;left:26px;right:26px;display:flex;justify-content:space-between}.index{font-size:10px;color:#bfb8ad;letter-spacing:.18em;text-transform:uppercase}.live{display:flex;align-items:center;gap:8px;color:#cfc9bf;font-size:10px;letter-spacing:.18em;text-transform:uppercase}.dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);box-shadow:0 0 14px var(--gold2)}.stage-bottom{position:absolute;bottom:22px;left:24px;right:24px;display:flex;align-items:end;justify-content:space-between;gap:16px}.product-meta{max-width:68%}.product-meta h3{margin:0 0 5px;font-size:18px;font-weight:500}.product-meta p{margin:0;color:#aaa49c;font-size:11px;letter-spacing:.08em;line-height:1.5}.hint{font-size:10px;color:#aaa49c;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:10px 13px;border-radius:999px;background:rgba(7,7,7,.35);backdrop-filter:blur(8px)}
+    .products{padding:92px 5vw 112px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px}.section-head h2{font:500 clamp(38px,5vw,72px)/1 Georgia,serif;margin:0;letter-spacing:-.04em}.section-head p{max-width:480px;margin:0;color:#9f9a92;font-size:14px;line-height:1.7}.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(180deg,#121211,#0c0c0b);border:1px solid rgba(255,255,255,.08);border-radius:26px;overflow:hidden;cursor:pointer;transition:.28s;position:relative}.card:hover{transform:translateY(-6px);border-color:rgba(236,212,163,.34);box-shadow:0 24px 50px rgba(0,0,0,.24)}.card.active{border-color:rgba(236,212,163,.58)}.card-photo{height:270px;background:#f6f1e9;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden}.card-photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s ease}.card:hover .card-photo img{transform:scale(1.035)}.card-body{padding:20px}.card-kicker{color:var(--gold2);font-size:9px;letter-spacing:.18em;text-transform:uppercase}.card h4{margin:9px 0 8px;font:500 23px/1.08 Georgia,serif}.card-desc{margin:0;color:#9f9a92;font-size:12px;line-height:1.55;min-height:56px}.card-meta{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07)}.card-size{font-size:10px;color:#aaa49c;letter-spacing:.1em;text-transform:uppercase}.card-price{font-size:14px;color:#f4eee6;font-weight:600}.bpom{font-size:9px;color:#8f8980;margin-top:8px}.official{margin-top:30px;color:#7e7870;font-size:11px;letter-spacing:.05em}.footer{padding:42px 5vw 70px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;color:#8b857d;font-size:12px}.footer b{color:#eee;font-weight:500;letter-spacing:.12em}
+    @keyframes floatProduct{0%,100%{transform:translateY(4px) rotateY(-2deg)}50%{transform:translateY(-8px) rotateY(2deg)}}@keyframes sweep{0%{left:-40%;opacity:0}20%{opacity:.7}100%{left:125%;opacity:0}}@keyframes flash{0%{opacity:0}35%{opacity:1}100%{opacity:0}}
+    @media(max-width:1100px){.hero{grid-template-columns:1fr;padding-top:128px}.copy{max-width:800px}.stage-wrap{height:70vh}.product-grid{grid-template-columns:repeat(2,1fr)}h1{font-size:clamp(66px,14vw,120px)}}
+    @media(max-width:680px){header{padding:0 18px;height:68px}.nav{display:none}.hero{padding:100px 16px 28px}.copy{padding:0 4px}.lead{font-size:14px}.stage-wrap{height:64vh;min-height:510px}.stage{border-radius:28px}.photo-frame{width:62%;height:60%;padding:10px;border-radius:24px}.photo-inner{border-radius:16px}.stage-bottom{align-items:flex-end}.hint{display:none}.product-meta{max-width:100%}.products{padding:68px 16px 80px}.section-head{display:block}.section-head p{margin-top:14px}.product-grid{grid-template-columns:1fr}.card-photo{height:300px}.footer{padding:32px 18px 48px;display:block}.footer span{display:block;margin-top:10px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-product{animation:none}.card,.btn,.hero-product{transition:none}}
   </style>
 </head>
 <body>
@@ -35,117 +24,72 @@
   <div class="grain"></div>
   <header>
     <a href="#top" class="brand"><span class="brandmark">M+</span><span>MEJAVI SKIN+</span></a>
-    <nav class="nav"><a href="#experience">Experience</a><a href="#products">Products</a><a href="#story">Sensitive Skin</a></nav>
+    <nav class="nav"><a href="#experience">Experience</a><a href="#products">Products</a><a href="https://mejaviskincare.co.id/skincare-kulit-sensitif/" target="_blank" rel="noopener">Main Website</a></nav>
   </header>
-
   <main id="top">
     <section class="hero" id="experience">
       <div class="copy">
-        <div class="eyebrow">Interactive Skincare Showroom</div>
+        <div class="eyebrow">Official Product Showroom</div>
         <h1>MEJAVI <span>SKIN+</span></h1>
         <div class="tagline">Glow Up, Show Up</div>
-        <p class="lead">Modern skincare for sensitive skin, presented through a refined digital showroom. Move around the display, hover to reveal the glow, and click to discover every Mejavi Skin+ essential.</p>
+        <p class="lead">Modern skincare for sensitive skin. This interactive showcase now uses the same official Mejavi Skin+ product photography, product names, sizes, prices, descriptions and BPOM references as the main website.</p>
         <div class="actions"><button class="btn primary" id="exploreBtn">Explore Products</button><button class="btn" id="rotateBtn">Pause Orbit</button></div>
       </div>
-
       <div class="stage-wrap">
-        <div class="stage" id="stage">
+        <div class="stage" id="stage" aria-label="Click to view the next Mejavi Skin+ product">
           <canvas id="webgl"></canvas>
+          <div class="photo-frame"><div class="photo-inner"><img class="hero-product" id="heroProduct" src="../images/bodyserum.jpg" alt="Radiance Treatment Body Serum"><div class="swap-glow" id="swapGlow"></div></div></div>
           <div class="stage-ui">
-            <div class="stage-top"><div class="index" id="counter">01 / 06</div><div class="live"><span class="dot"></span>3D Product Experience</div></div>
-            <div class="stage-bottom"><div class="product-meta"><h3 id="productName">Radiance Treatment Body Serum</h3><p id="productType">BODY CARE · 60G</p></div><div class="hint">Hover · Drag · Click to swap</div></div>
+            <div class="stage-top"><div class="index" id="counter">01 / 06</div><div class="live"><span class="dot"></span>Official Product Photography</div></div>
+            <div class="stage-bottom"><div class="product-meta"><h3 id="productName">Radiance Treatment Body Serum</h3><p id="productType">BODY CARE · 60GR / 100GR / 250GR · FROM RP69,000</p></div><div class="hint">Hover · Drag · Click to swap</div></div>
           </div>
         </div>
       </div>
     </section>
-
     <section class="products" id="products">
-      <div class="section-head"><h2>Six essentials.<br/>One ritual.</h2><p>Each formula is presented with a focused, modern beauty aesthetic — designed to make daily skincare feel intentional, elevated, and effortless.</p></div>
+      <div class="section-head"><h2>Official lineup.<br>One Mejavi ritual.</h2><p>Product information and imagery are synchronized from the main Mejavi Skin+ website source so the presentation matches the live catalog.</p></div>
       <div class="product-grid" id="productGrid"></div>
+      <div class="official">Source: Mejavi Skin+ main website catalog · Prices shown in Indonesian Rupiah.</div>
     </section>
   </main>
-
-  <footer class="footer" id="story"><b>MEJAVI SKIN+</b><span>Modern Skincare for Sensitive Skin · © 2026</span></footer>
+  <footer class="footer"><b>MEJAVI SKIN+</b><span>Modern Skincare for Sensitive Skin · © 2026</span></footer>
 </div>
-
 <script type="module">
 import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
-const products = [
-  {name:'Radiance Treatment Body Serum', type:'BODY CARE · 60G', shape:'bottle', color:'#eadfce', accent:'#171717'},
-  {name:'Brightening Gentle Cleanser', type:'FACIAL CLEANSER · 100G', shape:'cleanser', color:'#efe7db', accent:'#151515'},
-  {name:'Plump+Bright Serumiser', type:'SERUMISER · 20G', shape:'serum', color:'#f2f0ec', accent:'#111111'},
-  {name:'Lumiere Essence Hydra Cream', type:'HYDRA CREAM · 15G', shape:'jar', color:'#e7ded1', accent:'#c7a86e'},
-  {name:'Fresh Hydra Cream', type:'FACE MOISTURIZER', shape:'jar', color:'#f0e6dc', accent:'#171717'},
-  {name:'Herbal Relaxing Cream', type:'RELAXING CREAM · 35G', shape:'jar', color:'#d8c1a5', accent:'#171717'}
+const products=[
+  {name:'Radiance Treatment Body Serum',category:'Body Care',image:'../images/bodyserum.jpg',sizes:['60gr','100gr','250gr'],prices:[69000,129900,215000],bpom:'NA18250117959',description:'A body serum designed to help keep skin soft, moisturized and well cared for.'},
+  {name:'Brightening Gentle Cleanser',category:'Face Cleanser',image:'../images/cleaner.jpg',sizes:['100gr'],prices:[89000],bpom:'NA18251209959',description:'A facial cleanser designed to help remove dirt and excess oil from the face.'},
+  {name:'Plump + Bright Serumizer',category:'Face Serum',image:'../images/serum.jpg',sizes:['20gr'],prices:[98000],bpom:'NA18250117979',description:'A lightweight facial serum created for your daily skincare routine.'},
+  {name:'LUMIERE ESSENCE HYDRA CREAM',category:'Moisturizer',image:'../images/moisturizer.jpg',sizes:['15gr'],prices:[122000],bpom:'NA18250117980',description:'A moisturizer designed to help keep the skin hydrated and comfortable.'},
+  {name:'Fresh Hydra Cream',category:'Face Cream',image:'../images/cream.jpg',sizes:['Day & Night'],prices:[179900],bpom:'NA18250118206',description:'A facial cream designed to complement both morning and evening skincare routines.'},
+  {name:'Herbal Relaxing Cream',category:'Special Care',image:'../images/herbal.jpg',sizes:['35gr'],prices:[68000],bpom:'NA18260101852',description:'A botanical-inspired relaxing cream created to complement your daily care routine.'}
 ];
-
+const rupiah=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n).replace('Rp','Rp');
 const grid=document.querySelector('#productGrid');
-products.forEach((p,i)=>{const card=document.createElement('article');card.className='card';card.innerHTML=`<div class="mini-bottle"><div class="shape"></div></div><div><h4>${p.name}</h4><small>${p.type}</small></div>`;card.addEventListener('click',()=>selectProduct(i,true));grid.appendChild(card)});
+products.forEach((p,i)=>{const c=document.createElement('article');c.className='card';c.innerHTML=`<div class="card-photo"><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="card-body"><div class="card-kicker">${p.category}</div><h4>${p.name}</h4><p class="card-desc">${p.description}</p><div class="card-meta"><div class="card-size">${p.sizes.join(' · ')}</div><div class="card-price">${p.prices.length>1?'From ':''}${rupiah(Math.min(...p.prices))}</div></div><div class="bpom">BPOM ${p.bpom}</div></div>`;c.addEventListener('click',()=>selectProduct(i,true));grid.appendChild(c)});
 
 document.querySelector('#exploreBtn').onclick=()=>document.querySelector('#products').scrollIntoView({behavior:'smooth'});
-
 const canvas=document.querySelector('#webgl');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(32,1,.1,100);camera.position.set(5.8,4.2,7.4);
-const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=5;controls.maxDistance=10;controls.minPolarAngle=.75;controls.maxPolarAngle=1.42;controls.autoRotate=true;controls.autoRotateSpeed=.75;controls.target.set(0,1.45,0);
-
-document.querySelector('#rotateBtn').onclick=(e)=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.textContent=controls.autoRotate?'Pause Orbit':'Resume Orbit'};
-
-const hemi=new THREE.HemisphereLight(0xfff4e4,0x111111,1.25);scene.add(hemi);
-const key=new THREE.DirectionalLight(0xffecd0,5);key.position.set(4,7,5);scene.add(key);
-const rim=new THREE.PointLight(0xd8ad68,22,12);rim.position.set(-3,3,-1);scene.add(rim);
-const front=new THREE.PointLight(0xffffff,12,10);front.position.set(0,3,5);scene.add(front);
-
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
+const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(34,1,.1,100);camera.position.set(5.8,4.2,7.4);
+const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=5;controls.maxDistance=10;controls.minPolarAngle=.75;controls.maxPolarAngle=1.42;controls.autoRotate=true;controls.autoRotateSpeed=.72;controls.target.set(0,1.35,0);
+document.querySelector('#rotateBtn').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.textContent=controls.autoRotate?'Pause Orbit':'Resume Orbit'};
+scene.add(new THREE.HemisphereLight(0xfff3df,0x111111,1.3));const key=new THREE.DirectionalLight(0xffecd0,4.5);key.position.set(4,7,5);scene.add(key);const rim=new THREE.PointLight(0xd8ad68,22,12);rim.position.set(-3,3,-1);scene.add(rim);
 const root=new THREE.Group();scene.add(root);
-
-const floorGeo=new THREE.PlaneGeometry(18,18);const floorMat=new THREE.MeshPhysicalMaterial({color:0x111110,roughness:.32,metalness:.48,clearcoat:.4,clearcoatRoughness:.25});const floor=new THREE.Mesh(floorGeo,floorMat);floor.rotation.x=-Math.PI/2;floor.position.y=-.02;root.add(floor);
-
-const pedestalMat=new THREE.MeshPhysicalMaterial({color:0x0d0d0c,roughness:.55,metalness:.25,clearcoat:.28});
-const ped=new THREE.Mesh(new THREE.CylinderGeometry(2.05,2.28,.58,6),pedestalMat);ped.position.y=.29;root.add(ped);
-const trim=new THREE.Mesh(new THREE.CylinderGeometry(2.08,2.31,.055,6),new THREE.MeshStandardMaterial({color:0xb99053,metalness:.86,roughness:.24}));trim.position.y=.58;root.add(trim);
-
-function makeTextTexture(text,sub='MEJAVI SKIN+'){
-  const c=document.createElement('canvas');c.width=1024;c.height=512;const x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.textAlign='center';x.fillStyle='#111';x.font='600 54px Arial';x.fillText(sub,512,205);x.font='500 38px Arial';x.fillText(text,512,285);x.strokeStyle='rgba(20,20,20,.35)';x.strokeRect(210,150,604,190);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;
-}
-function makeLogoTexture(){const c=document.createElement('canvas');c.width=1024;c.height=220;const x=c.getContext('2d');x.clearRect(0,0,1024,220);x.textAlign='center';x.shadowColor='#d2af70';x.shadowBlur=22;x.fillStyle='#ecd4a3';x.font='600 62px Arial';x.fillText('MEJAVI SKIN+',512,110);x.font='400 27px Arial';x.letterSpacing='8px';x.fillStyle='rgba(236,212,163,.72)';x.fillText('GLOW UP, SHOW UP',512,160);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
-const logo=new THREE.Mesh(new THREE.PlaneGeometry(2.9,.62),new THREE.MeshBasicMaterial({map:makeLogoTexture(),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));logo.position.set(0,.34,1.78);logo.rotation.x=-.05;root.add(logo);
-
-const frameGroup=new THREE.Group();root.add(frameGroup);frameGroup.position.y=.15;
-const edgeMat=new THREE.MeshStandardMaterial({color:0xd9b16c,emissive:0xd9a95d,emissiveIntensity:1.8,metalness:.45,roughness:.18});
-const glassMat=new THREE.MeshPhysicalMaterial({color:0xffffff,transmission:1,opacity:.18,transparent:true,roughness:.05,metalness:0,thickness:.12,ior:1.45,side:THREE.DoubleSide});
-const glass=new THREE.Mesh(new THREE.BoxGeometry(3.7,4.3,.06),glassMat);glass.position.set(0,2.65,0);frameGroup.add(glass);
-function beam(w,h,d,x,y,z){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),edgeMat);m.position.set(x,y,z);frameGroup.add(m);return m}
-const beams=[beam(3.8,.045,.06,0,4.8,0),beam(3.8,.045,.06,0,.5,0),beam(.045,4.3,.06,-1.9,2.65,0),beam(.045,4.3,.06,1.9,2.65,0)];
-
-const halo=new THREE.Mesh(new THREE.TorusGeometry(1.25,.022,12,120),new THREE.MeshBasicMaterial({color:0xd8b173,transparent:true,opacity:.72,blending:THREE.AdditiveBlending}));halo.rotation.x=Math.PI/2;halo.position.y=1.0;root.add(halo);
-
-const productHolder=new THREE.Group();productHolder.position.set(0,2.45,.22);root.add(productHolder);
-let heroObj=null,current=0,transition=0;
-function buildProduct(p){const g=new THREE.Group();const bodyMat=new THREE.MeshPhysicalMaterial({color:new THREE.Color(p.color),roughness:.26,metalness:.05,clearcoat:.55,clearcoatRoughness:.16});const dark=new THREE.MeshStandardMaterial({color:new THREE.Color(p.accent),metalness:.5,roughness:.28});let body;
-  if(p.shape==='jar'){body=new THREE.Mesh(new THREE.CylinderGeometry(.66,.72,.7,48),bodyMat);body.position.y=0;const cap=new THREE.Mesh(new THREE.CylinderGeometry(.72,.72,.24,48),dark);cap.position.y=.46;g.add(body,cap);}
-  else if(p.shape==='serum'){body=new THREE.Mesh(new THREE.CylinderGeometry(.42,.47,1.65,48),bodyMat);body.position.y=0;const neck=new THREE.Mesh(new THREE.CylinderGeometry(.23,.23,.24,32),dark);neck.position.y=.95;const cap=new THREE.Mesh(new THREE.CylinderGeometry(.34,.34,.62,32),dark);cap.position.y=1.3;g.add(body,neck,cap);}
-  else {const h=p.shape==='cleanser'?2.15:1.9;body=new THREE.Mesh(new THREE.CylinderGeometry(.56,.64,h,48),bodyMat);body.position.y=0;const shoulder=new THREE.Mesh(new THREE.CylinderGeometry(.42,.56,.3,48),bodyMat);shoulder.position.y=h/2+.11;const cap=new THREE.Mesh(new THREE.CylinderGeometry(.42,.42,.42,40),dark);cap.position.y=h/2+.47;g.add(body,shoulder,cap);}
-  const label=new THREE.Mesh(new THREE.PlaneGeometry(p.shape==='jar'?1.06:.85,p.shape==='jar'?.52:1.08),new THREE.MeshBasicMaterial({map:makeTextTexture(p.name),transparent:true}));label.position.set(0,p.shape==='jar'?0:0.04,p.shape==='jar'?.725:.645);if(p.shape==='serum')label.position.z=.475;g.add(label);
-  const baseGlow=new THREE.Mesh(new THREE.CircleGeometry(1.15,64),new THREE.MeshBasicMaterial({color:0xcda35f,transparent:true,opacity:.11,blending:THREE.AdditiveBlending,depthWrite:false}));baseGlow.rotation.x=-Math.PI/2;baseGlow.position.y=-1.08;g.add(baseGlow);return g;
-}
-function selectProduct(i,manual=false){if(i===current && heroObj)return;current=i;transition=1;if(heroObj)heroObj.userData.leaving=true;const next=buildProduct(products[i]);next.scale.setScalar(.25);next.rotation.y=-1.25;next.userData.entering=true;productHolder.add(next);heroObj=next;document.querySelector('#productName').textContent=products[i].name;document.querySelector('#productType').textContent=products[i].type;document.querySelector('#counter').textContent=String(i+1).padStart(2,'0')+' / '+String(products.length).padStart(2,'0');if(manual)controls.autoRotate=true}
-selectProduct(0);
-
-let hover=false;const stage=document.querySelector('#stage');stage.addEventListener('mouseenter',()=>hover=true);stage.addEventListener('mouseleave',()=>hover=false);canvas.addEventListener('click',()=>selectProduct((current+1)%products.length,true));
-
-const ray=new THREE.Raycaster();const pointer=new THREE.Vector2();canvas.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect();pointer.x=((e.clientX-r.left)/r.width)*2-1;pointer.y=-((e.clientY-r.top)/r.height)*2+1;ray.setFromCamera(pointer,camera)});
-
-function resize(){const r=canvas.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}window.addEventListener('resize',resize);resize();
-
-let t=0;function tick(){requestAnimationFrame(tick);t+=.012;controls.update();
-  productHolder.rotation.y+=.0032;productHolder.position.y=2.45+Math.sin(t*1.25)*.035;halo.rotation.z+=.0022;
-  edgeMat.emissiveIntensity=THREE.MathUtils.lerp(edgeMat.emissiveIntensity,hover?3.7:1.8,.06);logo.material.opacity=THREE.MathUtils.lerp(logo.material.opacity,hover?1:.78,.08);
-  [...productHolder.children].forEach(obj=>{if(obj.userData.entering){obj.scale.lerp(new THREE.Vector3(1,1,1),.075);obj.rotation.y=THREE.MathUtils.lerp(obj.rotation.y,0,.08);if(obj.scale.x>.985)obj.userData.entering=false}else if(obj.userData.leaving){obj.scale.multiplyScalar(.91);obj.rotation.y+=.12;obj.traverse(o=>{if(o.material&&'opacity'in o.material){o.material.transparent=true;o.material.opacity*=.92}});if(obj.scale.x<.06)productHolder.remove(obj)}});
-  renderer.render(scene,camera)}tick();
+const pedestal=new THREE.Mesh(new THREE.CylinderGeometry(2.25,2.55,.48,6),new THREE.MeshStandardMaterial({color:0x0c0c0b,roughness:.42,metalness:.38}));pedestal.position.y=.2;root.add(pedestal);
+const ring=new THREE.Mesh(new THREE.TorusGeometry(2.15,.025,10,96),new THREE.MeshStandardMaterial({color:0xd1ab6c,emissive:0x8a6028,emissiveIntensity:2.1,metalness:.8,roughness:.2}));ring.rotation.x=Math.PI/2;ring.position.y=.46;root.add(ring);
+const floor=new THREE.Mesh(new THREE.CircleGeometry(7,96),new THREE.MeshPhysicalMaterial({color:0x171717,roughness:.22,metalness:.08,clearcoat:.55,clearcoatRoughness:.25}));floor.rotation.x=-Math.PI/2;floor.position.y=-.05;scene.add(floor);
+const frameMat=new THREE.MeshStandardMaterial({color:0xd6b06d,emissive:0xa47431,emissiveIntensity:1.8,metalness:.86,roughness:.2});const frame=new THREE.Group();[[0,3.05,0,4.55,.035,.035],[0,.92,0,4.55,.035,.035],[-2.24,1.98,0,.035,4.2,.035],[2.24,1.98,0,.035,4.2,.035]].forEach(([x,y,z,w,h,d])=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),frameMat);m.position.set(x,y,z);frame.add(m)});root.add(frame);
+const backGlass=new THREE.Mesh(new THREE.PlaneGeometry(4.42,4.06),new THREE.MeshPhysicalMaterial({color:0xffffff,transparent:true,opacity:.025,roughness:.08,transmission:.8,thickness:.15}));backGlass.position.set(0,1.98,-.04);root.add(backGlass);
+const badge=document.createElement('canvas');badge.width=700;badge.height=150;const ctx=badge.getContext('2d');ctx.clearRect(0,0,700,150);ctx.fillStyle='#e9d3a6';ctx.font='600 42px Arial';ctx.textAlign='center';ctx.fillText('MEJAVI SKIN+',350,64);ctx.fillStyle='#ad9368';ctx.font='400 19px Arial';ctx.letterSpacing='5px';ctx.fillText('GLOW UP, SHOW UP',350,104);const tex=new THREE.CanvasTexture(badge);tex.colorSpace=THREE.SRGBColorSpace;const label=new THREE.Mesh(new THREE.PlaneGeometry(2.7,.58),new THREE.MeshBasicMaterial({map:tex,transparent:true}));label.position.set(0,.57,2.2);label.rotation.x=-.45;root.add(label);
+let current=0;const hero=document.querySelector('#heroProduct'),nameEl=document.querySelector('#productName'),typeEl=document.querySelector('#productType'),counter=document.querySelector('#counter'),glow=document.querySelector('#swapGlow');
+function selectProduct(i,animate=false){current=(i+products.length)%products.length;const p=products[current];if(animate){hero.style.opacity='0';glow.classList.remove('active');void glow.offsetWidth;glow.classList.add('active');setTimeout(()=>{hero.src=p.image;hero.alt=p.name;hero.style.opacity='1'},180)}else{hero.src=p.image;hero.alt=p.name}nameEl.textContent=p.name;const size=p.sizes.join(' / ').toUpperCase();typeEl.textContent=`${p.category.toUpperCase()} · ${size} · ${p.prices.length>1?'FROM ':''}${rupiah(Math.min(...p.prices)).toUpperCase()}`;counter.textContent=`${String(current+1).padStart(2,'0')} / ${String(products.length).padStart(2,'0')}`;document.querySelectorAll('.card').forEach((c,n)=>c.classList.toggle('active',n===current))}
+document.querySelector('#stage').addEventListener('click',e=>{if(e.target===canvas||e.target.closest('.photo-frame'))selectProduct(current+1,true)});selectProduct(0,false);
+const stage=document.querySelector('#stage');stage.addEventListener('mouseenter',()=>frameMat.emissiveIntensity=3.2);stage.addEventListener('mouseleave',()=>frameMat.emissiveIntensity=1.8);
+function resize(){const r=stage.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();
+const clock=new THREE.Clock();function loop(){requestAnimationFrame(loop);const t=clock.getElapsedTime();root.position.y=Math.sin(t*.7)*.015;controls.update();renderer.render(scene,camera)}loop();
 </script>
 </body>
 </html>
