@@ -36,6 +36,18 @@ jobs:
           node --check site/site-content.js
           node --check site/admin.js
 
+      - name: Bust browser cache for website assets
+        shell: bash
+        run: |
+          VERSION="${GITHUB_SHA::12}"
+          while IFS= read -r -d '' file; do
+            sed -E -i "s#site-content\.js(\?v=[A-Za-z0-9._-]+)?#site-content.js?v=${VERSION}#g" "$file"
+            sed -E -i "s#script\.js(\?v=[A-Za-z0-9._-]+)?#script.js?v=${VERSION}#g" "$file"
+            sed -E -i "s#store\.js(\?v=[A-Za-z0-9._-]+)?#store.js?v=${VERSION}#g" "$file"
+            sed -E -i "s#discount-sync\.js(\?v=[A-Za-z0-9._-]+)?#discount-sync.js?v=${VERSION}#g" "$file"
+            sed -E -i "s#style\.css(\?v=[A-Za-z0-9._-]+)?#style.css?v=${VERSION}#g" "$file"
+          done < <(find site -type f -name '*.html' -print0)
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
