@@ -241,6 +241,33 @@
     hero.insertAdjacentElement("afterend", section);
   }
 
+  function ensureHomepageProductsSection() {
+    if (document.body?.dataset.page !== "home") return;
+    if (document.getElementById("productGrid")) return;
+
+    const newsletter = document.querySelector("main .newsletter");
+    if (!newsletter) return;
+
+    const section = document.createElement("section");
+    section.className = "products home-products";
+    section.id = "homeProducts";
+    section.setAttribute("aria-labelledby", "homeProductsTitle");
+    section.innerHTML = `
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag" data-id="productTag">Produk Kami</span>
+          <h2 id="homeProductsTitle" data-id="productTitle">Temukan produk Mejavi Skin untuk rutinitasmu.</h2>
+          <p data-id="productSubtitle">Klik detail untuk melihat komposisi, manfaat, cara penggunaan dan pilihan ukuran.</p>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div style="display:flex;justify-content:center;margin-top:28px">
+          <a class="btn btn-dark" href="skincare-kulit-sensitif/">Lihat Semua Produk</a>
+        </div>
+      </div>
+    `;
+    newsletter.insertAdjacentElement("beforebegin", section);
+  }
+
   function rewriteWhatsAppLinks(number) {
     const whatsapp = String(number || "").replace(/\D/g, "");
     if (!whatsapp) return;
@@ -317,6 +344,9 @@
 
     window.mejaviSiteSettings = { ...settings, instagram, tiktok, email, whatsapp };
   }
+
+  // Pastikan section produk tersedia sebelum script katalog melakukan render.
+  ensureHomepageProductsSection();
 
   // Pastikan link statis selalu memakai nomor resmi terbaru, bahkan jika CMS sedang tidak tersedia.
   rewriteWhatsAppLinks(DEFAULT_WHATSAPP_NUMBER);
