@@ -43,6 +43,9 @@ jobs:
           rm -rf site/presentasi
           mkdir -p site/presentasi
           cp -R presentasi/. site/presentasi/
+          if ! grep -q 'product-photos.css' site/presentasi/index.html; then
+            sed -i 's#</head>#<link rel="stylesheet" href="product-photos.css">\n</head>#' site/presentasi/index.html
+          fi
 
       - name: Bust browser cache for website assets
         shell: bash
