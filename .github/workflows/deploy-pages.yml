@@ -34,6 +34,7 @@ jobs:
           node --check site/tracking.js
           node --check site/javi.js
           node --check site/site-content.js
+          node --check site/home-products.js
           node --check site/admin.js
 
       - name: Bust browser cache for website assets
@@ -47,6 +48,13 @@ jobs:
             sed -E -i "s#discount-sync\.js(\?v=[A-Za-z0-9._-]+)?#discount-sync.js?v=${VERSION}#g" "$file"
             sed -E -i "s#style\.css(\?v=[A-Za-z0-9._-]+)?#style.css?v=${VERSION}#g" "$file"
           done < <(find site -type f -name '*.html' -print0)
+
+          # Homepage-only compact product cards + public 1-5 star ratings.
+          if ! grep -q 'home-products.js' site/index.html; then
+            sed -i "s#</body>#  <script src=\"home-products.js?v=${VERSION}\"></script>\n</body>#" site/index.html
+          else
+            sed -E -i "s#home-products\.js(\?v=[A-Za-z0-9._-]+)?#home-products.js?v=${VERSION}#g" site/index.html
+          fi
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
