@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 Disallow: /warehouse-ads.html
+Disallow: /warehouse/
 
 Sitemap: https://mejaviskincare.co.id/sitemap.xml
 Sitemap: https://mejaviskincare.co.id/image-sitemap.xml
