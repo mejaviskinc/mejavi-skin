@@ -1,95 +1,276 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#080808" />
-  <title>MEJAVI SKIN+ — Glow Up, Show Up</title>
-  <meta name="description" content="MEJAVI SKIN+ official interactive product showroom using product data and photography from the main Mejavi Skin+ website." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f3ed">
+  <meta name="description" content="Mejavi Skin+ presentation website — modern skincare and body care for sensitive skin, brand story, product lineup, ingredients, standards and collaboration.">
+  <title>Mejavi Skin+ — Brand Presentation</title>
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="product-photos.css">
   <style>
-    :root{--bg:#070707;--panel:#10100f;--cream:#f3eadf;--gold:#c8a56a;--gold2:#ecd4a3;--line:rgba(255,255,255,.12);--muted:#b9b3aa}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0;background:var(--bg);color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}body{min-height:100vh;background:radial-gradient(circle at 50% -10%,rgba(200,165,106,.13),transparent 38%),#070707}a{color:inherit;text-decoration:none}button{font:inherit}.shell{min-height:100vh;position:relative;overflow:hidden}.grain{position:fixed;inset:0;pointer-events:none;opacity:.09;z-index:50;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
-    header{position:fixed;z-index:40;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(7,7,7,.9),rgba(7,7,7,.42))}.brand{display:flex;align-items:center;gap:12px;letter-spacing:.18em;font-weight:700;font-size:13px}.brandmark{width:34px;height:34px;border:1px solid rgba(236,212,163,.55);border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-family:Georgia,serif;box-shadow:inset 0 0 22px rgba(200,165,106,.08),0 0 26px rgba(200,165,106,.08)}.nav{display:flex;gap:24px;color:#d8d4ce;font-size:11px;letter-spacing:.15em;text-transform:uppercase}.nav a{opacity:.72;transition:.2s}.nav a:hover{opacity:1;color:var(--gold2)}
-    .hero{min-height:100vh;display:grid;grid-template-columns:minmax(300px,.78fr) minmax(500px,1.22fr);align-items:center;gap:2vw;padding:108px 5vw 46px}.copy{position:relative;z-index:10;max-width:650px}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold2);font-size:11px;letter-spacing:.27em;text-transform:uppercase;margin-bottom:22px}.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:.88;letter-spacing:-.055em;font-size:clamp(68px,8vw,132px)}h1 span{display:block;color:var(--cream)}.tagline{font-size:clamp(20px,2vw,29px);margin:23px 0 15px}.lead{max-width:560px;color:var(--muted);font-size:15px;line-height:1.75;margin:0}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{border-radius:999px;padding:14px 20px;border:1px solid var(--line);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.03);color:#fff;transition:.25s}.btn.primary{background:var(--cream);color:#111;border-color:var(--cream)}.btn:hover{transform:translateY(-2px);border-color:rgba(236,212,163,.48)}
-    .stage-wrap{height:min(78vh,810px);min-height:580px;position:relative}.stage{width:100%;height:100%;position:relative;border-radius:38px;overflow:hidden;border:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 50% 43%,rgba(200,165,106,.15),rgba(255,255,255,.015) 42%,rgba(0,0,0,.2) 74%);box-shadow:inset 0 0 100px rgba(255,255,255,.018),0 30px 80px rgba(0,0,0,.38);cursor:pointer}.stage:hover{border-color:rgba(236,212,163,.25)}#webgl{position:absolute;inset:0;width:100%;height:100%}.photo-frame{position:absolute;z-index:8;left:50%;top:50%;width:min(48%,360px);height:min(66%,500px);transform:translate(-50%,-54%);border:1px solid rgba(236,212,163,.5);border-radius:30px;padding:16px;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.025));box-shadow:0 0 34px rgba(200,165,106,.12),inset 0 0 28px rgba(255,255,255,.025);backdrop-filter:blur(7px);transition:.35s ease}.stage:hover .photo-frame{border-color:rgba(236,212,163,.82);box-shadow:0 0 52px rgba(200,165,106,.2),inset 0 0 36px rgba(255,255,255,.04)}.photo-inner{position:relative;width:100%;height:100%;border-radius:20px;overflow:hidden;background:#f7f3ec}.hero-product{width:100%;height:100%;object-fit:contain;display:block;animation:floatProduct 5s ease-in-out infinite;transition:opacity .28s ease,filter .35s ease,transform .4s ease}.stage:hover .hero-product{filter:brightness(1.06)}.photo-inner:after{content:"";position:absolute;top:-20%;bottom:-20%;width:25%;left:-40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-16deg);opacity:0}.stage:hover .photo-inner:after{animation:sweep 1.25s ease}.swap-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(236,212,163,.28),transparent 45%);opacity:0;mix-blend-mode:screen}.swap-glow.active{animation:flash .6s ease}.stage-ui{position:absolute;z-index:10;inset:0;pointer-events:none}.stage-top{position:absolute;top:24px;left:26px;right:26px;display:flex;justify-content:space-between}.index{font-size:10px;color:#bfb8ad;letter-spacing:.18em;text-transform:uppercase}.live{display:flex;align-items:center;gap:8px;color:#cfc9bf;font-size:10px;letter-spacing:.18em;text-transform:uppercase}.dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);box-shadow:0 0 14px var(--gold2)}.stage-bottom{position:absolute;bottom:22px;left:24px;right:24px;display:flex;align-items:end;justify-content:space-between;gap:16px}.product-meta{max-width:68%}.product-meta h3{margin:0 0 5px;font-size:18px;font-weight:500}.product-meta p{margin:0;color:#aaa49c;font-size:11px;letter-spacing:.08em;line-height:1.5}.hint{font-size:10px;color:#aaa49c;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:10px 13px;border-radius:999px;background:rgba(7,7,7,.35);backdrop-filter:blur(8px)}
-    .products{padding:92px 5vw 112px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:30px}.section-head h2{font:500 clamp(38px,5vw,72px)/1 Georgia,serif;margin:0;letter-spacing:-.04em}.section-head p{max-width:480px;margin:0;color:#9f9a92;font-size:14px;line-height:1.7}.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(180deg,#121211,#0c0c0b);border:1px solid rgba(255,255,255,.08);border-radius:26px;overflow:hidden;cursor:pointer;transition:.28s;position:relative}.card:hover{transform:translateY(-6px);border-color:rgba(236,212,163,.34);box-shadow:0 24px 50px rgba(0,0,0,.24)}.card.active{border-color:rgba(236,212,163,.58)}.card-photo{height:270px;background:#f6f1e9;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden}.card-photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s ease}.card:hover .card-photo img{transform:scale(1.035)}.card-body{padding:20px}.card-kicker{color:var(--gold2);font-size:9px;letter-spacing:.18em;text-transform:uppercase}.card h4{margin:9px 0 8px;font:500 23px/1.08 Georgia,serif}.card-desc{margin:0;color:#9f9a92;font-size:12px;line-height:1.55;min-height:56px}.card-meta{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07)}.card-size{font-size:10px;color:#aaa49c;letter-spacing:.1em;text-transform:uppercase}.card-price{font-size:14px;color:#f4eee6;font-weight:600}.bpom{font-size:9px;color:#8f8980;margin-top:8px}.official{margin-top:30px;color:#7e7870;font-size:11px;letter-spacing:.05em}.footer{padding:42px 5vw 70px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;color:#8b857d;font-size:12px}.footer b{color:#eee;font-weight:500;letter-spacing:.12em}
-    @keyframes floatProduct{0%,100%{transform:translateY(4px) rotateY(-2deg)}50%{transform:translateY(-8px) rotateY(2deg)}}@keyframes sweep{0%{left:-40%;opacity:0}20%{opacity:.7}100%{left:125%;opacity:0}}@keyframes flash{0%{opacity:0}35%{opacity:1}100%{opacity:0}}
-    @media(max-width:1100px){.hero{grid-template-columns:1fr;padding-top:128px}.copy{max-width:800px}.stage-wrap{height:70vh}.product-grid{grid-template-columns:repeat(2,1fr)}h1{font-size:clamp(66px,14vw,120px)}}
-    @media(max-width:680px){header{padding:0 18px;height:68px}.nav{display:none}.hero{padding:100px 16px 28px}.copy{padding:0 4px}.lead{font-size:14px}.stage-wrap{height:64vh;min-height:510px}.stage{border-radius:28px}.photo-frame{width:62%;height:60%;padding:10px;border-radius:24px}.photo-inner{border-radius:16px}.stage-bottom{align-items:flex-end}.hint{display:none}.product-meta{max-width:100%}.products{padding:68px 16px 80px}.section-head{display:block}.section-head p{margin-top:14px}.product-grid{grid-template-columns:1fr}.card-photo{height:300px}.footer{padding:32px 18px 48px;display:block}.footer span{display:block;margin-top:10px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-product{animation:none}.card,.btn,.hero-product{transition:none}}
+    :root{
+      --ink:#151515;--muted:#6e6a64;--paper:#fbfaf7;--cream:#f3ede4;--cream2:#e8dccb;
+      --gold:#b58b50;--gold-soft:#d8bf98;--line:rgba(20,20,20,.12);--white:#fff;
+      --shadow:0 24px 70px rgba(55,44,28,.11);--radius:30px;--max:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{margin:0;color:var(--ink);background:linear-gradient(180deg,#fbfaf7 0%,#f5f0e8 44%,#fbfaf7 100%);font-family:Poppins,system-ui,sans-serif;overflow-x:hidden}
+    body.lock{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img,video{max-width:100%}
+    .container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+    .scroll-progress{position:fixed;z-index:120;left:0;top:0;width:100%;height:3px;background:transparent}
+    .scroll-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#e6d2af);transition:width .08s linear}
+    header{position:fixed;z-index:100;left:0;right:0;top:3px;background:rgba(251,250,247,.78);border-bottom:1px solid rgba(20,20,20,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .nav-wrap{height:74px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .brand img{width:42px;height:42px;object-fit:contain}
+    .brand-copy{line-height:1.1}.brand-copy strong{display:block;font-size:13px;letter-spacing:.17em}.brand-copy span{display:block;margin-top:5px;color:var(--muted);font-size:8px;letter-spacing:.18em}
+    nav{display:flex;align-items:center;gap:22px;font-size:10px;letter-spacing:.11em;text-transform:uppercase}
+    nav a{opacity:.64;transition:.2s}nav a:hover,nav a.active{opacity:1;color:#89643a}
+    .header-actions{display:flex;align-items:center;gap:8px}
+    .ghost-btn,.present-btn,.menu-btn{border:1px solid var(--line);background:rgba(255,255,255,.65);color:var(--ink);border-radius:999px;min-height:40px;padding:0 15px;cursor:pointer;font-size:10px;letter-spacing:.11em;text-transform:uppercase;transition:.2s}
+    .present-btn{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .ghost-btn:hover,.present-btn:hover{transform:translateY(-1px)}
+    .menu-btn{display:none;width:42px;padding:0;font-size:17px}
+    .mobile-menu{display:none}
+    section{position:relative;scroll-margin-top:80px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:#8c693c;font-size:10px;letter-spacing:.23em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
+    .display{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacing:-.045em}
+    .hero{min-height:100svh;padding:118px 0 54px;display:grid;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:minmax(340px,.8fr) minmax(480px,1.2fr);gap:42px;align-items:center}
+    .hero-copy{padding:26px 0}
+    .hero h1{margin:23px 0 0;font-size:clamp(68px,8.5vw,136px);line-height:.82}.hero h1 em{display:block;color:#a77d47;font-style:italic}.hero h2{margin:26px 0 12px;font-size:clamp(19px,2vw,30px);font-weight:500;letter-spacing:-.025em}
+    .hero-copy>p{max-width:590px;color:var(--muted);font-size:14px;line-height:1.85;margin:0}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:10px;letter-spacing:.12em;text-transform:uppercase;transition:.25s}
+    .btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(20,20,20,.08)}
+    .hero-media{position:relative;height:min(76vh,760px);min-height:570px;border-radius:42px;overflow:hidden;background:#d9c9b4;box-shadow:var(--shadow)}
+    .hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.08) saturate(.9)}
+    .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,12,.04),rgba(12,12,12,.35))}
+    .hero-media-card{position:absolute;left:24px;right:24px;bottom:24px;padding:20px 22px;border:1px solid rgba(255,255,255,.38);border-radius:24px;color:#fff;background:rgba(19,17,14,.24);backdrop-filter:blur(12px)}
+    .hero-media-card small{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.78}.hero-media-card strong{display:block;margin-top:7px;font:500 26px/1.1 'Playfair Display',serif}.hero-media-card p{margin:7px 0 0;max-width:510px;font-size:11px;line-height:1.6;opacity:.84}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px;max-width:580px}.stat{padding:14px 15px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.48)}.stat strong{display:block;font-size:13px}.stat span{display:block;margin-top:4px;color:var(--muted);font-size:9px;line-height:1.4}
+
+    .section{padding:112px 0}.section.alt{background:rgba(237,228,214,.56);border-block:1px solid rgba(20,20,20,.06)}
+    .section-head{display:grid;grid-template-columns:1fr minmax(280px,480px);gap:42px;align-items:end;margin-bottom:44px}.section-head h2{font-size:clamp(48px,6.2vw,88px);line-height:.93;margin:14px 0 0}.section-head p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
+    .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.story-card{min-height:430px;border:1px solid var(--line);border-radius:var(--radius);padding:34px;background:rgba(255,255,255,.62);position:relative;overflow:hidden}.story-card.dark{background:#171614;color:#fff}.story-card h3{font:500 clamp(35px,4vw,58px)/1 'Playfair Display',serif;margin:0 0 20px;letter-spacing:-.04em}.story-card p{max-width:650px;margin:0;color:inherit;opacity:.73;font-size:13px;line-height:1.9}.story-quote{position:absolute;left:34px;bottom:34px;font:italic 500 clamp(28px,3vw,44px)/1.08 'Playfair Display',serif;color:#f1dfc2}.story-points{display:grid;gap:12px;margin-top:28px}.story-point{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid currentColor;opacity:.7}.story-point b{min-width:24px;font-size:10px;letter-spacing:.12em}.story-point span{font-size:11px;line-height:1.6}
+
+    .showcase{display:grid;grid-template-columns:minmax(350px,.84fr) minmax(480px,1.16fr);gap:24px;align-items:stretch;margin-bottom:28px}.showcase-view{min-height:610px;border-radius:36px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#eee4d6,#fbf8f2);position:relative;display:grid;place-items:center}.showcase-view:before{content:"";position:absolute;width:54%;aspect-ratio:1;border-radius:50%;background:rgba(181,139,80,.16);filter:blur(50px)}.showcase-view img{position:relative;z-index:2;width:76%;height:74%;object-fit:contain;filter:drop-shadow(0 24px 30px rgba(47,36,24,.14));animation:float 5.4s ease-in-out infinite}.showcase-counter{position:absolute;z-index:3;top:24px;left:24px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#756a5e}.showcase-controls{position:absolute;z-index:3;right:22px;bottom:22px;display:flex;gap:8px}.icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.78);cursor:pointer;font-size:16px}
+    .showcase-copy{border:1px solid var(--line);border-radius:36px;background:rgba(255,255,255,.62);padding:38px;display:flex;flex-direction:column;justify-content:center}.product-kicker{color:#9a743f;font-size:10px;letter-spacing:.17em;text-transform:uppercase}.showcase-copy h3{font-size:clamp(38px,4.6vw,68px);line-height:.96;margin:12px 0 16px}.showcase-copy .desc{color:var(--muted);font-size:13px;line-height:1.85}.meta-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}.meta{padding:14px 15px;border:1px solid var(--line);border-radius:17px;background:#fff}.meta small{display:block;color:var(--muted);font-size:8px;letter-spacing:.13em;text-transform:uppercase}.meta strong{display:block;margin-top:6px;font-size:11px;line-height:1.5}.showcase-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 18px}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;cursor:pointer;font-size:9px;letter-spacing:.12em;text-transform:uppercase}.filter.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.product-card{border:1px solid var(--line);background:rgba(255,255,255,.66);border-radius:25px;overflow:hidden;cursor:pointer;transition:.25s}.product-card:hover{transform:translateY(-5px);box-shadow:0 18px 45px rgba(50,38,24,.09)}.product-photo{height:285px;background:#f4ede3;display:grid;place-items:center;overflow:hidden}.product-photo img{width:88%;height:88%;object-fit:contain;transition:.35s}.product-card:hover .product-photo img{transform:scale(1.035)}.product-info{padding:19px}.product-info small{color:#9a743f;font-size:8px;letter-spacing:.14em;text-transform:uppercase}.product-info h4{font:500 25px/1.05 'Playfair Display',serif;margin:8px 0 10px;letter-spacing:-.025em}.product-info p{margin:0;color:var(--muted);font-size:10px;line-height:1.7;min-height:52px}.product-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:15px;padding-top:13px;border-top:1px solid var(--line);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#746d63}.bpom-dot{display:inline-flex;align-items:center;gap:6px}.bpom-dot:before{content:"";width:7px;height:7px;border-radius:50%;background:#66835b;box-shadow:0 0 0 4px rgba(102,131,91,.09)}
+
+    .package{margin-top:18px;display:grid;grid-template-columns:1.05fr .95fr;border:1px solid var(--line);border-radius:34px;overflow:hidden;background:#191816;color:#fff}.package-image{min-height:470px;background:#efe6d8}.package-image img{width:100%;height:100%;object-fit:cover}.package-copy{padding:38px;display:flex;flex-direction:column;justify-content:center}.package-copy h3{font-size:clamp(42px,5vw,72px);line-height:.95;margin:12px 0 15px}.package-copy p{margin:0;color:#c8c0b6;font-size:12px;line-height:1.8}.package-list{display:grid;gap:10px;margin-top:24px}.package-item{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid rgba(255,255,255,.12);font-size:10px;letter-spacing:.06em}.package-item span{width:23px;height:23px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);border-radius:50%;color:#e9d3ae;font-size:9px}
+
+    .ingredients-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.ingredient-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ingredient-btn{border:1px solid var(--line);border-radius:20px;padding:18px;background:rgba(255,255,255,.68);text-align:left;cursor:pointer;transition:.2s}.ingredient-btn:hover,.ingredient-btn.active{background:#171614;color:#fff;border-color:#171614}.ingredient-btn small{display:block;font-size:8px;letter-spacing:.13em;text-transform:uppercase;opacity:.55}.ingredient-btn strong{display:block;margin-top:7px;font:500 22px/1.08 'Playfair Display',serif}.ingredient-detail{border-radius:32px;padding:38px;background:#171614;color:#fff;min-height:470px;display:flex;flex-direction:column;justify-content:flex-end;position:sticky;top:104px}.ingredient-detail .index{position:absolute;top:28px;left:32px;color:#bc9a69;font-size:10px;letter-spacing:.15em}.ingredient-detail h3{font-size:clamp(46px,5vw,74px);line-height:.93;margin:0 0 18px}.ingredient-detail p{margin:0;color:#c8c1b8;font-size:13px;line-height:1.9}.ingredient-detail .note{margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,.13);font-size:9px;color:#958e84;line-height:1.7}
+
+    .ritual-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.ritual-step{min-height:315px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.66);padding:22px;display:flex;flex-direction:column}.ritual-step .num{font:500 42px/1 'Playfair Display',serif;color:#b88f58}.ritual-step h3{font:500 22px/1.1 'Playfair Display',serif;margin:auto 0 10px}.ritual-step p{margin:0;color:var(--muted);font-size:9px;line-height:1.7}.ritual-note{margin-top:18px;padding:18px 20px;border-left:2px solid var(--gold);background:rgba(255,255,255,.56);color:var(--muted);font-size:10px;line-height:1.7}
+
+    .standards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.standard{min-height:300px;border:1px solid var(--line);border-radius:28px;background:rgba(255,255,255,.7);padding:28px;display:flex;flex-direction:column}.standard-icon{width:48px;height:48px;border:1px solid var(--line);border-radius:16px;display:grid;place-items:center;font-size:18px}.standard h3{font:500 31px/1 'Playfair Display',serif;margin:auto 0 13px}.standard p{margin:0;color:var(--muted);font-size:10px;line-height:1.8}.standard b{color:#6c815f;font-weight:600}
+
+    .collab{padding:120px 0}.collab-card{position:relative;overflow:hidden;border-radius:42px;background:#171614;color:#fff;padding:68px;min-height:500px;display:flex;align-items:flex-end}.collab-card:before{content:"";position:absolute;right:-12%;top:-35%;width:65%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(191,149,91,.32),rgba(191,149,91,0) 68%)}.collab-inner{position:relative;z-index:2;max-width:820px}.collab-card h2{font-size:clamp(58px,8vw,108px);line-height:.86;margin:14px 0 22px}.collab-card p{max-width:680px;color:#bfb8af;font-size:13px;line-height:1.8}.collab-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.collab .btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.2)}.collab .btn.light{background:#fff;color:#111}
+    footer{padding:34px 0 50px;border-top:1px solid var(--line)}.footer-wrap{display:flex;justify-content:space-between;gap:24px;align-items:center;color:var(--muted);font-size:9px;letter-spacing:.08em}.footer-wrap strong{color:var(--ink);letter-spacing:.16em}
+
+    .modal{position:fixed;z-index:300;inset:0;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(15,14,12,.58);backdrop-filter:blur(9px)}.modal.open{display:flex}.modal-card{width:min(940px,100%);max-height:min(760px,90vh);overflow:auto;border-radius:32px;background:#fbfaf7;box-shadow:0 30px 100px rgba(0,0,0,.25);display:grid;grid-template-columns:.9fr 1.1fr;position:relative}.modal-image{min-height:530px;background:#f0e7db;display:grid;place-items:center}.modal-image img{width:85%;height:85%;object-fit:contain}.modal-copy{padding:40px}.modal-close{position:absolute;top:16px;right:16px;width:42px;height:42px;border:0;border-radius:50%;background:#fff;box-shadow:0 8px 25px rgba(0,0,0,.08);cursor:pointer;font-size:19px}.modal-copy h3{font-size:clamp(40px,5vw,65px);line-height:.95;margin:12px 0 17px}.modal-copy p{color:var(--muted);font-size:12px;line-height:1.8}.modal-copy dl{margin:24px 0 0;display:grid;gap:0}.modal-copy dl div{display:grid;grid-template-columns:115px 1fr;gap:16px;padding:13px 0;border-top:1px solid var(--line)}.modal-copy dt{font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#847a6e}.modal-copy dd{margin:0;font-size:10px;line-height:1.6}
+    .presentation-hint{position:fixed;z-index:90;right:18px;bottom:18px;padding:10px 12px;border:1px solid rgba(20,20,20,.1);border-radius:999px;background:rgba(255,255,255,.75);backdrop-filter:blur(12px);color:#777066;font-size:8px;letter-spacing:.08em;text-transform:uppercase;transition:.3s}.presentation-hint.hide{opacity:0;transform:translateY(8px);pointer-events:none}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+    @keyframes float{0%,100%{transform:translateY(5px)}50%{transform:translateY(-9px)}}
+
+    @media(max-width:1080px){
+      nav{display:none}.menu-btn{display:block}.hero-grid,.showcase,.story-grid,.ingredients-layout{grid-template-columns:1fr}.hero{padding-top:110px}.hero-media{height:66vh;min-height:540px}.section-head{grid-template-columns:1fr}.product-grid{grid-template-columns:repeat(2,1fr)}.ritual-grid{grid-template-columns:repeat(3,1fr)}.ingredient-detail{position:relative;top:auto}.package{grid-template-columns:1fr}.package-image{min-height:430px}.mobile-menu{position:fixed;z-index:250;inset:0;background:#fbfaf7;padding:28px;display:none;flex-direction:column}.mobile-menu.open{display:flex}.mobile-top{display:flex;justify-content:space-between;align-items:center}.mobile-links{display:grid;gap:4px;margin:auto 0}.mobile-links a{font:500 clamp(42px,8vw,72px)/1.05 'Playfair Display',serif;padding:8px 0;border-bottom:1px solid var(--line)}.mobile-close{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:#fff;font-size:22px}.standards-grid{grid-template-columns:1fr 1fr}.collab-card{padding:50px}}
+    @media(max-width:700px){
+      .container{width:min(100% - 28px,var(--max))}.nav-wrap{height:66px}.brand-copy span{display:none}.ghost-btn,.present-btn{display:none}.hero{min-height:auto;padding:98px 0 30px}.hero h1{font-size:clamp(65px,20vw,100px)}.hero-grid{gap:22px}.hero-media{height:67vh;min-height:500px;border-radius:30px}.hero-media-card{left:14px;right:14px;bottom:14px;padding:16px}.hero-stats{grid-template-columns:1fr}.section{padding:80px 0}.section-head{gap:18px;margin-bottom:28px}.section-head h2{font-size:55px}.story-card{min-height:390px;padding:26px}.story-quote{left:26px;bottom:26px}.showcase-view{min-height:500px}.showcase-copy{padding:26px}.meta-row{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.product-photo{height:320px}.package-image{min-height:320px}.package-copy{padding:28px}.ingredient-list{grid-template-columns:1fr}.ingredient-detail{min-height:420px;padding:28px}.ritual-grid,.standards-grid{grid-template-columns:1fr}.ritual-step{min-height:240px}.collab{padding:80px 0}.collab-card{min-height:520px;padding:30px;border-radius:30px}.collab-card h2{font-size:64px}.footer-wrap{display:block}.footer-wrap span{display:block;margin-top:10px}.modal-card{grid-template-columns:1fr}.modal-image{min-height:330px}.modal-copy{padding:28px}.modal-copy dl div{grid-template-columns:92px 1fr}.presentation-hint{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.showcase-view img{animation:none}.btn,.product-card{transition:none}}
   </style>
 </head>
 <body>
-<div class="shell">
-  <div class="grain"></div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
   <header>
-    <a href="#top" class="brand"><span class="brandmark">M+</span><span>MEJAVI SKIN+</span></a>
-    <nav class="nav"><a href="#experience">Experience</a><a href="#products">Products</a><a href="https://mejaviskincare.co.id/skincare-kulit-sensitif/" target="_blank" rel="noopener">Main Website</a></nav>
-  </header>
-  <main id="top">
-    <section class="hero" id="experience">
-      <div class="copy">
-        <div class="eyebrow">Official Product Showroom</div>
-        <h1>MEJAVI <span>SKIN+</span></h1>
-        <div class="tagline">Glow Up, Show Up</div>
-        <p class="lead">Modern skincare for sensitive skin. This interactive showcase now uses the same official Mejavi Skin+ product photography, product names, sizes, prices, descriptions and BPOM references as the main website.</p>
-        <div class="actions"><button class="btn primary" id="exploreBtn">Explore Products</button><button class="btn" id="rotateBtn">Pause Orbit</button></div>
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Mejavi Skin+ presentation home">
+        <img src="../logo-mejavi.png" alt="Mejavi Skin+ logo">
+        <div class="brand-copy"><strong>MEJAVI SKIN+</strong><span>BRAND PRESENTATION</span></div>
+      </a>
+      <nav id="desktopNav">
+        <a href="#story">Story</a><a href="#products">Products</a><a href="#ingredients">Ingredients</a><a href="#ritual">Ritual</a><a href="#standards">Standards</a><a href="#collaboration">Collaboration</a>
+      </nav>
+      <div class="header-actions">
+        <a class="ghost-btn" href="https://mejaviskincare.co.id/" target="_blank" rel="noopener">Main Website</a>
+        <button class="present-btn" id="presentBtn" type="button">Present</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
       </div>
-      <div class="stage-wrap">
-        <div class="stage" id="stage" aria-label="Click to view the next Mejavi Skin+ product">
-          <canvas id="webgl"></canvas>
-          <div class="photo-frame"><div class="photo-inner"><img class="hero-product" id="heroProduct" src="../images/bodyserum.jpg" alt="Radiance Treatment Body Serum"><div class="swap-glow" id="swapGlow"></div></div></div>
-          <div class="stage-ui">
-            <div class="stage-top"><div class="index" id="counter">01 / 06</div><div class="live"><span class="dot"></span>Official Product Photography</div></div>
-            <div class="stage-bottom"><div class="product-meta"><h3 id="productName">Radiance Treatment Body Serum</h3><p id="productType">BODY CARE · 60GR / 100GR / 250GR · FROM RP69,000</p></div><div class="hint">Hover · Drag · Click to swap</div></div>
-          </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-top"><div class="brand-copy"><strong>MEJAVI SKIN+</strong><span>BRAND PRESENTATION</span></div><button class="mobile-close" id="mobileClose" aria-label="Close menu">×</button></div>
+    <div class="mobile-links"><a href="#home">Home</a><a href="#story">Story</a><a href="#products">Products</a><a href="#ingredients">Ingredients</a><a href="#ritual">Ritual</a><a href="#standards">Standards</a><a href="#collaboration">Collaboration</a></div>
+  </div>
+
+  <main>
+    <section class="hero" id="home" data-deck-section>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Sensitive-skin focused care</span>
+          <h1 class="display">MEJAVI <em>SKIN+</em></h1>
+          <h2>Glow Up, Show Up.</h2>
+          <p>Mejavi Skin+ presents a modern skin and body care ritual designed around daily comfort, selected ingredients and thoughtful product experiences for sensitive skin.</p>
+          <div class="hero-actions"><a class="btn dark" href="#products">Explore the Lineup</a><a class="btn" href="#story">Discover the Brand</a></div>
+          <div class="hero-stats"><div class="stat"><strong>6 Core Products</strong><span>Face, body and special care.</span></div><div class="stat"><strong>BPOM Registered</strong><span>Registration references available by product.</span></div><div class="stat"><strong>English Presentation</strong><span>Built for meetings, pitches and collaborations.</span></div></div>
+        </div>
+        <div class="hero-media reveal">
+          <video autoplay muted loop playsinline preload="metadata" poster="../produk.png"><source src="../mejavi-hero.mp4" type="video/mp4"></video><div class="hero-shade"></div>
+          <div class="hero-media-card"><small>Official brand presentation</small><strong>A daily ritual that feels considered.</strong><p>Clean presentation, official product photography, product essentials and a collaboration-ready brand narrative.</p></div>
         </div>
       </div>
     </section>
-    <section class="products" id="products">
-      <div class="section-head"><h2>Official lineup.<br>One Mejavi ritual.</h2><p>Product information and imagery are synchronized from the main Mejavi Skin+ website source so the presentation matches the live catalog.</p></div>
-      <div class="product-grid" id="productGrid"></div>
-      <div class="official">Source: Mejavi Skin+ main website catalog · Prices shown in Indonesian Rupiah.</div>
+
+    <section class="section alt" id="story" data-deck-section>
+      <div class="container">
+        <div class="section-head reveal"><div><span class="eyebrow">Brand Story</span><h2 class="display">Growing with a clearer identity.</h2></div><p>As demand grows, Mejavi Skin+ continues to refine its visual identity, product experience and formula direction while keeping the brand focused on accessible daily skin comfort.</p></div>
+        <div class="story-grid">
+          <article class="story-card dark reveal"><h3>Built for everyday confidence.</h3><p>Mejavi Skin+ turns skincare into a simple, consistent ritual: cleanse, support, moisturize and care for the body. The brand combines selected cosmetic ingredients with a premium yet approachable presentation.</p><div class="story-quote">“Glow Up, Show Up.”</div></article>
+          <article class="story-card reveal"><h3>What the brand stands for.</h3><div class="story-points"><div class="story-point"><b>01</b><span>Comfort-first routines designed to feel easy to use every day.</span></div><div class="story-point"><b>02</b><span>Selected ingredients chosen to support moisture, softness and a well-cared-for appearance.</span></div><div class="story-point"><b>03</b><span>A clean, modern visual language made for the next stage of Mejavi Skin+.</span></div><div class="story-point"><b>04</b><span>Open collaboration with partners, creators, communities and commercial channels.</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products" data-deck-section>
+      <div class="container">
+        <div class="section-head reveal"><div><span class="eyebrow">Product Lineup</span><h2 class="display">One brand. A complete ritual.</h2></div><p>Every product below is presented without retail pricing or checkout actions. This version is intentionally built for product introduction, presentations and brand collaboration.</p></div>
+        <div class="showcase reveal">
+          <div class="showcase-view"><div class="showcase-counter" id="showcaseCounter">01 / 06</div><img id="showcaseImage" src="../images/bodyserum.jpg" alt="Radiance Treatment Body Serum"><div class="showcase-controls"><button class="icon-btn" id="prevProduct" type="button" aria-label="Previous product">←</button><button class="icon-btn" id="nextProduct" type="button" aria-label="Next product">→</button></div></div>
+          <div class="showcase-copy"><div class="product-kicker" id="showcaseCategory">Body Care</div><h3 class="display" id="showcaseName">Radiance Treatment Body Serum</h3><p class="desc" id="showcaseDesc">A body serum designed to help keep skin feeling soft, moisturized and well cared for as part of a consistent body-care routine.</p><div class="meta-row"><div class="meta"><small>Presentation Size</small><strong id="showcaseSize">60 g · 100 g · 250 g</strong></div><div class="meta"><small>BPOM Registration</small><strong id="showcaseBpom">NA18250117959</strong></div></div><div class="showcase-actions"><button class="btn dark" id="showcaseDetails" type="button">View Product Details</button><button class="btn" id="toggleAuto" type="button">Pause Auto Showcase</button></div></div>
+        </div>
+        <div class="filter-row reveal" id="filterRow"><button class="filter active" data-filter="all">All Products</button><button class="filter" data-filter="face">Face Care</button><button class="filter" data-filter="body">Body Care</button><button class="filter" data-filter="special">Special Care</button></div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="package reveal">
+          <div class="package-image"><img src="../images/paket-lengkap/paket-lengkap-main-20261008.jpg" alt="Mejavi Skin+ Complete Package"></div>
+          <div class="package-copy"><span class="eyebrow">Complete Package</span><h3 class="display">The Mejavi daily care set.</h3><p>A presentation of the core routine in one complete set. Retail price is intentionally omitted in this presentation version.</p><div class="package-list"><div class="package-item"><span>1</span>Brightening Gentle Cleanser</div><div class="package-item"><span>2</span>Plump+Bright Serumiser</div><div class="package-item"><span>3</span>Lumiere Essence Hydra Cream</div><div class="package-item"><span>4</span>Fresh Hydra Cream</div><div class="package-item"><span>5</span>Radiance Treatment Body Serum</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="ingredients" data-deck-section>
+      <div class="container">
+        <div class="section-head reveal"><div><span class="eyebrow">Selected Ingredients</span><h2 class="display">Ingredient stories made easy to present.</h2></div><p>Tap an ingredient to reveal a concise, presentation-friendly explanation. Product formulas vary, so ingredient availability depends on the individual product label.</p></div>
+        <div class="ingredients-layout">
+          <div class="ingredient-list reveal" id="ingredientList"></div>
+          <aside class="ingredient-detail reveal"><div class="index" id="ingredientIndex">01 / 08</div><h3 class="display" id="ingredientName">Niacinamide</h3><p id="ingredientDesc">A well-known skincare ingredient commonly used to support a brighter-looking, more even and well-cared-for complexion while complementing barrier-focused routines.</p><div class="note">Presentation note: this section explains cosmetic ingredient roles in general. Always refer to each product label for its exact formula and directions for use.</div></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ritual" data-deck-section>
+      <div class="container">
+        <div class="section-head reveal"><div><span class="eyebrow">Daily Ritual</span><h2 class="display">A simple sequence to explain.</h2></div><p>The routine is organized so the audience can understand how the core Mejavi Skin+ products fit together without turning the presentation into a shopping page.</p></div>
+        <div class="ritual-grid"><article class="ritual-step reveal"><span class="num">01</span><h3>Cleanse</h3><p>Wet the face, apply Brightening Gentle Cleanser, massage gently, rinse thoroughly and pat dry.</p></article><article class="ritual-step reveal"><span class="num">02</span><h3>Serum</h3><p>Apply Plump+Bright Serumiser to clean skin and allow it to absorb before the moisturizer step.</p></article><article class="ritual-step reveal"><span class="num">03</span><h3>Moisturize</h3><p>Apply Lumiere Essence Hydra Cream in a thin, even layer to the face and neck as needed.</p></article><article class="ritual-step reveal"><span class="num">04</span><h3>Alternative Cream</h3><p>Fresh Hydra Cream can be used as an alternative moisturizer according to skin needs and compatibility.</p></article><article class="ritual-step reveal"><span class="num">05</span><h3>Body Care</h3><p>After bathing, apply Radiance Treatment Body Serum to clean, dry body skin and massage until absorbed.</p></article></div>
+        <div class="ritual-note reveal">Results and skin responses can vary. Use each product according to its packaging directions and introduce new products gradually, especially when skin is sensitive.</div>
+      </div>
+    </section>
+
+    <section class="section alt" id="standards" data-deck-section>
+      <div class="container">
+        <div class="section-head reveal"><div><span class="eyebrow">Standards & Trust</span><h2 class="display">Prepared for professional presentation.</h2></div><p>Certification and product-registration references remain visible because they are valuable in partner meetings, while shopping mechanics and pricing stay out of this presentation website.</p></div>
+        <div class="standards-grid"><article class="standard reveal"><div class="standard-icon">✓</div><h3>BPOM Registered</h3><p><b>Registration references shown per product.</b> Product pages in this presentation include their BPOM registration numbers for quick brand and product introductions.</p></article><article class="standard reveal"><div class="standard-icon">◌</div><h3>Halal Documentation</h3><p>Halal documentation is maintained as part of the official product information set and can be presented when required in partnership or business discussions.</p></article><article class="standard reveal"><div class="standard-icon">♡</div><h3>Sensitive-Skin Focus</h3><p>The presentation language is centered on daily comfort, moisture support and careful product use for audiences interested in sensitive-skin routines.</p></article></div>
+      </div>
+    </section>
+
+    <section class="collab" id="collaboration" data-deck-section>
+      <div class="container"><div class="collab-card reveal"><div class="collab-inner"><span class="eyebrow">Open for Collaboration</span><h2 class="display">Let’s build the next Mejavi chapter.</h2><p>Mejavi Skin+ is open to conversations with retail partners, distributors, creators, event organizers and strategic collaborators who share a thoughtful approach to beauty and personal care.</p><div class="collab-actions"><a class="btn light" href="mailto:mejaviskinc@gmail.com">Contact Mejavi Skin+</a><a class="btn" href="https://www.instagram.com/mejaviskincare/" target="_blank" rel="noopener">Instagram</a><a class="btn" href="https://mejaviskincare.co.id/" target="_blank" rel="noopener">Visit Main Website</a></div></div></div></div>
     </section>
   </main>
-  <footer class="footer"><b>MEJAVI SKIN+</b><span>Modern Skincare for Sensitive Skin · © 2026</span></footer>
-</div>
-<script type="module">
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
-const products=[
-  {name:'Radiance Treatment Body Serum',category:'Body Care',image:'../images/bodyserum.jpg',sizes:['60gr','100gr','250gr'],prices:[69000,129900,215000],bpom:'NA18250117959',description:'A body serum designed to help keep skin soft, moisturized and well cared for.'},
-  {name:'Brightening Gentle Cleanser',category:'Face Cleanser',image:'../images/cleaner.jpg',sizes:['100gr'],prices:[89000],bpom:'NA18251209959',description:'A facial cleanser designed to help remove dirt and excess oil from the face.'},
-  {name:'Plump + Bright Serumizer',category:'Face Serum',image:'../images/serum.jpg',sizes:['20gr'],prices:[98000],bpom:'NA18250117979',description:'A lightweight facial serum created for your daily skincare routine.'},
-  {name:'LUMIERE ESSENCE HYDRA CREAM',category:'Moisturizer',image:'../images/moisturizer.jpg',sizes:['15gr'],prices:[122000],bpom:'NA18250117980',description:'A moisturizer designed to help keep the skin hydrated and comfortable.'},
-  {name:'Fresh Hydra Cream',category:'Face Cream',image:'../images/cream.jpg',sizes:['Day & Night'],prices:[179900],bpom:'NA18250118206',description:'A facial cream designed to complement both morning and evening skincare routines.'},
-  {name:'Herbal Relaxing Cream',category:'Special Care',image:'../images/herbal.jpg',sizes:['35gr'],prices:[68000],bpom:'NA18260101852',description:'A botanical-inspired relaxing cream created to complement your daily care routine.'}
-];
-const rupiah=n=>new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n).replace('Rp','Rp');
-const grid=document.querySelector('#productGrid');
-products.forEach((p,i)=>{const c=document.createElement('article');c.className='card';c.innerHTML=`<div class="card-photo"><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="card-body"><div class="card-kicker">${p.category}</div><h4>${p.name}</h4><p class="card-desc">${p.description}</p><div class="card-meta"><div class="card-size">${p.sizes.join(' · ')}</div><div class="card-price">${p.prices.length>1?'From ':''}${rupiah(Math.min(...p.prices))}</div></div><div class="bpom">BPOM ${p.bpom}</div></div>`;c.addEventListener('click',()=>selectProduct(i,true));grid.appendChild(c)});
+  <footer><div class="container footer-wrap"><strong>MEJAVI SKIN+</strong><span>Brand Presentation · Glow Up, Show Up · © 2026</span></div></footer>
+  <div class="presentation-hint" id="presentationHint">Tip: Use ↑ ↓ or Page Up / Page Down during presentation</div>
 
-document.querySelector('#exploreBtn').onclick=()=>document.querySelector('#products').scrollIntoView({behavior:'smooth'});
-const canvas=document.querySelector('#webgl');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
-const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(34,1,.1,100);camera.position.set(5.8,4.2,7.4);
-const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=5;controls.maxDistance=10;controls.minPolarAngle=.75;controls.maxPolarAngle=1.42;controls.autoRotate=true;controls.autoRotateSpeed=.72;controls.target.set(0,1.35,0);
-document.querySelector('#rotateBtn').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.textContent=controls.autoRotate?'Pause Orbit':'Resume Orbit'};
-scene.add(new THREE.HemisphereLight(0xfff3df,0x111111,1.3));const key=new THREE.DirectionalLight(0xffecd0,4.5);key.position.set(4,7,5);scene.add(key);const rim=new THREE.PointLight(0xd8ad68,22,12);rim.position.set(-3,3,-1);scene.add(rim);
-const root=new THREE.Group();scene.add(root);
-const pedestal=new THREE.Mesh(new THREE.CylinderGeometry(2.25,2.55,.48,6),new THREE.MeshStandardMaterial({color:0x0c0c0b,roughness:.42,metalness:.38}));pedestal.position.y=.2;root.add(pedestal);
-const ring=new THREE.Mesh(new THREE.TorusGeometry(2.15,.025,10,96),new THREE.MeshStandardMaterial({color:0xd1ab6c,emissive:0x8a6028,emissiveIntensity:2.1,metalness:.8,roughness:.2}));ring.rotation.x=Math.PI/2;ring.position.y=.46;root.add(ring);
-const floor=new THREE.Mesh(new THREE.CircleGeometry(7,96),new THREE.MeshPhysicalMaterial({color:0x171717,roughness:.22,metalness:.08,clearcoat:.55,clearcoatRoughness:.25}));floor.rotation.x=-Math.PI/2;floor.position.y=-.05;scene.add(floor);
-const frameMat=new THREE.MeshStandardMaterial({color:0xd6b06d,emissive:0xa47431,emissiveIntensity:1.8,metalness:.86,roughness:.2});const frame=new THREE.Group();[[0,3.05,0,4.55,.035,.035],[0,.92,0,4.55,.035,.035],[-2.24,1.98,0,.035,4.2,.035],[2.24,1.98,0,.035,4.2,.035]].forEach(([x,y,z,w,h,d])=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),frameMat);m.position.set(x,y,z);frame.add(m)});root.add(frame);
-const backGlass=new THREE.Mesh(new THREE.PlaneGeometry(4.42,4.06),new THREE.MeshPhysicalMaterial({color:0xffffff,transparent:true,opacity:.025,roughness:.08,transmission:.8,thickness:.15}));backGlass.position.set(0,1.98,-.04);root.add(backGlass);
-const badge=document.createElement('canvas');badge.width=700;badge.height=150;const ctx=badge.getContext('2d');ctx.clearRect(0,0,700,150);ctx.fillStyle='#e9d3a6';ctx.font='600 42px Arial';ctx.textAlign='center';ctx.fillText('MEJAVI SKIN+',350,64);ctx.fillStyle='#ad9368';ctx.font='400 19px Arial';ctx.letterSpacing='5px';ctx.fillText('GLOW UP, SHOW UP',350,104);const tex=new THREE.CanvasTexture(badge);tex.colorSpace=THREE.SRGBColorSpace;const label=new THREE.Mesh(new THREE.PlaneGeometry(2.7,.58),new THREE.MeshBasicMaterial({map:tex,transparent:true}));label.position.set(0,.57,2.2);label.rotation.x=-.45;root.add(label);
-let current=0;const hero=document.querySelector('#heroProduct'),nameEl=document.querySelector('#productName'),typeEl=document.querySelector('#productType'),counter=document.querySelector('#counter'),glow=document.querySelector('#swapGlow');
-function selectProduct(i,animate=false){current=(i+products.length)%products.length;const p=products[current];if(animate){hero.style.opacity='0';glow.classList.remove('active');void glow.offsetWidth;glow.classList.add('active');setTimeout(()=>{hero.src=p.image;hero.alt=p.name;hero.style.opacity='1'},180)}else{hero.src=p.image;hero.alt=p.name}nameEl.textContent=p.name;const size=p.sizes.join(' / ').toUpperCase();typeEl.textContent=`${p.category.toUpperCase()} · ${size} · ${p.prices.length>1?'FROM ':''}${rupiah(Math.min(...p.prices)).toUpperCase()}`;counter.textContent=`${String(current+1).padStart(2,'0')} / ${String(products.length).padStart(2,'0')}`;document.querySelectorAll('.card').forEach((c,n)=>c.classList.toggle('active',n===current))}
-document.querySelector('#stage').addEventListener('click',e=>{if(e.target===canvas||e.target.closest('.photo-frame'))selectProduct(current+1,true)});selectProduct(0,false);
-const stage=document.querySelector('#stage');stage.addEventListener('mouseenter',()=>frameMat.emissiveIntensity=3.2);stage.addEventListener('mouseleave',()=>frameMat.emissiveIntensity=1.8);
-function resize(){const r=stage.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}addEventListener('resize',resize);resize();
-const clock=new THREE.Clock();function loop(){requestAnimationFrame(loop);const t=clock.getElapsedTime();root.position.y=Math.sin(t*.7)*.015;controls.update();renderer.render(scene,camera)}loop();
-</script>
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal-card"><button class="modal-close" id="modalClose" type="button" aria-label="Close product details">×</button><div class="modal-image"><img id="modalImage" src="" alt=""></div><div class="modal-copy"><span class="product-kicker" id="modalCategory"></span><h3 class="display" id="modalName"></h3><p id="modalDesc"></p><dl><div><dt>Size</dt><dd id="modalSize"></dd></div><div><dt>BPOM</dt><dd id="modalBpom"></dd></div><div><dt>Key Presentation</dt><dd id="modalBenefit"></dd></div><div><dt>Routine</dt><dd id="modalUse"></dd></div></dl></div></div>
+  </div>
+
+  <script>
+    const products = [
+      {id:'body',filter:'body',category:'Body Care',name:'Radiance Treatment Body Serum',image:'../images/bodyserum.jpg',size:'60 g · 100 g · 250 g',bpom:'NA18250117959',desc:'A body serum designed to help keep skin feeling soft, moisturized and well cared for as part of a consistent body-care routine.',benefit:'Supports moisture, softness and a brighter-looking, well-cared-for appearance.',use:'Apply evenly to clean, dry body skin after bathing and massage gently until absorbed.'},
+      {id:'cleanser',filter:'face',category:'Face Cleanser',name:'Brightening Gentle Cleanser',image:'../images/cleaner.jpg',size:'100 g',bpom:'NA18251209959',desc:'A facial cleanser designed to help remove dirt and excess oil while supporting a clean, comfortable starting point for the skincare routine.',benefit:'Cleanses daily impurities while supporting moisture and a fresh-looking complexion.',use:'Apply to wet face and neck, massage gently, rinse thoroughly and pat dry.'},
+      {id:'serumiser',filter:'face',category:'Face Serum',name:'Plump+Bright Serumiser',image:'../images/serum.jpg',size:'20 g',bpom:'NA18250117979',desc:'A lightweight facial serum created to complement the daily Mejavi Skin+ routine before moisturizer.',benefit:'Helps the skin feel moisturized, softer and firmer while supporting a brighter-looking appearance.',use:'Apply an adequate amount to clean skin, spread gently and allow it to absorb.'},
+      {id:'fresh',filter:'face',category:'Face Cream',name:'Fresh Hydra Cream',image:'../images/cream.jpg',size:'Day & Night',bpom:'NA18250118206',desc:'A facial cream designed to complement morning or evening skincare. The cream may appear in white, light brown or pink while serving the same care purpose.',benefit:'Supports moisture, softness and daily skin comfort as a moisturizer option.',use:'Apply an adequate amount evenly to the face and neck according to skin needs.'},
+      {id:'lumiere',filter:'face',category:'Moisturizer',name:'Lumiere Essence Hydra Cream',image:'../images/moisturizer.jpg',size:'15 g',bpom:'NA18250117980',desc:'A moisturizer created to help dry skin feel softer and more comfortable while supporting a brighter-looking complexion.',benefit:'Supports moisture and softness, with antioxidant-focused care for a well-maintained appearance.',use:'Apply a thin, even layer to the face and neck after cleanser and serumiser.'},
+      {id:'herbal',filter:'special',category:'Special Care',name:'Herbal Relaxing Cream',image:'../images/herbal.jpg',size:'35 g',bpom:'NA18260101852',desc:'A complementary relaxing cream designed for skin comfort after daily activity and used according to its directions.',benefit:'Complements a comfort-focused self-care routine and helps the skin feel cared for.',use:'Use according to the product directions and adjust the amount to personal comfort.'}
+    ];
+
+    const ingredients = [
+      {name:'Niacinamide',desc:'A well-known skincare ingredient commonly used to support a brighter-looking, more even and well-cared-for complexion while complementing barrier-focused routines.'},
+      {name:'Sodium',desc:'Sodium-based cosmetic ingredients can serve different functions depending on the exact compound, including hydration support, texture and formula performance.'},
+      {name:'Collagen',desc:'In topical cosmetics, collagen is commonly used to support a conditioned, moisturized and smoother-feeling skin surface.'},
+      {name:'Aloe Vera Extract',desc:'A botanical ingredient widely used in skincare for a soothing, comfort-focused feel and to complement moisturizing formulas.'},
+      {name:'Licorice Extract',desc:'Licorice root extract is frequently used in cosmetic formulas that focus on a calmer and brighter-looking complexion.'},
+      {name:'Ethyl Ascorbic Acid',desc:'A vitamin C derivative used in cosmetic formulas to support antioxidant care and a brighter-looking, more even appearance.'},
+      {name:'Sodium DNA',desc:'A cosmetic ingredient used in selected skincare formulas as part of skin-conditioning and hydration-focused product concepts.'},
+      {name:'Titanium Dioxide',desc:'A mineral ingredient used in cosmetics for functions such as opacity, appearance and formula performance depending on the product type.'}
+    ];
+
+    let activeProduct = 0;
+    let autoShowcase = true;
+    let autoTimer;
+    const $ = (s,root=document)=>root.querySelector(s);
+    const $$ = (s,root=document)=>[...root.querySelectorAll(s)];
+
+    function setShowcase(index){
+      activeProduct=(index+products.length)%products.length;
+      const p=products[activeProduct];
+      $('#showcaseCounter').textContent=String(activeProduct+1).padStart(2,'0')+' / '+String(products.length).padStart(2,'0');
+      $('#showcaseImage').src=p.image;$('#showcaseImage').alt=p.name;$('#showcaseCategory').textContent=p.category;$('#showcaseName').textContent=p.name;$('#showcaseDesc').textContent=p.desc;$('#showcaseSize').textContent=p.size;$('#showcaseBpom').textContent=p.bpom;
+    }
+    function startAuto(){clearInterval(autoTimer);if(autoShowcase)autoTimer=setInterval(()=>setShowcase(activeProduct+1),4800)}
+    $('#prevProduct').addEventListener('click',()=>{setShowcase(activeProduct-1);startAuto()});
+    $('#nextProduct').addEventListener('click',()=>{setShowcase(activeProduct+1);startAuto()});
+    $('#toggleAuto').addEventListener('click',()=>{autoShowcase=!autoShowcase;$('#toggleAuto').textContent=autoShowcase?'Pause Auto Showcase':'Resume Auto Showcase';startAuto()});
+    $('#showcaseDetails').addEventListener('click',()=>openModal(products[activeProduct]));
+
+    function renderProducts(filter='all'){
+      const list=filter==='all'?products:products.filter(p=>p.filter===filter);
+      $('#productGrid').innerHTML=list.map(p=>`<article class="product-card reveal visible" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${p.name} details"><div class="product-photo"><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="product-info"><small>${p.category}</small><h4>${p.name}</h4><p>${p.desc}</p><div class="product-foot"><span>${p.size}</span><span class="bpom-dot">BPOM registered</span></div></div></article>`).join('');
+      $$('.product-card').forEach(card=>{const open=()=>openModal(products.find(p=>p.id===card.dataset.id));card.addEventListener('click',open);card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
+    }
+    $('#filterRow').addEventListener('click',e=>{const b=e.target.closest('.filter');if(!b)return;$$('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.dataset.filter)});
+
+    function openModal(p){if(!p)return;$('#modalImage').src=p.image;$('#modalImage').alt=p.name;$('#modalCategory').textContent=p.category;$('#modalName').textContent=p.name;$('#modalDesc').textContent=p.desc;$('#modalSize').textContent=p.size;$('#modalBpom').textContent=p.bpom;$('#modalBenefit').textContent=p.benefit;$('#modalUse').textContent=p.use;$('#productModal').classList.add('open');document.body.classList.add('lock');$('#modalClose').focus()}
+    function closeModal(){$('#productModal').classList.remove('open');document.body.classList.remove('lock')}
+    $('#modalClose').addEventListener('click',closeModal);$('#productModal').addEventListener('click',e=>{if(e.target===$('#productModal'))closeModal()});
+
+    function renderIngredients(){
+      $('#ingredientList').innerHTML=ingredients.map((x,i)=>`<button class="ingredient-btn ${i===0?'active':''}" data-index="${i}" type="button"><small>Selected Ingredient ${String(i+1).padStart(2,'0')}</small><strong>${x.name}</strong></button>`).join('');
+      $('#ingredientList').addEventListener('click',e=>{const b=e.target.closest('.ingredient-btn');if(!b)return;const i=Number(b.dataset.index);$$('.ingredient-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#ingredientIndex').textContent=String(i+1).padStart(2,'0')+' / '+String(ingredients.length).padStart(2,'0');$('#ingredientName').textContent=ingredients[i].name;$('#ingredientDesc').textContent=ingredients[i].desc});
+    }
+
+    const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+    $$('.reveal').forEach(el=>revealObserver.observe(el));
+    const navLinks=$$('#desktopNav a');
+    const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-35% 0px -55% 0px',threshold:0});
+    $$('[data-deck-section]').forEach(s=>sectionObserver.observe(s));
+
+    function updateProgress(){const h=document.documentElement;const max=h.scrollHeight-h.clientHeight;$('#scrollProgress').style.width=(max?Math.min(100,(h.scrollTop/max)*100):0)+'%'}
+    addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+
+    $('#presentBtn').addEventListener('click',async()=>{try{if(!document.fullscreenElement){await document.documentElement.requestFullscreen();$('#presentBtn').textContent='Exit Present'}else{await document.exitFullscreen()}}catch(e){}});
+    document.addEventListener('fullscreenchange',()=>{$('#presentBtn').textContent=document.fullscreenElement?'Exit Present':'Present'});
+
+    const deckSections=$$('[data-deck-section]');
+    function currentSectionIndex(){let best=0,dist=Infinity;deckSections.forEach((s,i)=>{const d=Math.abs(s.getBoundingClientRect().top-84);if(d<dist){dist=d;best=i}});return best}
+    document.addEventListener('keydown',e=>{if($('#productModal').classList.contains('open')){if(e.key==='Escape')closeModal();return}if(['ArrowDown','PageDown'].includes(e.key)){e.preventDefault();deckSections[Math.min(deckSections.length-1,currentSectionIndex()+1)].scrollIntoView({behavior:'smooth'})}if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();deckSections[Math.max(0,currentSectionIndex()-1)].scrollIntoView({behavior:'smooth'})}if(e.key==='Home'){e.preventDefault();deckSections[0].scrollIntoView({behavior:'smooth'})}if(e.key==='End'){e.preventDefault();deckSections[deckSections.length-1].scrollIntoView({behavior:'smooth'})}});
+
+    const mobileMenu=$('#mobileMenu');function setMenu(open){mobileMenu.classList.toggle('open',open);mobileMenu.setAttribute('aria-hidden',String(!open));document.body.classList.toggle('lock',open)}$('#menuBtn').addEventListener('click',()=>setMenu(true));$('#mobileClose').addEventListener('click',()=>setMenu(false));$$('.mobile-links a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+
+    renderProducts();renderIngredients();setShowcase(0);startAuto();
+    setTimeout(()=>$('#presentationHint').classList.add('hide'),6500);
+  </script>
 </body>
 </html>
