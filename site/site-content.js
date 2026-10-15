@@ -236,6 +236,9 @@
     inner.append(head, track);
     section.appendChild(inner);
     hero.insertAdjacentElement("afterend", section);
+
+    const homeProducts = document.getElementById("homeProducts");
+    if (homeProducts) section.insertAdjacentElement("afterend", homeProducts);
   }
 
   function ensureHomepageProductStyles() {
@@ -297,8 +300,8 @@
     if (document.body?.dataset.page !== "home") return;
     if (document.getElementById("productGrid")) return;
 
-    const newsletter = document.querySelector("main .newsletter");
-    if (!newsletter) return;
+    const hero = document.querySelector("main .hero, .hero");
+    if (!hero) return;
 
     ensureHomepageProductStyles();
 
@@ -327,7 +330,7 @@
       </div>
     `;
 
-    newsletter.insertAdjacentElement("beforebegin", section);
+    hero.insertAdjacentElement("afterend", section);
 
     const grid = section.querySelector("#productGrid");
     const scrollAmount = () => Math.min(500, Math.max(230, grid.clientWidth * 0.72));
