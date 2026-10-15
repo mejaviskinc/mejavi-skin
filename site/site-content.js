@@ -69,10 +69,7 @@
       const rows = await response.json();
       const row = Array.isArray(rows) ? rows[0] : null;
       if (!isObject(row?.published_content)) return readCache();
-
-      if (Object.keys(row.published_content).length === 0) {
-        return readCache();
-      }
+      if (Object.keys(row.published_content).length === 0) return readCache();
 
       saveCache(row);
       return row.published_content;
@@ -117,7 +114,7 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
   }
 
-  function safeAdUrl(value, { image = false } = {}) {
+  function safeAdUrl(value) {
     const raw = String(value || "").trim();
     if (!raw || /[\u0000-\u001f\u007f]/.test(raw)) return "";
     if (/^(?:javascript|vbscript|data):/i.test(raw.replace(/\s+/g, ""))) return "";
@@ -126,7 +123,6 @@
       const url = new URL(raw, window.location.origin);
       if (url.origin === window.location.origin) return url.href;
       if (url.protocol !== "https:") return "";
-      if (image && !/^https:$/i.test(url.protocol)) return "";
       return url.href;
     } catch (_error) {
       return "";
@@ -190,11 +186,12 @@
     track.className = "mejavi-home-ads-track";
 
     ads.forEach((ad) => {
-      const imageUrl = safeAdUrl(ad.image_url, { image: true });
+      const imageUrl = safeAdUrl(ad.image_url);
       if (!imageUrl) return;
       const targetUrl = safeAdUrl(ad.target_url);
       const card = document.createElement(targetUrl ? "a" : "article");
       card.className = `mejavi-home-ad${targetUrl ? "" : " mejavi-home-ad-static"}`;
+
       if (targetUrl) {
         card.href = targetUrl;
         if (new URL(targetUrl).origin !== window.location.origin) {
@@ -241,12 +238,69 @@
     hero.insertAdjacentElement("afterend", section);
   }
 
+  function ensureHomepageProductStyles() {
+    if (document.getElementById("mejaviHomepageProductStyles")) return;
+
+    const style = document.createElement("style");
+    style.id = "mejaviHomepageProductStyles";
+    style.textContent = `
+      .home-products{padding:64px 0;background:#fff;overflow:hidden}
+      .home-products .section-head{max-width:720px;margin-bottom:22px}
+      .home-products-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+      .home-products-hint{font:500 11px/1.4 Poppins,sans-serif;color:#8a8a8a;letter-spacing:.03em}
+      .home-products-nav{display:flex;gap:8px}
+      .home-products-nav button{width:38px;height:38px;border:1px solid #e5e5e5;border-radius:50%;background:#fff;color:#111;font-size:18px;line-height:1;display:grid;place-items:center;transition:.2s ease}
+      .home-products-nav button:hover{background:#111;color:#fff;border-color:#111}
+      .home-products .product-grid{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:230px;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;padding:4px 2px 16px;scrollbar-width:thin;scrollbar-color:#c9c9c9 transparent}
+      .home-products .product-grid::-webkit-scrollbar{height:5px}
+      .home-products .product-grid::-webkit-scrollbar-track{background:transparent}
+      .home-products .product-grid::-webkit-scrollbar-thumb{background:#c9c9c9;border-radius:999px}
+      .home-products .product-card{width:230px;min-width:230px;border-radius:22px;scroll-snap-align:start;scroll-snap-stop:always;box-shadow:none}
+      .home-products .product-card:hover{transform:translateY(-3px)}
+      .home-products .product-image{height:220px}
+      .home-products .product-content{padding:14px}
+      .home-products .product-content h3{font-size:15px;line-height:1.25;margin:4px 0 5px;min-height:38px}
+      .home-products .category{font-size:9px;letter-spacing:1.1px}
+      .home-products .product-desc{font-size:11px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:33px}
+      .home-products .product-badge{font-size:9px;padding:6px 8px}
+      .home-products .product-bpom-badge{transform:scale(.9);transform-origin:top right}
+      .home-products .product-bpom-status{font-size:9px;padding:7px 9px;gap:5px;margin-top:9px}
+      .home-products .product-bpom-status strong{font-size:9px}
+      .home-products .card-variant-field{margin-top:9px}
+      .home-products .card-variant-field span{font-size:9px}
+      .home-products .card-variant-select{font-size:10px;padding:8px 9px;border-radius:10px}
+      .home-products .price{font-size:15px;margin-top:10px}
+      .home-products .old-price{font-size:10px}
+      .home-products .product-actions{gap:7px;margin-top:11px}
+      .home-products .small-btn{min-height:36px;padding:0 11px;font-size:10px;border-radius:999px}
+      .home-products-footer{display:flex;justify-content:center;margin-top:18px}
+      .home-products-footer .btn{min-height:44px;padding:0 18px;font-size:11px}
+      @media(max-width:720px){
+        .home-products{padding:48px 0}
+        .home-products .section-head{margin-bottom:16px}
+        .home-products .product-grid{grid-auto-columns:min(72vw,218px);gap:12px;padding-right:18px}
+        .home-products .product-card{width:min(72vw,218px);min-width:min(72vw,218px);border-radius:20px}
+        .home-products .product-image{height:202px}
+        .home-products-nav{display:none}
+        .home-products-hint::after{content:"  →"}
+      }
+      @media(max-width:390px){
+        .home-products .product-grid{grid-auto-columns:min(76vw,210px)}
+        .home-products .product-card{width:min(76vw,210px);min-width:min(76vw,210px)}
+        .home-products .product-image{height:190px}
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function ensureHomepageProductsSection() {
     if (document.body?.dataset.page !== "home") return;
     if (document.getElementById("productGrid")) return;
 
     const newsletter = document.querySelector("main .newsletter");
     if (!newsletter) return;
+
+    ensureHomepageProductStyles();
 
     const section = document.createElement("section");
     section.className = "products home-products";
@@ -259,13 +313,30 @@
           <h2 id="homeProductsTitle" data-id="productTitle">Temukan produk Mejavi Skin untuk rutinitasmu.</h2>
           <p data-id="productSubtitle">Klik detail untuk melihat komposisi, manfaat, cara penggunaan dan pilihan ukuran.</p>
         </div>
-        <div class="product-grid" id="productGrid"></div>
-        <div style="display:flex;justify-content:center;margin-top:28px">
+        <div class="home-products-toolbar" aria-hidden="true">
+          <span class="home-products-hint">Geser untuk melihat produk lainnya</span>
+          <div class="home-products-nav">
+            <button type="button" id="homeProductsPrev" aria-label="Produk sebelumnya">←</button>
+            <button type="button" id="homeProductsNext" aria-label="Produk berikutnya">→</button>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid" tabindex="0" aria-label="Daftar produk Mejavi Skin+"></div>
+        <div class="home-products-footer">
           <a class="btn btn-dark" href="skincare-kulit-sensitif/">Lihat Semua Produk</a>
         </div>
       </div>
     `;
+
     newsletter.insertAdjacentElement("beforebegin", section);
+
+    const grid = section.querySelector("#productGrid");
+    const scrollAmount = () => Math.min(500, Math.max(230, grid.clientWidth * 0.72));
+    section.querySelector("#homeProductsPrev")?.addEventListener("click", () => {
+      grid.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+    });
+    section.querySelector("#homeProductsNext")?.addEventListener("click", () => {
+      grid.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+    });
   }
 
   function rewriteWhatsAppLinks(number) {
@@ -306,12 +377,8 @@
   function applySettings(settings) {
     if (!isObject(settings)) return;
 
-    const instagram = cleanHandle(
-      OFFICIAL_SOCIAL_HANDLES.instagram || settings.instagram
-    );
-    const tiktok = cleanHandle(
-      OFFICIAL_SOCIAL_HANDLES.tiktok || settings.tiktok
-    );
+    const instagram = cleanHandle(OFFICIAL_SOCIAL_HANDLES.instagram || settings.instagram);
+    const tiktok = cleanHandle(OFFICIAL_SOCIAL_HANDLES.tiktok || settings.tiktok);
     const email = cleanEmail(settings.email);
     const configuredWhatsapp = String(settings.whatsapp || "").replace(/\D/g, "");
     const whatsapp =
@@ -341,20 +408,14 @@
     }
 
     rewriteWhatsAppLinks(whatsapp);
-
     window.mejaviSiteSettings = { ...settings, instagram, tiktok, email, whatsapp };
   }
 
-  // Pastikan section produk tersedia sebelum script katalog melakukan render.
   ensureHomepageProductsSection();
-
-  // Pastikan link statis selalu memakai nomor resmi terbaru, bahkan jika CMS sedang tidak tersedia.
   rewriteWhatsAppLinks(DEFAULT_WHATSAPP_NUMBER);
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", hideCollagenArticleThumbnail, {
-      once: true
-    });
+    document.addEventListener("DOMContentLoaded", hideCollagenArticleThumbnail, { once: true });
   } else {
     hideCollagenArticleThumbnail();
   }
@@ -368,11 +429,7 @@
   ready.then((content) => {
     if (!content?.settings) return;
     if (document.readyState === "loading") {
-      document.addEventListener(
-        "DOMContentLoaded",
-        () => applySettings(content.settings),
-        { once: true }
-      );
+      document.addEventListener("DOMContentLoaded", () => applySettings(content.settings), { once: true });
     } else {
       applySettings(content.settings);
     }
@@ -381,11 +438,7 @@
   adsReady.then((ads) => {
     if (!ads.length) return;
     if (document.readyState === "loading") {
-      document.addEventListener(
-        "DOMContentLoaded",
-        () => renderHomepageAds(ads),
-        { once: true }
-      );
+      document.addEventListener("DOMContentLoaded", () => renderHomepageAds(ads), { once: true });
     } else {
       renderHomepageAds(ads);
     }
